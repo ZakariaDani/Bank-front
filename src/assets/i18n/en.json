@@ -3,6 +3,6 @@
       "TITLE": "Sign In Back/Agent Office",
       "EMAIL_PLACEHOLDER": "Enter your email",
       "PASSWORD_PLACEHOLDER": "Enter your password",
-      "BUTTON": "signIN"
+      "BUTTON": "signIn"
     }
   }

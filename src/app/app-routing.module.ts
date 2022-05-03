@@ -4,8 +4,20 @@ import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 
 const routes: Routes = [
   {
-    path: 'emp-signin',
+    path: 'employee',
     component: EmpSignInComponent
+  },
+  {
+    path: 'backoffice',
+    //add component here
+  },
+  {
+    path: 'backoffice/agents/add',
+    //add component here
+  },
+  {
+    path: 'backoffice/agents/:id',
+    //add component here
   },
 ];
 
