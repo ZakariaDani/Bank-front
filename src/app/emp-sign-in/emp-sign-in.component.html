@@ -1,28 +1,17 @@
-<mat-toolbar style="height: 25%;">
-  <div class="container0" >
-      <span routerLink="/" style="cursor: pointer;"><img src="../../assets/img/Logo.png" alt="E-banking"></span>
-      <div class="d-flex justify-content-around icons align-items-center">
-          <div>
-              <h3>EN</h3>
-          </div>
-          <mat-icon>language</mat-icon>
-      </div>
-  </div>
-</mat-toolbar>
 <div class="container1">
 <mat-card class="home-card">
-  <mat-card-title style="padding: 5%;">Sign In Back/Agent Office</mat-card-title>
+  <mat-card-title style="padding: 5%;">{{'SIGNIN_EMP.TITLE' | translate}}</mat-card-title>
   <mat-card-content>
     <form #signinForm="ngForm" (ngSubmit)="signin(signinForm)">
       <div>
         <p>
           <mat-form-field appearance="fill" style="width: 100%">
-            <mat-label>Enter your email</mat-label>
+            <mat-label>{{'SIGNIN_EMP.EMAIL_PLACEHOLDER' | translate}}</mat-label>
             <input matInput id="email" name="email" required ngModel />
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" style="width: 100%">
-            <mat-label>Enter your password</mat-label>
+            <mat-label>{{'SIGNIN_EMP.PASSWORD_PLACEHOLDER' | translate}}</mat-label>
             <input
               matInput
               id="password"
@@ -46,12 +35,12 @@
       <div>
         <button
           mat-raised-button
-          style="width: 25%; font-size: large"
+          style="font-size: large"
           color="primary"
           type="submit"
           [disabled]="signinForm.invalid"
         >
-          signIn
+        {{'SIGNIN_EMP.BUTTON' | translate}}
         </button>
       </div>
     </form>
