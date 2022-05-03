@@ -13,20 +13,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EmpSignInComponent
-  ],
+  declarations: [AppComponent, EmpSignInComponent, HomeComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,16 +40,17 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatGridListModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      }
-  })
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
