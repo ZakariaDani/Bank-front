@@ -21,6 +21,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatCardModule,
     MatGridListModule,
     MatListModule,
+    MatSidenavModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

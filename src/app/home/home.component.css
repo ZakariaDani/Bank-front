@@ -1,23 +1,38 @@
-mat-grid-tile {
-  /* background: lightblue; */
-}
 mat-card-header {
   align-items: center;
 }
 mat-card-subtitle {
   margin-bottom: 0;
 }
-.sidebar-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  border-right: 1px rgb(0, 0, 0, 40%) solid;
+mat-sidenav-content {
+  width: 4rem;
 }
+
 .sidebar-content--image {
   background-image: url("https://avatars.dicebear.com/api/bottts/backoffice.svg");
   background-size: cover;
 }
 a {
   margin-top: 1.25rem;
+}
+button {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+.example-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 17rem;
+}
+.mat-drawer {
+  top: 80px !important;
 }
