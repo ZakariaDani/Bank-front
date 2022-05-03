@@ -1,14 +1,24 @@
-
-<div class="container">
+<mat-toolbar style="height: 25%;">
+  <div class="container0" >
+      <span routerLink="/" style="cursor: pointer;"><img src="../../assets/img/Logo.png" alt="E-banking"></span>
+      <div class="d-flex justify-content-around icons align-items-center">
+          <div>
+              <h3>EN</h3>
+          </div>
+          <mat-icon>language</mat-icon>
+      </div>
+  </div>
+</mat-toolbar>
+<div class="container1">
 <mat-card class="home-card">
   <mat-card-title style="padding: 5%;">Sign In Back/Agent Office</mat-card-title>
   <mat-card-content>
     <form #signinForm="ngForm" (ngSubmit)="signin(signinForm)">
-      <div class="col-12">
-        <p class="d-flex flex-column flex-grow-1 py-4">
+      <div>
+        <p>
           <mat-form-field appearance="fill" style="width: 100%">
             <mat-label>Enter your email</mat-label>
-            <input id="email" name="email" matInput required ngModel />
+            <input matInput id="email" name="email" required ngModel />
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" style="width: 100%">
@@ -33,7 +43,7 @@
           </mat-form-field>
         </p>
       </div>
-      <div class="col-12 d-flex justify-content-end">
+      <div>
         <button
           mat-raised-button
           style="width: 25%; font-size: large"
