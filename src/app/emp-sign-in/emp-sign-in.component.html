@@ -1,49 +1,51 @@
 <div class="container1">
-<mat-card class="home-card">
-  <mat-card-title style="padding: 5%;">{{'SIGNIN_EMP.TITLE' | translate}}</mat-card-title>
-  <mat-card-content>
-    <form #signinForm="ngForm" (ngSubmit)="signin(signinForm)">
-      <div>
-        <p>
-          <mat-form-field appearance="fill" style="width: 100%">
-            <mat-label>{{'SIGNIN_EMP.EMAIL_PLACEHOLDER' | translate}}</mat-label>
-            <input matInput id="email" name="email" required ngModel />
-          </mat-form-field>
-          <br />
-          <mat-form-field appearance="fill" style="width: 100%">
-            <mat-label>{{'SIGNIN_EMP.PASSWORD_PLACEHOLDER' | translate}}</mat-label>
-            <input
-              matInput
-              id="password"
-              name="password"
-              [type]="hide ? 'password' : 'text'"
-              required
-              ngModel
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-            >
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-          </mat-form-field>
-        </p>
-      </div>
-      <div>
-        <button
-          mat-raised-button
-          style="font-size: large"
-          color="primary"
-          type="submit"
-          [disabled]="signinForm.invalid"
-        >
-        {{'SIGNIN_EMP.BUTTON' | translate}}
-        </button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+  <mat-card class="home-card">
+    <mat-card-title style="padding: 5%">{{
+      "SIGNIN_EMP.TITLE" | translate
+    }}</mat-card-title>
+    <mat-card-content>
+      <form #signinForm="ngForm" (ngSubmit)="signin(signinForm)">
+        <div>
+          <p>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>{{
+                "SIGNIN_EMP.EMAIL_PLACEHOLDER" | translate
+              }}</mat-label>
+              <input matInput style="height: 25px;" id="email" name="email" required ngModel />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>{{
+                "SIGNIN_EMP.PASSWORD_PLACEHOLDER" | translate
+              }}</mat-label>
+              <div style="display: flex;">
+                <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                name="password"
+                required
+                ngModel
+              />
+              <mat-icon (click)="toggleHide()">{{
+                hide ? "visibility" : "visibility_off"
+              }}</mat-icon>
+              </div>
+              
+            </mat-form-field>
+          </p>
+        </div>
+        <div>
+          <button
+            mat-raised-button
+            style="font-size: large; height: 40px;"
+            color="primary"
+            type="submit"
+            [disabled]="signinForm.invalid"
+          >
+            {{ "SIGNIN_EMP.BUTTON" | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
