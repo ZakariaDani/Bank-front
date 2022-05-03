@@ -7,18 +7,18 @@ const routes: Routes = [
     path: 'employee',
     component: EmpSignInComponent
   },
-  {
-    path: 'backoffice',
-    //add component here
-  },
-  {
-    path: 'backoffice/agents/add',
-    //add component here
-  },
-  {
-    path: 'backoffice/agents/:id',
-    //add component here
-  },
+  // {
+  //   path: 'backoffice',
+  //   add component here
+  // },
+  // {
+  //   path: 'backoffice/agents/add',
+  //   add component here
+  // },
+  // {
+  //   path: 'backoffice/agents/:id',
+  //   add component here
+  // },
 ];
 
 @NgModule({

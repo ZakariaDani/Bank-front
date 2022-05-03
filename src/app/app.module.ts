@@ -17,6 +17,7 @@ import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -47,7 +48,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-  })
+  }),
+  ToastrModule.forRoot({
+    closeButton: true,
+    progressBar: true,
+    progressAnimation: 'increasing'
+  }),
   ],
   providers: [],
   bootstrap: [AppComponent]
