@@ -1,6 +1,59 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
+<mat-grid-list cols="5" rowHeight="2:1">
+  <mat-grid-tile rowspan="4">
+    <div class="sidebar-content">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="sidebar-content--image"></div>
+          <mat-card-title>BackOffice</mat-card-title>
+          <mat-card-subtitle>@backOffice</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <div class="sidebar-content--main">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary">dashboard</mat-icon>
+            <div mat-line>Dashboard</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary"
+              ><span class="material-icons">
+                admin_panel_settings
+              </span></mat-icon
+            >
+            <div mat-line>Settings</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary">logout</mat-icon>
+            <div mat-line>Logout</div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+      <div class="sidebar-content--footer">
+        <mat-list>
+          <div mat-subheader>Agents</div>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary">groups</mat-icon>
+            <div mat-line>Agents with most clients</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary">people</mat-icon>
+            <div mat-line>Agents with least clients</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon color="primary">bookmark</mat-icon>
+            <div mat-line>Bookmarked agents</div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+      <a mat-button routerLink="backoffice" target="_blank">
+        <mat-icon mat-list-icon color="accent">add</mat-icon>
+        Add new agent</a
+      >
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3"> </mat-grid-tile>
   <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
 </mat-grid-list>

@@ -20,13 +20,18 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-
+import { MatListModule } from '@angular/material/list';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
 @NgModule({
-  declarations: [AppComponent, EmpSignInComponent, HomeComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    EmpSignInComponent,
+    HomeComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,6 +46,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MatCardModule,
     MatGridListModule,
+    MatListModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
