@@ -1,0 +1,50 @@
+
+<div class="container">
+<mat-card class="home-card">
+  <mat-card-title style="padding: 5%;">Sign In Back/Agent Office</mat-card-title>
+  <mat-card-content>
+    <form #signinForm="ngForm" (ngSubmit)="signin(signinForm)">
+      <div class="col-12">
+        <p class="d-flex flex-column flex-grow-1 py-4">
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Enter your email</mat-label>
+            <input id="email" name="email" matInput required ngModel />
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="fill" style="width: 100%">
+            <mat-label>Enter your password</mat-label>
+            <input
+              matInput
+              id="password"
+              name="password"
+              [type]="hide ? 'password' : 'text'"
+              required
+              ngModel
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-12 d-flex justify-content-end">
+        <button
+          mat-raised-button
+          style="width: 25%; font-size: large"
+          color="primary"
+          type="submit"
+          [disabled]="signinForm.invalid"
+        >
+          signIn
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>
