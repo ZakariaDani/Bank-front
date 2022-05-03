@@ -1,3 +1,18 @@
+<mat-toolbar style="height: 25%">
+  <div class="container0">
+    <span routerLink="/" style="cursor: pointer"
+      ><img src="../../assets/img/Logo.png" alt="E-banking"
+    /></span>
+    <div class="d-flex justify-content-around icons align-items-center">
+      <mat-select [(value)]="selected" (selectionChange)="OnSelect($event)">
+        <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{
+          lang.toUpperCase()
+        }}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+</mat-toolbar>
+
 <div>
   <router-outlet></router-outlet>
 </div>
