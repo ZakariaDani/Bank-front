@@ -1,8 +1,20 @@
 {
-    "SIGNIN_EMP": {
-      "TITLE": "Se connecter Admin/Agent ",
-      "EMAIL_PLACEHOLDER": "Entrer votre Email",
-      "PASSWORD_PLACEHOLDER": "Tapez votre mot de passe",
-      "BUTTON": "Se connecter"
-    }
+  "SIGNIN_EMP": {
+    "TITLE": "Se connecter Admin/Agent ",
+    "EMAIL_PLACEHOLDER": "Entrer votre Email",
+    "PASSWORD_PLACEHOLDER": "Tapez votre mot de passe",
+    "BUTTON": "Se connecter"
+  },
+  "HOME": {
+    "ICON_DASHBOARD": "Tableau de bord",
+    "ICON_SETTINGS": "Paramètres",
+    "ICON_LOGOUT": "Se déconnecter",
+    "AGENTS_MOST_CLIENTS": "Agents avec plus de clients",
+    "AGENTS_LEAST_CLIENTS": "Agents avec moins de clients",
+    "BOOKMARKED_AGENTS": "Agents favoris",
+    "ADD_AGENT": "Ajouter un nouveau agent",
+    "SEARCH": "Rechercher",
+    "VIEW_LINK": "Voir le profil",
+    "EDIT_LINK": "éditer le profil"
   }
+}

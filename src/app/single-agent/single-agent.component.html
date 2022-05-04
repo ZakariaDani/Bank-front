@@ -5,7 +5,9 @@
     <mat-card-title>{{ agent.name }}</mat-card-title>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="primary">View Profile</button>
-    <button mat-button>Edit Profile</button>
+    <button mat-button color="primary">
+      {{ "HOME.VIEW_LINK" | translate }}
+    </button>
+    <button mat-button>{{ "HOME.EDIT_LINK" | translate }}</button>
   </mat-card-actions>
 </mat-card>

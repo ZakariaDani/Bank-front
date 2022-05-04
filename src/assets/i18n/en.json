@@ -1,8 +1,20 @@
 {
-    "SIGNIN_EMP": {
-      "TITLE": "Sign In Back/Agent Office",
-      "EMAIL_PLACEHOLDER": "Enter your email",
-      "PASSWORD_PLACEHOLDER": "Enter your password",
-      "BUTTON": "signIN"
-    }
+  "SIGNIN_EMP": {
+    "TITLE": "Sign In Back/Agent Office",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "BUTTON": "signIN"
+  },
+  "HOME": {
+    "ICON_DASHBOARD": "Dashboard",
+    "ICON_SETTINGS": "Settings",
+    "ICON_LOGOUT": "Logout",
+    "AGENTS_MOST_CLIENTS": "Agents with most clients",
+    "AGENTS_LEAST_CLIENTS": "Agents with least clients",
+    "BOOKMARKED_AGENTS": "Bookmarked agents",
+    "ADD_AGENT": "Add new agent",
+    "SEARCH": "Search",
+    "VIEW_LINK": "View Profile",
+    "EDIT_LINK": "Edit Profile"
   }
+}
