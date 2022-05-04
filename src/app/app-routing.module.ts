@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: 'employee',
-    component: EmpSignInComponent
+    path: '',
+    redirectTo: 'backoffice',
+    pathMatch: 'full',
   },
-  // {
-  //   path: 'backoffice',
-  //   add component here
-  // },
+  {
+    path: 'backoffice',
+    component: HomeComponent,
+  },
+  {
+    path: 'emp-signin',
+    component: EmpSignInComponent,
+
+  },
+
   // {
   //   path: 'backoffice/agents/add',
   //   add component here
@@ -23,6 +31,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

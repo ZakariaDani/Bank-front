@@ -1,0 +1,82 @@
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    fixedInViewport="true"
+    fixedTopGap="0"
+    fixedBottomGap="0"
+  >
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="sidebar-content--image"></div>
+        <mat-card-title>BackOffice</mat-card-title>
+        <mat-card-subtitle>@backOffice</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+    <mat-list>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">dashboard</mat-icon>
+          <span>{{ "HOME.ICON_DASHBOARD" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">
+            admin_panel_settings
+          </mat-icon>
+          <span>{{ "HOME.ICON_SETTINGS" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">logout</mat-icon>
+          <span>{{ "HOME.ICON_LOGOUT" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <mat-list>
+      <div mat-subheader>Agents</div>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">groups</mat-icon>
+          <span>{{ "HOME.AGENTS_MOST_CLIENTS" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">people</mat-icon>
+          <span>{{ "HOME.AGENTS_LEAST_CLIENTS" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-flat-button>
+          <mat-icon mat-list-icon color="primary">bookmark</mat-icon>
+          <span>{{ "HOME.BOOKMARKED_AGENTS" | translate }}</span>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <a mat-button routerLink="backoffice" target="_blank">
+      <mat-icon mat-list-icon color="accent">add</mat-icon>
+      {{ "HOME.ADD_AGENT" | translate }}</a
+    >
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button mat-button (click)="sidenav.toggle()">
+      <mat-icon mat-list-icon *ngIf="sidenav._getWidth() < 10"
+        >chevron_right</mat-icon
+      >
+      <mat-icon mat-list-icon *ngIf="sidenav._getWidth() > 10"
+        >chevron_left</mat-icon
+      >
+    </button>
+
+    <!-- content -->
+    <app-agents></app-agents>
+  </mat-sidenav-content>
+</mat-sidenav-container>
