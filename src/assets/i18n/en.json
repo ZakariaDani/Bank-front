@@ -15,7 +15,17 @@
     "ADD_AGENT": "Add new agent",
     "SEARCH": "Search",
     "VIEW_LINK": "View Profile",
-    "EDIT_LINK": "Edit Profile"
+    "EDIT_LINK": "Edit Profile",
+    "F_NAME": "first name",
+    "L_NAME": "last name",
+    "D_OF_BIRTH" : "Date of birth",
+    "ADRESS": "Address",
+    "PHONE": "Phone",
+    "FILE": "File ID",
+    "PER_INFO": "Personal Informations",
+    "ATTACHMNT": "Attachments",
+    "LICENCE": "license number",
+    "REGISTRATION_NUMBER": "Registration number in the commercial register"
   }
 }
 

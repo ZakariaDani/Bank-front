@@ -60,8 +60,8 @@
       </mat-list-item>
       <mat-divider></mat-divider>
     </mat-list>
-    <a mat-button routerLink="backoffice" target="_blank">
-      <mat-icon mat-list-icon color="accent">add</mat-icon>
+    <a mat-button (click)="openDialog()">
+      <mat-icon mat-list-icon color="accent" >add</mat-icon>
       {{ "HOME.ADD_AGENT" | translate }}</a
     >
   </mat-sidenav>
