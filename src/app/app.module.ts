@@ -22,6 +22,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AgentsComponent } from './agents/agents.component';
+import { SingleAgentComponent } from './single-agent/single-agent.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -32,6 +34,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EmpSignInComponent,
     HomeComponent,
     HeaderComponent,
+    AgentsComponent,
+    SingleAgentComponent,
   ],
   imports: [
     BrowserModule,

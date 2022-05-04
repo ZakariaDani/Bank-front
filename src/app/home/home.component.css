@@ -4,9 +4,6 @@ mat-card-header {
 mat-card-subtitle {
   margin-bottom: 0;
 }
-mat-sidenav-content {
-  width: 4rem;
-}
 
 .sidebar-content--image {
   background-image: url("https://avatars.dicebear.com/api/bottts/backoffice.svg");
@@ -15,7 +12,7 @@ mat-sidenav-content {
 a {
   margin-top: 1.25rem;
 }
-button {
+mat-sidenav button {
   width: 100%;
   height: 100%;
   align-items: center;

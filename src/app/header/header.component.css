@@ -11,3 +11,7 @@ mat-toolbar {
 img {
   max-width: 60%;
 }
+:host {
+  /* position: fixed; */
+  z-index: 100;
+}
