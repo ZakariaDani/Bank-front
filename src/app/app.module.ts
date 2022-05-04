@@ -25,6 +25,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AgentsComponent } from './agents/agents.component';
 import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AddAgentComponent } from './add-agent/add-agent.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -38,6 +40,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HeaderComponent,
     AgentsComponent,
     SingleAgentComponent,
+    AddAgentComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatGridListModule,
     MatListModule,
     MatSidenavModule,
+    MatDatepickerModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

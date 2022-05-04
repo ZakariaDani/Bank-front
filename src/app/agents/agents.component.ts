@@ -10,11 +10,11 @@ export class AgentsComponent implements OnInit {
   agents = [
     {
       id: 1,
-      name: 'Aymane Daif',
+      name: 'Zakaria Dani',
     },
     {
       id: 2,
-      name: 'Zakaria Dani',
+      name: 'Aymane Daif',
     },
     {
       id: 3,

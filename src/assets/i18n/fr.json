@@ -15,6 +15,16 @@
     "ADD_AGENT": "Ajouter un nouveau agent",
     "SEARCH": "Rechercher",
     "VIEW_LINK": "Voir le profil",
-    "EDIT_LINK": "éditer le profil"
+    "EDIT_LINK": "éditer le profil",
+    "F_NAME": "Nom",
+    "L_NAME": "Prénom",
+    "D_OF_BIRTH" : "Date de naissance",
+    "ADRESS": "Adresse",
+    "PHONE": "Numéro de téléphone",
+    "FILE": "fichier CIN",
+    "PER_INFO": "Information personnelles",
+    "ATTACHMNT": "Pièces jointes",
+    "LICENCE": "N° de patente",
+    "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce"
   }
 }
