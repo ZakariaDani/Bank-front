@@ -12,6 +12,6 @@ img {
   max-width: 60%;
 }
 :host {
-  /* position: fixed; */
+  position: fixed;
   z-index: 100;
 }

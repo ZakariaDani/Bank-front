@@ -32,6 +32,26 @@ export class AgentsComponent implements OnInit {
       id: 6,
       name: 'Abdelali Hammadi',
     },
+    {
+      id: 7,
+      name: 'Abdelhakim Benkirane',
+    },
+    {
+      id: 8,
+      name: 'Abdelhakim Benkirane',
+    },
+    {
+      id: 9,
+      name: 'Abdelhakim Benkirane',
+    },
+    {
+      id: 10,
+      name: 'Abdelhakim Benkirane',
+    },
+    {
+      id: 11,
+      name: 'Abdelhakim Benkirane',
+    },
   ];
   searchTerm = '';
   constructor() {}

@@ -3,9 +3,14 @@ mat-card-content {
   flex-direction: column;
   align-items: center;
 }
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .example-card {
   max-width: 400px;
 }
 img {
-  max-width: 80%;
+  max-width: 70%;
 }
