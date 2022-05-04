@@ -24,6 +24,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AgentsComponent } from './agents/agents.component';
 import { SingleAgentComponent } from './single-agent/single-agent.component';
+import { ToastrModule } from 'ngx-toastr';
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -61,6 +63,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
+
+  ToastrModule.forRoot({
+    closeButton: true,
+    progressBar: true,
+    progressAnimation: 'increasing'
+  }),
   ],
   providers: [],
   bootstrap: [AppComponent],

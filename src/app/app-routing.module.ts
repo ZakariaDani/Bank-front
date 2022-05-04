@@ -16,7 +16,17 @@ const routes: Routes = [
   {
     path: 'emp-signin',
     component: EmpSignInComponent,
+
   },
+
+  // {
+  //   path: 'backoffice/agents/add',
+  //   add component here
+  // },
+  // {
+  //   path: 'backoffice/agents/:id',
+  //   add component here
+  // },
 ];
 
 @NgModule({
