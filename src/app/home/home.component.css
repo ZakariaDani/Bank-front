@@ -19,7 +19,6 @@ mat-sidenav button {
   display: flex;
 }
 mat-sidenav-content {
-  top: 85px;
   margin-bottom: 85px;
 }
 mat-sidenav-content button {
