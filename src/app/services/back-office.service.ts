@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { tap } from 'rxjs';
 @Injectable({
     providedIn: 'root',
   })
@@ -31,6 +32,55 @@ export class BackOfficeService {
         (err: any) => {
           this.toast.error('Login failed!', '', { timeOut: 1000,positionClass: 'toast-top-center', });
         }
+      );
+  }
+
+  createAgent(agent:any) {
+    const {firstName, LastName, dateOfBirth, adress, email, phone, matricule, patente, description, file} = agent;
+    return this.http
+      .post(
+        `${this.BACK_OFFICE_URL}/agents`,
+        {firstName, LastName, dateOfBirth, adress, email, phone, matricule, patente, description, file}
+      ).pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('Agent created...', '', {
+              timeOut: 1000,
+            });
+          }
+        })
+      );
+  }
+
+
+  deleteAgent(agentId: number) {
+    return this.http
+      .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`,
+      ).pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('Agent deleted...', '', {
+              timeOut: 1000,
+            });
+          }
+        })
+      );
+  }
+  //You can add parameters that you want to update
+  updateAgent(agentId: number, firstNameValue: string) {
+    return this.http
+      .patch(
+        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
+        { firstName: firstNameValue },
+      )
+      .pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('agent updated successfully', '', {
+              timeOut: 1000,
+            });
+          }
+        })
       );
   }
 }

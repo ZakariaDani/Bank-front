@@ -26,6 +26,8 @@ export class AddAgentComponent implements OnInit {
     this.dialogAdd.close();
   }
   create() {
+    console.log(this.email);
+    
     this.dialogAdd.close();
   }
 }
