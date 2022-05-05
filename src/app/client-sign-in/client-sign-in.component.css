@@ -1,0 +1,14 @@
+.bigContainer{
+    height:85vh;
+    background-image: url("../../assets/img/auth_background.jpg");
+    background-size: cover;
+}
+
+.borders{
+    border:solid 2px gray;
+}
+hr{
+    height:1px;
+    border: none;
+    background-color: rgb(195, 195, 195);
+}
