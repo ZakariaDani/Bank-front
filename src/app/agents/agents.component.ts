@@ -10,47 +10,38 @@ export class AgentsComponent implements OnInit {
   agents = [
     {
       id: 1,
-      name: 'Zakaria Dani',
+      firstName: 'Zakaria',
+      lastName: 'Dani'
     },
     {
       id: 2,
-      name: 'Aymane Daif',
+      firstName: 'Aymane',
+      lastName: 'Daif'
     },
     {
       id: 3,
-      name: 'Marouane Zibout',
+      firstName: 'Marouane',
+      lastName: 'Zibout'
     },
     {
       id: 4,
-      name: 'Souhail Slaoui',
+      firstName: 'Souhail',
+      lastName: 'Slaoui'
     },
     {
       id: 5,
-      name: 'Bahomane Yousef',
+      firstName: 'Bahomane',
+      lastName: 'Yousef'
     },
     {
       id: 6,
-      name: 'Abdelali Hammadi',
+      firstName: 'Abdelali',
+      lastName: 'Hammadi'
     },
     {
       id: 7,
-      name: 'Abdelhakim Benkirane',
-    },
-    {
-      id: 8,
-      name: 'Abdelhakim Benkirane',
-    },
-    {
-      id: 9,
-      name: 'Abdelhakim Benkirane',
-    },
-    {
-      id: 10,
-      name: 'Abdelhakim Benkirane',
-    },
-    {
-      id: 11,
-      name: 'Abdelhakim Benkirane',
+      firstName: 'Abdelhakim',
+      lastName: 'Benkirane'
     },
   ];
   searchTerm = '';
@@ -62,7 +53,7 @@ export class AgentsComponent implements OnInit {
   filterAgents() {
     if (this.searchTerm !== '') {
       this.filteredAgents = this.agents.filter((agent) =>
-        agent.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        agent.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     } else {
       this.filteredAgents = this.agents;

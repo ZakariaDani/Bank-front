@@ -25,7 +25,10 @@
     "PER_INFO": "Personal Informations",
     "ATTACHMNT": "Attachments",
     "LICENCE": "license number",
-    "REGISTRATION_NUMBER": "Registration number in the commercial register"
+    "REGISTRATION_NUMBER": "Registration number in the commercial register",
+    "CREATE": "Create",
+    "CANCEL": "Cancel",
+    "SAVE": "Save"
   }
 }
 
