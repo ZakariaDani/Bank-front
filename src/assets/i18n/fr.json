@@ -18,7 +18,7 @@
     "EDIT_LINK": "éditer le profil",
     "F_NAME": "Nom",
     "L_NAME": "Prénom",
-    "D_OF_BIRTH" : "Date de naissance",
+    "D_OF_BIRTH": "Date de naissance",
     "ADRESS": "Adresse",
     "PHONE": "Numéro de téléphone",
     "FILE": "fichier CIN",
@@ -29,5 +29,11 @@
     "CREATE": "Créer",
     "CANCEL": "Annuler",
     "SAVE": "Enregister"
+  },
+  "AGENT_PROFILE": {
+    "JOIN_DATE": "Date d’adhésion",
+    "CLIENTS_NUMBER": "Nombre de clients",
+    "LICENCE_NUMBER": "Numéro de licence",
+    "TIMELINE": "échéancier"
   }
 }

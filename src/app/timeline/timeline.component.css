@@ -1,0 +1,14 @@
+.div mat-list-item.timeline {
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.timeline-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.timeline-container .left > * {
+  margin-bottom: 0;
+}

@@ -18,7 +18,7 @@
     "EDIT_LINK": "Edit Profile",
     "F_NAME": "first name",
     "L_NAME": "last name",
-    "D_OF_BIRTH" : "Date of birth",
+    "D_OF_BIRTH": "Date of birth",
     "ADRESS": "Address",
     "PHONE": "Phone",
     "FILE": "File ID",
@@ -29,6 +29,11 @@
     "CREATE": "Create",
     "CANCEL": "Cancel",
     "SAVE": "Save"
+  },
+  "AGENT_PROFILE": {
+    "JOIN_DATE": "Join date",
+    "CLIENTS_NUMBER": "Number of clients",
+    "LICENCE_NUMBER": "License number",
+    "TIMELINE": "Timeline"
   }
 }
-
