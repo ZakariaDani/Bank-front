@@ -1,0 +1,66 @@
+<div class="bigContainer d-flex  align-items-center justify-content-md-start justify-content-center">
+    <mat-card class="home-card col-11 col-md-6 col-sm-9 col-lg-5 col-xl-4 ml-md-5 p-md-4">
+      <mat-card-title class="pt-3 pb-4 font-weight-bold">{{
+        "SIGNIN_CLIENT.TITLE" | translate
+      }}</mat-card-title>
+      <mat-card-content>
+        <form #signinForm="ngForm" (submit)="onSubmit(signinForm)">
+          <div>
+            <p>
+              <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>{{
+                  "SIGNIN_CLIENT.USERNAME_PLACEHOLDER" | translate
+                }}</mat-label>
+                <input matInput style="height: 25px;" id="email" name="email" required ngModel />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>{{
+                  "SIGNIN_CLIENT.PASSWORD_PLACEHOLDER" | translate
+                }}</mat-label>
+                <div style="display: flex;">
+                  <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  name="password"
+                  required
+                  ngModel
+                />
+                <mat-icon (click)="toggleHide()">{{
+                  hide ? "visibility" : "visibility_off"
+                }}</mat-icon>
+                </div>
+                
+              </mat-form-field>
+            </p>
+          </div>
+          <div>
+            <button
+              mat-raised-button
+              class="w-100 bg-primary text-white py-1"
+              style="cursor:pointer"
+              type="submit"
+              [disabled]="signinForm.invalid"
+            >
+              {{ "SIGNIN_CLIENT.BUTTON" | translate }}
+            </button>
+          </div>
+          <hr class="my-4"/>
+          <div >
+            <a
+              mat-raised-button
+              class="w-100 borders border-primary bg-white text-primary py-1"
+              style="text-decoration:none;cursor:pointer"
+              type="submit"
+              [disabled]="signinForm.invalid"
+              routerLink="/client-register"
+            >
+              {{ "SIGNIN_CLIENT.SECOND_BUTTON" | translate }}
+          </a>
+          </div>
+          
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

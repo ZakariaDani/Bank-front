@@ -5,6 +5,25 @@
     "PASSWORD_PLACEHOLDER": "Enter your password",
     "BUTTON": "signIN"
   },
+  "SIGNIN_CLIENT":{
+    "TITLE":"E-Banking login",
+    "USERNAME_PLACEHOLDER":"Enter your username",
+    "PASSWORD_PLACEHOLDER":"Enter your password",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
+  "REGISTER_CLIENT":{
+    "TITLE":"E-Banking register",
+    "SELECT_TITLE":"Select one product",
+    "MAXIMUM":"Ceiling",
+    "FORM_TITLE":"Client's information",
+    "FIRSTNAME_HOLDER":"Enter your first name",
+    "LASTNAME_HOLDER":"Enter your last name",
+    "EMAIL_HOLDER":"Enter your email",
+    "PHONE_HOLDER":"Enter your phone number",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
   "HOME": {
     "ICON_DASHBOARD": "Dashboard",
     "ICON_SETTINGS": "Settings",
