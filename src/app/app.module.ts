@@ -27,6 +27,7 @@ import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { EditAgentComponent } from './edit-agent/edit-agent.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AgentsComponent,
     SingleAgentComponent,
     AddAgentComponent,
+    EditAgentComponent,
   ],
   imports: [
     BrowserModule,

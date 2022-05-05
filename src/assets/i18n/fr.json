@@ -25,6 +25,9 @@
     "PER_INFO": "Information personnelles",
     "ATTACHMNT": "Pièces jointes",
     "LICENCE": "N° de patente",
-    "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce"
+    "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce",
+    "CREATE": "Créer",
+    "CANCEL": "Annuler",
+    "SAVE": "Enregister"
   }
 }
