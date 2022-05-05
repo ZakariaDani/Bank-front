@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs';
 @Injectable({
-    providedIn: 'root',
-  })
+  providedIn: 'root',
+})
 export class BackOfficeService {
-  private BACK_OFFICE_URL = 'http://localhost:3000/api/v1/backoffice';
+  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -30,18 +30,41 @@ export class BackOfficeService {
           console.log(res);
         },
         (err: any) => {
-          this.toast.error('Login failed!', '', { timeOut: 1000,positionClass: 'toast-top-center', });
+          this.toast.error('Login failed!', '', {
+            timeOut: 1000,
+            positionClass: 'toast-top-center',
+          });
         }
       );
   }
 
-  createAgent(agent:any) {
-    const {firstName, LastName, dateOfBirth, adress, email, phone, matricule, patente, description, file} = agent;
+  createAgent(agent: any) {
+    const {
+      firstName,
+      LastName,
+      dateOfBirth,
+      adress,
+      email,
+      phone,
+      matricule,
+      patente,
+      description,
+      file,
+    } = agent;
     return this.http
-      .post(
-        `${this.BACK_OFFICE_URL}/agents`,
-        {firstName, LastName, dateOfBirth, adress, email, phone, matricule, patente, description, file}
-      ).pipe(
+      .post(`${this.BACK_OFFICE_URL}/agents`, {
+        firstName,
+        LastName,
+        dateOfBirth,
+        adress,
+        email,
+        phone,
+        matricule,
+        patente,
+        description,
+        file,
+      })
+      .pipe(
         tap((res) => {
           if (res) {
             this.toast.success('Agent created...', '', {
@@ -52,27 +75,23 @@ export class BackOfficeService {
       );
   }
 
-
   deleteAgent(agentId: number) {
-    return this.http
-      .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`,
-      ).pipe(
-        tap((res) => {
-          if (res) {
-            this.toast.success('Agent deleted...', '', {
-              timeOut: 1000,
-            });
-          }
-        })
-      );
+    return this.http.delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`).pipe(
+      tap((res) => {
+        if (res) {
+          this.toast.success('Agent deleted...', '', {
+            timeOut: 1000,
+          });
+        }
+      })
+    );
   }
   //You can add parameters that you want to update
   updateAgent(agentId: number, firstNameValue: string) {
     return this.http
-      .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
-        { firstName: firstNameValue },
-      )
+      .patch(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
+        firstName: firstNameValue,
+      })
       .pipe(
         tap((res) => {
           if (res) {
@@ -82,5 +101,15 @@ export class BackOfficeService {
           }
         })
       );
+  }
+
+
+  logout() {
+    this.toast
+      .success('logged out successfully', '', { timeOut: 700 })
+      .onHidden.subscribe(() => {
+        this.router.navigateByUrl('/emp-signin').then();
+      });
+    return '';
   }
 }
