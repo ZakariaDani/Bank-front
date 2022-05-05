@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog, private backOfficeService: BackOfficeService) {}
 
   agents: any = [];
-  filteredAgents: any[] = [];
 
   ngOnInit(): void {}
 
@@ -30,8 +29,11 @@ export class HomeComponent implements OnInit {
         .subscribe((result: any) => {
           console.log(result);
           this.agents.push(result);
-          this.filteredAgents = this.agents;
+          this.backOfficeService.createAgent(null);
         });
     });
+  }
+  logout() {
+    this.backOfficeService.logout();
   }
 }

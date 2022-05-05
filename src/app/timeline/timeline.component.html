@@ -1,0 +1,16 @@
+<div class="div">
+  <mat-list>
+    <mat-list-item class="timeline" *ngFor="let item of timeline">
+      <mat-icon mat-list-icon color="primary">event</mat-icon>
+      <div class="timeline-container">
+        <div class="left">
+          <h4 mat-line>{{ item.title | titlecase }}</h4>
+          <mat-card-subtitle mat-line>{{ item.description }}</mat-card-subtitle>
+        </div>
+        <div class="right">
+          <small mat-line>{{ item.date }}</small>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

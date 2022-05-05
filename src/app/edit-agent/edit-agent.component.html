@@ -1,0 +1,99 @@
+<div>
+    <div>
+      <div>
+        <h3>{{"HOME.PER_INFO" | translate}}</h3>
+      </div>
+      <div>
+        <p style="display: flex; justify-content: space-between; padding: 0 10%">
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.F_NAME" | translate}}</mat-label>
+            <input
+              matInput
+              name="firstName"
+              [(ngModel)]="agent.firstName"
+              [value]="agent.firstName"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.L_NAME" | translate}}</mat-label>
+            <input
+              matInput
+              name="LastName"
+              [(ngModel)]="agent.lastName"
+              [value]="agent.lastName"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </p>
+        <p style="display: flex; justify-content: space-between; padding: 0 10%">
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.D_OF_BIRTH" | translate}}</mat-label>
+            <input
+              matInput
+              type="text"
+              name="dateOfBirth"
+              [(ngModel)]="agent.dateOfBirth"
+              [value]="agent.dateOfBirth"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.ADRESS" | translate}}</mat-label>
+            <input
+              matInput
+              name="password"
+              [(ngModel)]="agent.adress"
+              [value]="agent.adress"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </p>
+        <p style="display: flex; justify-content: space-between; padding: 0 10%">
+          <mat-form-field style="width: 45%">
+            <mat-label>Email</mat-label>
+            <input matInput name="email" [(ngModel)]="agent.email" [value]="agent.email" />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.PHONE" | translate}}</mat-label>
+            <input matInput type="tel" name="LastName" [(ngModel)]="agent.phone" [value]="agent.phone" />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </p>
+        <p style="display: flex; justify-content: space-between; padding: 0 10%">
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.REGISTRATION_NUMBER" | translate}}</mat-label>
+            <input
+              matInput
+              name="matricule"
+              [(ngModel)]="agent.matricule"
+              [value]="agent.matricule"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field style="width: 45%">
+            <mat-label>{{"HOME.LICENCE" | translate}}</mat-label>
+            <input
+              matInput
+              name="patente"
+              [(ngModel)]="agent.patente"
+              [value]="agent.patente"
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-12 d-flex justify-content-end" style="padding: 0 10%">
+        <button mat-flat-button (click)="OnCancel()">{{"HOME.CANCEL" | translate}}</button>
+        <button mat-raised-button color="primary" (click)="save()">
+            {{"HOME.SAVE" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  

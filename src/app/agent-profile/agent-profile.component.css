@@ -1,0 +1,32 @@
+mat-card-header div {
+  order: 2;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+mat-card-header img {
+  border-radius: 50%;
+}
+.card {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+mat-card-content .boxes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1.25rem auto;
+}
+mat-card-content .boxes .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+mat-card-content .boxes .box span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
