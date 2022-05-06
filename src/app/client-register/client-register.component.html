@@ -1,0 +1,81 @@
+<div class="bigContainer d-flex  align-items-center justify-content-center">
+    <mat-card class="home-card col-11 col-sm-9 ml-md-5 p-md-4">
+      <mat-card-title class="py-2 font-weight-bold">{{
+        "REGISTER_CLIENT.TITLE" | translate
+      }}</mat-card-title>
+      <mat-card-content>
+        <form #signinForm="ngForm" (submit)="onSubmit(signinForm)">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>{{
+                    "REGISTER_CLIENT.SELECT_TITLE" | translate
+                }}</mat-label>
+                <mat-select name="account_type" required ngModel>
+                    <mat-option *ngFor="let account_type of types ; let i=index" [value]="account_type">
+                    Hssab {{i+1}} - {{"REGISTER_CLIENT.MAXIMUM" | translate }} : {{account_type}} DH
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <h3 class="font-weight-bold mt-md-1 py-2 mb-0">{{
+                "REGISTER_CLIENT.FORM_TITLE" | translate
+            }}</h3>
+            <div class="container-fluid mt-md-4 p-0">
+                <mat-form-field appearance="fill" class="col-6">
+                    <mat-label>{{
+                      "REGISTER_CLIENT.FIRSTNAME_HOLDER" | translate
+                    }}</mat-label>
+                    <input matInput id="fist_name" name="first_name" required ngModel />
+                  </mat-form-field>
+                <mat-form-field appearance="fill" class="col-6">
+                    <mat-label>{{
+                        "REGISTER_CLIENT.LASTNAME_HOLDER" | translate
+                    }}</mat-label>
+                <input matInput id="last_name" name="last_name" required ngModel />
+                </mat-form-field>
+            </div>
+
+            <div class="container-fluid mt-md-3 p-0">
+                <mat-form-field appearance="fill" class="col-md-6">
+                    <mat-label>{{
+                      "REGISTER_CLIENT.EMAIL_HOLDER" | translate
+                    }}</mat-label>
+                    <input matInput id="email" name="email" required ngModel />
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="col-md-6">
+                      <mat-label>{{
+                          "REGISTER_CLIENT.PHONE_HOLDER" | translate
+                      }}</mat-label>
+                      <input matInput id="phone" name="phone" required ngModel />
+                  </mat-form-field>
+            </div>
+
+          <div class="mt-md-4 row justify-content-center">
+            <button
+              mat-raised-button
+              class="w-50 bg-primary text-white py-1"
+              style="cursor:pointer"
+              type="submit"
+              [disabled]="signinForm.invalid"
+            >
+              {{ "SIGNIN_CLIENT.SECOND_BUTTON" | translate }}
+            </button>
+          </div>
+          <hr class="my-4"/>
+          <div class="row justify-content-center">
+            <a
+              mat-raised-button
+              class="w-50 borders border-primary bg-white text-primary py-1"
+              style="text-decoration:none;cursor:pointer"
+              type="submit"
+              [disabled]="signinForm.invalid"
+              routerLink="/client-signin"
+            >
+              {{ "SIGNIN_CLIENT.BUTTON" | translate }}
+          </a>
+          </div>
+          
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

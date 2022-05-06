@@ -5,6 +5,25 @@
     "PASSWORD_PLACEHOLDER": "Tapez votre mot de passe",
     "BUTTON": "Se connecter"
   },
+  "SIGNIN_CLIENT":{
+    "TITLE":"E-Banking authentification",
+    "USERNAME_PLACEHOLDER":"Entrer votre nom d'utilisateur",
+    "PASSWORD_PLACEHOLDER":"Entrer votre mot de pass",
+    "BUTTON":"Se connecter",
+    "SECOND_BUTTON":"S'inscrire"
+  },
+  "REGISTER_CLIENT":{
+    "TITLE":"E-Banking l'ouverture d'un compte",
+    "SELECT_TITLE":"Sélectioner un produit",
+    "MAXIMUM":"Plafond",
+    "FORM_TITLE":"Informations client",
+    "FIRSTNAME_HOLDER":"Enter votre prenom",
+    "LASTNAME_HOLDER":"Enter votre nom",
+    "EMAIL_HOLDER":"Enter votre email addresse",
+    "PHONE_HOLDER":"Enter votre numéro de téléphone",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
   "HOME": {
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",

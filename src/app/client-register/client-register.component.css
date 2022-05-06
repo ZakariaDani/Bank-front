@@ -1,0 +1,16 @@
+
+h3{
+    position:relative;
+    border-bottom:solid rgb(195, 195, 195) 1.5px;
+}
+
+h3::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -3px;
+    border-bottom: solid 3px #007bff;
+    width: 60px;
+}
+

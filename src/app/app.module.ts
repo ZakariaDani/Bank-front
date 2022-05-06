@@ -27,11 +27,16 @@ import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { ClientSignInComponent } from './client-sign-in/client-sign-in.component';
+import { ClientRegisterComponent } from './client-register/client-register.component';
+
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EditAgentComponent } from './edit-agent/edit-agent.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -46,6 +51,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AgentsComponent,
     SingleAgentComponent,
     AddAgentComponent,
+
+    ClientSignInComponent,
+    ClientRegisterComponent,
+
     EditAgentComponent,
     AgentProfileComponent,
     TimelineComponent,

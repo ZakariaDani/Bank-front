@@ -40,4 +40,7 @@ export class HomeComponent implements OnInit {
       });
     });
   }
+  logout() {
+    this.backOfficeService.logout();
+  }
 }
