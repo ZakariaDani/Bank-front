@@ -16,7 +16,7 @@ export class AddAgentComponent implements OnInit {
   matricule:any;
   patente:any;
   description:any;
-  file:any;
+  fileName = '';
   constructor(public dialogAdd: MatDialogRef<AddAgentComponent>) { }
 
   ngOnInit(): void {
@@ -29,5 +29,14 @@ export class AddAgentComponent implements OnInit {
     console.log(this.email);
     
     this.dialogAdd.close();
+  }
+  onFileSelected(event: any) {
+    const file:File = event.target.files[0];
+
+        if (file) {
+
+            this.fileName = file.name;
+            
+        }
   }
 }
