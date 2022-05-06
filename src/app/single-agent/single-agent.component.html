@@ -1,4 +1,13 @@
 <mat-card class="example-card">
+  <mat-card-header>
+    <button
+      mat-icon-button
+      [color]="agent.isFavorite ? 'warn' : ''"
+      (click)="toggleFavorite(agent)"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-card-header>
   <mat-card-content>
     <img [src]="getImageUrl()" />
 
@@ -8,6 +17,8 @@
     <button mat-button color="primary" (click)="goToProfilePage(agent.id)">
       {{ "HOME.VIEW_LINK" | translate }}
     </button>
-    <button mat-button (click)="openDialog()">{{ "HOME.EDIT_LINK" | translate }}</button>
+    <button mat-button (click)="openDialog()">
+      {{ "HOME.EDIT_LINK" | translate }}
+    </button>
   </mat-card-actions>
 </mat-card>
