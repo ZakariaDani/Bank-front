@@ -35,5 +35,15 @@
     "CLIENTS_NUMBER": "Number of clients",
     "LICENCE_NUMBER": "License number",
     "TIMELINE": "Timeline"
+  },
+  "BACKOFFICE_SETTINGS": {
+    "SAVE": "Save",
+    "CLOSE": "Close",
+    "MESSAGE": "Update your personal details.",
+    "F_NAME": "First name",
+    "L_NAME": "Last name",
+    "JOIN_DATE": "Join date",
+    "EMAIL": "Email",
+    "PHONE": "Phone"
   }
 }
