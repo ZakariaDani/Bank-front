@@ -1,0 +1,16 @@
+.bigContainer{
+    height:100%;
+    background-image: url("../../assets/img/ebanking.jpg");
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.borders{
+    border:solid 2px gray;
+}
+hr{
+    height:1px;
+    border: none;
+    background-color: rgb(195, 195, 195);
+}

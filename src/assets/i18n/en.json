@@ -5,6 +5,25 @@
     "PASSWORD_PLACEHOLDER": "Enter your password",
     "BUTTON": "signIN"
   },
+  "SIGNIN_CLIENT":{
+    "TITLE":"E-Banking login",
+    "USERNAME_PLACEHOLDER":"Enter your username",
+    "PASSWORD_PLACEHOLDER":"Enter your password",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
+  "REGISTER_CLIENT":{
+    "TITLE":"E-Banking register",
+    "SELECT_TITLE":"Select one product",
+    "MAXIMUM":"Ceiling",
+    "FORM_TITLE":"Client's information",
+    "FIRSTNAME_HOLDER":"Enter your first name",
+    "LASTNAME_HOLDER":"Enter your last name",
+    "EMAIL_HOLDER":"Enter your email",
+    "PHONE_HOLDER":"Enter your phone number",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
   "HOME": {
     "ICON_DASHBOARD": "Dashboard",
     "ICON_SETTINGS": "Settings",
@@ -18,7 +37,7 @@
     "EDIT_LINK": "Edit Profile",
     "F_NAME": "first name",
     "L_NAME": "last name",
-    "D_OF_BIRTH" : "Date of birth",
+    "D_OF_BIRTH": "Date of birth",
     "ADRESS": "Address",
     "PHONE": "Phone",
     "FILE": "File ID",
@@ -28,7 +47,13 @@
     "REGISTRATION_NUMBER": "Registration number in the commercial register",
     "CREATE": "Create",
     "CANCEL": "Cancel",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "THEME": "Theme"
+  },
+  "AGENT_PROFILE": {
+    "JOIN_DATE": "Join date",
+    "CLIENTS_NUMBER": "Number of clients",
+    "LICENCE_NUMBER": "License number",
+    "TIMELINE": "Timeline"
   }
 }
-

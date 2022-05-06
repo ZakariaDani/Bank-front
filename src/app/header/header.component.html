@@ -1,7 +1,7 @@
-<mat-toolbar>
+<mat-toolbar class="main">
   <div class="container0">
     <span routerLink="/" style="cursor: pointer"
-      ><img src="../../assets/img/Logo.png" alt="E-banking"
+      >Ebanking <img src="../../assets/img/Logo.png" alt="E-banking" width="50" height="50"
     /></span>
     <div class="d-flex justify-content-around icons align-items-center">
       <mat-select [(value)]="selected" (selectionChange)="OnSelect($event)">
@@ -9,6 +9,16 @@
           lang.toUpperCase()
         }}</mat-option>
       </mat-select>
+      <mat-toolbar>
+        <span style="width: 2em;"></span>
+        <span>{{ "HOME.THEME" | translate }}</span>
+        <app-menu-theme
+          [options]="options$ | async"
+          (themeChange)="themeChangeHandler($event)">
+        </app-menu-theme>
+      </mat-toolbar>
     </div>
+
   </div>
 </mat-toolbar>
+

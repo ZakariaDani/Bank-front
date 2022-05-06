@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -27,7 +28,18 @@ import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { ClientSignInComponent } from './client-sign-in/client-sign-in.component';
+import { ClientRegisterComponent } from './client-register/client-register.component';
+
+import { MatExpansionModule } from '@angular/material/expansion';
 import { EditAgentComponent } from './edit-agent/edit-agent.component';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { MenuThemeComponent } from './menu-theme/menu-theme.component';
+import { StyleManagerService } from './services/style-manager.service';
+import { ThemeService } from './services/theme.service';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -42,7 +54,15 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AgentsComponent,
     SingleAgentComponent,
     AddAgentComponent,
+
+    ClientSignInComponent,
+    ClientRegisterComponent,
+
     EditAgentComponent,
+    AgentProfileComponent,
+    TimelineComponent,
+    MenuThemeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,6 +81,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatListModule,
     MatSidenavModule,
     MatDatepickerModule,
+    MatExpansionModule,
+    MatMenuModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -70,13 +92,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     }),
 
-  ToastrModule.forRoot({
-    closeButton: true,
-    progressBar: true,
-    progressAnimation: 'increasing'
-  }),
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true,
+      progressAnimation: 'increasing',
+    }),
   ],
-  providers: [],
+  providers: [StyleManagerService, ThemeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

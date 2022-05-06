@@ -5,6 +5,25 @@
     "PASSWORD_PLACEHOLDER": "Tapez votre mot de passe",
     "BUTTON": "Se connecter"
   },
+  "SIGNIN_CLIENT":{
+    "TITLE":"E-Banking authentification",
+    "USERNAME_PLACEHOLDER":"Entrer votre nom d'utilisateur",
+    "PASSWORD_PLACEHOLDER":"Entrer votre mot de pass",
+    "BUTTON":"Se connecter",
+    "SECOND_BUTTON":"S'inscrire"
+  },
+  "REGISTER_CLIENT":{
+    "TITLE":"E-Banking l'ouverture d'un compte",
+    "SELECT_TITLE":"Sélectioner un produit",
+    "MAXIMUM":"Plafond",
+    "FORM_TITLE":"Informations client",
+    "FIRSTNAME_HOLDER":"Enter votre prenom",
+    "LASTNAME_HOLDER":"Enter votre nom",
+    "EMAIL_HOLDER":"Enter votre email addresse",
+    "PHONE_HOLDER":"Enter votre numéro de téléphone",
+    "BUTTON":"Log in",
+    "SECOND_BUTTON":"Register"
+  },
   "HOME": {
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",
@@ -18,7 +37,7 @@
     "EDIT_LINK": "éditer le profil",
     "F_NAME": "Nom",
     "L_NAME": "Prénom",
-    "D_OF_BIRTH" : "Date de naissance",
+    "D_OF_BIRTH": "Date de naissance",
     "ADRESS": "Adresse",
     "PHONE": "Numéro de téléphone",
     "FILE": "fichier CIN",
@@ -28,6 +47,13 @@
     "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce",
     "CREATE": "Créer",
     "CANCEL": "Annuler",
-    "SAVE": "Enregister"
+    "SAVE": "Enregister",
+    "THEME": "Thème"
+  },
+  "AGENT_PROFILE": {
+    "JOIN_DATE": "Date d’adhésion",
+    "CLIENTS_NUMBER": "Nombre de clients",
+    "LICENCE_NUMBER": "Numéro de licence",
+    "TIMELINE": "échéancier"
   }
 }
