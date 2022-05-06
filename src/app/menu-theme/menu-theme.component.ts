@@ -15,6 +15,7 @@ export class MenuThemeComponent {
   constructor(private themeService: ThemeService) {}
 
   changeTheme(themeToSet: string) {
+    localStorage.setItem('theme', themeToSet);
     this.themeChange.emit(themeToSet);
   }
 }

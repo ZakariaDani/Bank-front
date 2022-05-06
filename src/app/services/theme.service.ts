@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Option } from "../models/option.model";
@@ -18,7 +18,8 @@ export class ThemeService {
   setTheme(themeToSet:string) {
     this.styleManager.setStyle(
       "theme",
-      `../../assets/style/${themeToSet}.css`
+      `../../assets/style/${localStorage.getItem('theme')}.css`
     );
   }
+
 }
