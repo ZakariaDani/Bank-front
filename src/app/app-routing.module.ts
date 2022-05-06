@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import { HomeComponent } from './home/home.component';
 
@@ -19,10 +20,10 @@ const routes: Routes = [
     component: EmpSignInComponent,
   },
 
-  // {
-  //   path: 'backoffice/agents/add',
-  //   add component here
-  // },
+  {
+    path: 'backoffice/settings',
+   component: BackofficeSettingsComponent,
+  },
   {
     path: 'backoffice/agents/:id',
     component: AgentProfileComponent,
