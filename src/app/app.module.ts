@@ -35,6 +35,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { EditAgentComponent } from './edit-agent/edit-agent.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -57,7 +58,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EditAgentComponent,
     AgentProfileComponent,
     TimelineComponent,
-
+    BackofficeSettingsComponent,
   ],
   imports: [
     BrowserModule,

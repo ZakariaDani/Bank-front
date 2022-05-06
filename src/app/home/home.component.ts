@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
 import { BackOfficeService } from '../services/back-office.service';
 
@@ -10,11 +11,19 @@ import { BackOfficeService } from '../services/back-office.service';
 })
 export class HomeComponent implements OnInit {
   showFiller = false;
-  constructor(private dialog: MatDialog, private backOfficeService: BackOfficeService) {}
+  constructor(
+    private dialog: MatDialog,
+    private backOfficeService: BackOfficeService,
+    private router: Router
+  ) {}
 
   agents: any = [];
 
   ngOnInit(): void {}
+
+  goToSettingsPage() {
+    this.router.navigate(['backoffice', 'settings']);
+  }
 
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
@@ -24,13 +33,11 @@ export class HomeComponent implements OnInit {
       height: '60vh',
     });
     dialogAdd.afterClosed().subscribe((data) => {
-      this.backOfficeService
-        .createAgent(data)
-        .subscribe((result: any) => {
-          console.log(result);
-          this.agents.push(result);
-          this.backOfficeService.createAgent(null);
-        });
+      this.backOfficeService.createAgent(data).subscribe((result: any) => {
+        console.log(result);
+        this.agents.push(result);
+        this.backOfficeService.createAgent(null);
+      });
     });
   }
   logout() {
