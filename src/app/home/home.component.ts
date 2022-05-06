@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
+import { AgentsComponent } from '../agents/agents.component';
 import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
@@ -18,11 +19,37 @@ export class HomeComponent implements OnInit {
   ) {}
 
   agents: any = [];
+  isFavoriteAgentsShown = false;
+
+  @ViewChild(AgentsComponent)
+  agentsComponent!: AgentsComponent;
 
   ngOnInit(): void {}
 
   goToSettingsPage() {
     this.router.navigate(['backoffice', 'settings']);
+  }
+
+  showBookmarkedAgents() {
+    this.isFavoriteAgentsShown = true;
+    this.agentsComponent.showBookmarkedAgents();
+  }
+
+  showAllAgents() {
+    this.isFavoriteAgentsShown = false;
+    this.agentsComponent.showAllAgents();
+  }
+
+  showAgentsWithMostClients() {
+    this.isFavoriteAgentsShown = false;
+
+    this.agentsComponent.showAgentsWithMostClients();
+  }
+
+  showAgentsWithLeastClients() {
+    this.isFavoriteAgentsShown = false;
+
+    this.agentsComponent.showAgentsWithLeastClients();
   }
 
   openDialog() {

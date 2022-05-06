@@ -11,37 +11,51 @@ export class AgentsComponent implements OnInit {
     {
       id: 1,
       firstName: 'Zakaria',
-      lastName: 'Dani'
+      lastName: 'Dani',
+      isFavorite: true,
+      agentsCount: 2,
     },
     {
       id: 2,
       firstName: 'Aymane',
-      lastName: 'Daif'
+      lastName: 'Daif',
+      isFavorite: true,
+      agentsCount: 6,
     },
     {
       id: 3,
       firstName: 'Marouane',
-      lastName: 'Zibout'
+      lastName: 'Zibout',
+      isFavorite: true,
+      agentsCount: 15,
     },
     {
       id: 4,
       firstName: 'Souhail',
-      lastName: 'Slaoui'
+      lastName: 'Slaoui',
+      isFavorite: true,
+      agentsCount: 10,
     },
     {
       id: 5,
       firstName: 'Bahomane',
-      lastName: 'Yousef'
+      lastName: 'Yousef',
+      isFavorite: true,
+      agentsCount: 1,
     },
     {
       id: 6,
       firstName: 'Abdelali',
-      lastName: 'Hammadi'
+      lastName: 'Hammadi',
+      isFavorite: true,
+      agentsCount: 5,
     },
     {
       id: 7,
       firstName: 'Abdelhakim',
-      lastName: 'Benkirane'
+      lastName: 'Benkirane',
+      isFavorite: false,
+      agentsCount: 3,
     },
   ];
   searchTerm = '';
@@ -50,6 +64,27 @@ export class AgentsComponent implements OnInit {
   ngOnInit(): void {
     this.filteredAgents = this.agents;
   }
+
+  showBookmarkedAgents() {
+    this.filteredAgents = this.agents.filter((agent) => agent.isFavorite);
+  }
+
+  showAllAgents() {
+    this.filteredAgents = this.agents;
+  }
+
+  showAgentsWithMostClients() {
+    this.filteredAgents = this.agents
+      .sort((a, z) => z.agentsCount - a.agentsCount)
+      .slice(0, 3);
+  }
+
+  showAgentsWithLeastClients() {
+    this.filteredAgents = this.agents
+      .sort((a, z) => a.agentsCount - z.agentsCount)
+      .slice(0, 3);
+  }
+
   filterAgents() {
     if (this.searchTerm !== '') {
       this.filteredAgents = this.agents.filter((agent) =>

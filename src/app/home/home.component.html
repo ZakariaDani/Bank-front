@@ -17,7 +17,7 @@
     </mat-card>
     <mat-list>
       <mat-list-item>
-        <button mat-flat-button>
+        <button mat-flat-button (click)="showAllAgents()">
           <mat-icon mat-list-icon color="primary">dashboards</mat-icon>
           <span>{{ "HOME.ICON_DASHBOARD" | translate }}</span>
         </button>
@@ -41,19 +41,19 @@
     <mat-list>
       <div mat-subheader>Agents</div>
       <mat-list-item>
-        <button mat-flat-button>
+        <button mat-flat-button (click)="showAgentsWithMostClients()">
           <mat-icon mat-list-icon color="primary">groups</mat-icon>
           <span>{{ "HOME.AGENTS_MOST_CLIENTS" | translate }}</span>
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-flat-button>
+        <button mat-flat-button (click)="showAgentsWithLeastClients()">
           <mat-icon mat-list-icon color="primary">people</mat-icon>
           <span>{{ "HOME.AGENTS_LEAST_CLIENTS" | translate }}</span>
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-flat-button>
+        <button mat-flat-button (click)="showBookmarkedAgents()">
           <mat-icon mat-list-icon color="primary">bookmark</mat-icon>
           <span>{{ "HOME.BOOKMARKED_AGENTS" | translate }}</span>
         </button>
@@ -61,7 +61,7 @@
       <mat-divider></mat-divider>
     </mat-list>
     <a mat-button (click)="openDialog()">
-      <mat-icon mat-list-icon color="accent" >add</mat-icon>
+      <mat-icon mat-list-icon color="accent">add</mat-icon>
       {{ "HOME.ADD_AGENT" | translate }}</a
     >
   </mat-sidenav>
