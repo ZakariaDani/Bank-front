@@ -27,6 +27,11 @@ export class SingleAgentComponent implements OnInit {
   goToProfilePage(id: string) {
     this.router.navigate(['backoffice', 'agents', id]);
   }
+
+  toggleFavorite(agent: any) {
+    agent.isFavorite = !agent.isFavorite;
+  }
+
   openDialog() {
     const dialogAdd = this.dialog.open(EditAgentComponent, {
       data: this.agent,

@@ -40,6 +40,9 @@ import { MenuThemeComponent } from './menu-theme/menu-theme.component';
 import { StyleManagerService } from './services/style-manager.service';
 import { ThemeService } from './services/theme.service';
 
+import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
+
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -61,7 +64,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EditAgentComponent,
     AgentProfileComponent,
     TimelineComponent,
+
     MenuThemeComponent,
+
+
+    BackofficeSettingsComponent,
 
   ],
   imports: [

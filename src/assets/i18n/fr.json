@@ -55,5 +55,15 @@
     "CLIENTS_NUMBER": "Nombre de clients",
     "LICENCE_NUMBER": "Numéro de licence",
     "TIMELINE": "échéancier"
+  },
+  "BACKOFFICE_SETTINGS": {
+    "SAVE": "Sauvegarder",
+    "CLOSE": "Fermer",
+    "MESSAGE": "Mettre à jour vos données personnelles.",
+    "F_NAME": "Prénom",
+    "L_NAME": "Nom",
+    "JOIN_DATE": "Date d’adhésion",
+    "EMAIL": "Email",
+    "PHONE": "Téléphone"
   }
 }
