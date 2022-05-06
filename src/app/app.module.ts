@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -35,7 +36,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { EditAgentComponent } from './edit-agent/edit-agent.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { MenuThemeComponent } from './menu-theme/menu-theme.component';
+import { StyleManagerService } from './services/style-manager.service';
+import { ThemeService } from './services/theme.service';
+
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
+
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -58,7 +64,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EditAgentComponent,
     AgentProfileComponent,
     TimelineComponent,
+
+    MenuThemeComponent,
+
+
     BackofficeSettingsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -78,6 +89,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatSidenavModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatMenuModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -93,7 +105,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       progressAnimation: 'increasing',
     }),
   ],
-  providers: [],
+  providers: [StyleManagerService, ThemeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

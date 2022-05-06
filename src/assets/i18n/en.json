@@ -47,7 +47,8 @@
     "REGISTRATION_NUMBER": "Registration number in the commercial register",
     "CREATE": "Create",
     "CANCEL": "Cancel",
-    "SAVE": "Save"
+    "SAVE": "Save",
+    "THEME": "Theme"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",

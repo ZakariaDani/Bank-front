@@ -47,7 +47,8 @@
     "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce",
     "CREATE": "Créer",
     "CANCEL": "Annuler",
-    "SAVE": "Enregister"
+    "SAVE": "Enregister",
+    "THEME": "Thème"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
