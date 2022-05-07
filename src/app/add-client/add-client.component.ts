@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-agent',
-  templateUrl: './add-agent.component.html',
-  styleUrls: ['./add-agent.component.css']
+  selector: 'app-add-client',
+  templateUrl: './add-client.component.html',
+  styleUrls: ['./add-client.component.css']
 })
-export class AddAgentComponent implements OnInit {
+export class AddClientComponent implements OnInit {
+
   firstName:any;
   LastName: any;
   dateOfBirth:any;
@@ -17,7 +18,7 @@ export class AddAgentComponent implements OnInit {
   patente:any;
   description:any;
   fileName = '';
-  constructor(public dialogAdd: MatDialogRef<AddAgentComponent>) { }
+  constructor(public dialogAdd: MatDialogRef<AddClientComponent>) { }
 
   ngOnInit(): void {
   }

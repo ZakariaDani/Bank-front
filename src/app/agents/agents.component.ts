@@ -26,14 +26,14 @@ export class AgentsComponent implements OnInit {
       id: 3,
       firstName: 'Marouane',
       lastName: 'Zibout',
-      isFavorite: true,
+      isFavorite: false,
       agentsCount: 15,
     },
     {
       id: 4,
       firstName: 'Souhail',
       lastName: 'Slaoui',
-      isFavorite: true,
+      isFavorite: false,
       agentsCount: 10,
     },
     {

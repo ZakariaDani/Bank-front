@@ -1,5 +1,6 @@
 .content {
-  height: 91vh;
+  height: 125vh;
   position: relative;
-  top: 85px;
+  top: 80px;
+  box-sizing: border-box;
 }

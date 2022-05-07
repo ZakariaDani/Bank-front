@@ -41,6 +41,13 @@ import { StyleManagerService } from './services/style-manager.service';
 import { ThemeService } from './services/theme.service';
 
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
+import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
+import { ClientsComponent } from './clients/clients.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { SingleClientComponent } from './single-client/single-client.component';
+import { AddClientComponent } from './add-client/add-client.component';
+import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
+import { EditClientComponent } from './edit-client/edit-client.component';
 
 
 
@@ -69,7 +76,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 
     BackofficeSettingsComponent,
-
+        NavBarAgentComponent,
+        ClientsComponent,
+        ClientProfileComponent,
+        SingleClientComponent,
+    AddClientComponent,
+    AgentSettingsComponent,
+    EditClientComponent
   ],
   imports: [
     BrowserModule,

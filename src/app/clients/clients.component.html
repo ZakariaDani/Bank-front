@@ -1,0 +1,18 @@
+<div>
+<form class="search" (submit)="filterclients()">
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        placeholder="Search"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+      />
+    </mat-form-field>
+</form>
+<mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem">
+<mat-grid-tile *ngFor="let client of filteredclients">
+    <app-single-client [client]="client"></app-single-client>
+</mat-grid-tile>
+</mat-grid-list>
+</div>
+  

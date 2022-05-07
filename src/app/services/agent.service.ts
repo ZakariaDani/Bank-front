@@ -6,10 +6,10 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class BackOfficeService {
+export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
+  private AGENT_URL = 'http://localhost:8080/api/v1/Agent';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -28,7 +28,7 @@ export class BackOfficeService {
 
   login(email: string, password: string) {
     this.http
-      .post(`${this.BACK_OFFICE_URL}/login`, { email, password })
+      .post(`${this.AGENT_URL}/login`, { email, password })
       .subscribe(
         //@ts-ignore
         (res: { token: string }) => {
@@ -56,7 +56,7 @@ export class BackOfficeService {
       );
   }
 
-  createAgent(agent: any) {
+  createClient(client: any) {
     const {
       firstName,
       LastName,
@@ -64,23 +64,15 @@ export class BackOfficeService {
       adress,
       email,
       phone,
-      matricule,
-      patente,
-      description,
-      file,
-    } = agent;
+    } = client;
     return this.http
-      .post(`${this.BACK_OFFICE_URL}/agents`, {
+      .post(`${this.AGENT_URL}/agents`, {
         firstName,
         LastName,
         dateOfBirth,
         adress,
         email,
         phone,
-        matricule,
-        patente,
-        description,
-        file,
       })
       .pipe(
         tap((res) => {
@@ -93,8 +85,8 @@ export class BackOfficeService {
       );
   }
 
-  deleteAgent(agentId: number) {
-    return this.http.delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`).pipe(
+  deleteClient(clientId: number) {
+    return this.http.delete(`${this.AGENT_URL}/clients/${clientId}`).pipe(
       tap((res) => {
         if (res) {
           this.toast.success('Agent deleted...', '', {
@@ -105,9 +97,9 @@ export class BackOfficeService {
     );
   }
   //You can add parameters that you want to update
-  updateAgent(agentId: number, firstNameValue: string) {
+  updateClient(clientId: number, firstNameValue: string) {
     return this.http
-      .patch(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
+      .patch(`${this.AGENT_URL}/clients/${clientId}`, {
         firstName: firstNameValue,
       })
       .pipe(

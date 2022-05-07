@@ -4,7 +4,7 @@
         "REGISTER_CLIENT.TITLE" | translate
       }}</mat-card-title>
       <mat-card-content>
-        <form #registerForm="ngForm" (submit)="onSubmit(registerForm)">
+        <form #signinForm="ngForm" (submit)="onSubmit(signinForm)">
             <mat-form-field appearance="fill" class="w-100">
                 <mat-label>{{
                     "REGISTER_CLIENT.SELECT_TITLE" | translate
@@ -56,7 +56,7 @@
               class="w-50 py-1"
               style="cursor:pointer"
               type="submit"
-              [disabled]="registerForm.invalid"
+              [disabled]="signinForm.invalid"
             >
               {{ "SIGNIN_CLIENT.SECOND_BUTTON" | translate }}
             </button>
@@ -68,7 +68,7 @@
               class="w-50 borders border-primary bg-white text-primary py-1"
               style="text-decoration:none;cursor:pointer"
               type="submit"
-              [disabled]="registerForm.invalid"
+              [disabled]="signinForm.invalid"
               routerLink="/client-signin"
             >
               {{ "SIGNIN_CLIENT.BUTTON" | translate }}
