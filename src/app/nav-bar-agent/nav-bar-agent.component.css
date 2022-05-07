@@ -1,0 +1,44 @@
+mat-card-header {
+    align-items: center;
+}
+mat-card-subtitle {
+    margin-bottom: 0;
+}
+  
+.sidebar-content--image {
+    background-image: url("https://avatars.dicebear.com/api/bottts/backoffice.svg");
+    background-size: cover;
+}
+a {
+    margin-top: 1.25rem;
+}
+mat-sidenav button {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+}
+mat-sidenav-content {
+    margin-bottom: 90px;
+}
+mat-sidenav-content button {
+    position: fixed;
+    z-index: 100;
+}
+.example-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+  
+.example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 17rem;
+}
+.mat-drawer {
+    top: 80px !important;
+}
+  

@@ -1,0 +1,61 @@
+<div id="cardprof">
+<mat-card class="card">
+    <mat-card-header>
+      <img mat-card-lg-image [src]="agentDetails.image" />
+      <div>
+        <mat-card-title>
+          {{
+            agentDetails.firstName + " " + agentDetails.lastName
+          }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ agentDetails.email }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-divider inset></mat-divider>
+    <mat-card-content>
+      <div class="boxes">
+        <div class="box">
+          <span>
+            <mat-icon color="warn">calendar_month</mat-icon>
+            {{ "CLIENT_PROFILE.JOIN_DATE" | translate }}</span
+          >
+          <strong>{{ agentDetails.joinDate }}</strong>
+        </div>
+  
+        <div class="box">
+          <span>
+            <mat-icon color="warn">numbers</mat-icon>
+            {{ "CLIENT_PROFILE.SOLD" | translate }}</span
+          >
+          <strong>{{ agentDetails.clientSold |  currency:' MAD '}}</strong>
+        </div>
+  
+        <div class="box">
+          <span>
+            <mat-icon color="warn">badge</mat-icon>
+            {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
+          >
+          <strong>{{ agentDetails.clientAgent }}</strong>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+  
+    <mat-card-footer>
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-timeline [timeline]="agentDetails.timeline"></app-timeline>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-footer>
+  </mat-card>
+</div>
+  
