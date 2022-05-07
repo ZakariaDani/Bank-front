@@ -11,6 +11,7 @@ import { BackOfficeService } from '../services/back-office.service';
 })
 export class SingleAgentComponent implements OnInit {
   @Input() agent: any;
+  @Input() agents: any;
 
   constructor(
     private dialog: MatDialog,
@@ -30,6 +31,11 @@ export class SingleAgentComponent implements OnInit {
 
   toggleFavorite(agent: any) {
     agent.isFavorite = !agent.isFavorite;
+  }
+
+  deleteAgent(agent: any) {
+    this.backOfficeService.deleteAgent(agent.id);
+    this.agents.splice(this.agents.indexOf(agent), 1);
   }
 
   openDialog() {
