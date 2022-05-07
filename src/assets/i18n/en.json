@@ -46,7 +46,10 @@
     "LICENCE": "license number",
     "REGISTRATION_NUMBER": "Registration number in the commercial register",
     "CREATE": "Create",
-    "CANCEL": "Cancel",
+    "HISTORY":"History",
+    "_HOME":"Home",
+    "PROFILE":"Profile",
+    "CANCEL": "Cancel", 
     "SAVE": "Save",
     "THEME": "Theme"
   },

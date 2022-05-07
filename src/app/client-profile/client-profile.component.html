@@ -1,0 +1,74 @@
+<mat-card class="card mt-4">
+    <mat-card-header>
+      <div class="box">
+        <img mat-card-lg-image class="mr-4"  />
+        <div>
+          <mat-card-title>
+            abdelali el hammadi</mat-card-title
+          >
+          <mat-card-subtitle>{{
+            "BACKOFFICE_SETTINGS.MESSAGE" | translate
+          }}</mat-card-subtitle>
+        </div>
+      </div>
+      <div class="buttons box">
+        <button mat-raised-button
+          (click)="goToHome()" >
+          {{ "BACKOFFICE_SETTINGS.CLOSE" | translate }}
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+        >
+          {{ "BACKOFFICE_SETTINGS.SAVE" | translate }}
+        </button>
+      </div>
+    </mat-card-header>
+    <mat-divider inset></mat-divider>
+  
+    <mat-card-content>
+      <div class="inputs">
+        <mat-form-field>
+          <mat-label>{{ "BACKOFFICE_SETTINGS.F_NAME" | translate }}</mat-label>
+          <input
+            matInput
+            name="firstName"
+            [(ngModel)]="firstName"
+          />
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ "BACKOFFICE_SETTINGS.L_NAME" | translate }}</mat-label>
+          <input
+            matInput
+            name="lastName"
+            [(ngModel)]="lastName"
+          />
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ "BACKOFFICE_SETTINGS.EMAIL" | translate }}</mat-label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+          />
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+
+          <mat-label>{{ "BACKOFFICE_SETTINGS.PHONE" | translate }}</mat-label>
+          <input
+            matInput
+            type="tel"
+            name="phone"
+            [(ngModel)]="phone"
+          />
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

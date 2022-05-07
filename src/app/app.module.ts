@@ -41,6 +41,10 @@ import { StyleManagerService } from './services/style-manager.service';
 import { ThemeService } from './services/theme.service';
 
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { ClientHomeComponent } from './client-home/client-home.component';
+import { ClientServiceComponent } from './client-service/client-service.component';
+import { ClientHistoryComponent } from './client-history/client-history.component';
 
 
 
@@ -69,6 +73,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 
     BackofficeSettingsComponent,
+        ClientProfileComponent,
+        ClientHomeComponent,
+        ClientServiceComponent,
+        ClientHistoryComponent,
 
   ],
   imports: [
