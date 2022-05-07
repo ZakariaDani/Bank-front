@@ -70,18 +70,25 @@ export class BackOfficeService {
       file,
     } = agent;
     return this.http
-      .post(`${this.BACK_OFFICE_URL}/agents`, {
-        firstName,
-        LastName,
-        dateOfBirth,
-        adress,
-        email,
-        phone,
-        matricule,
-        patente,
-        description,
-        file,
-      })
+      .post(
+        `${this.BACK_OFFICE_URL}/agents`,
+        {
+          firstName,
+          LastName,
+          dateOfBirth,
+          adress,
+          email,
+          phone,
+          matricule,
+          patente,
+          description,
+          file,
+          password: agent.LastName + Math.floor(Math.random() * 1000),
+        },
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
       .pipe(
         tap((res) => {
           if (res) {
@@ -94,22 +101,32 @@ export class BackOfficeService {
   }
 
   deleteAgent(agentId: number) {
-    return this.http.delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`).pipe(
-      tap((res) => {
-        if (res) {
-          this.toast.success('Agent deleted...', '', {
-            timeOut: 1000,
-          });
-        }
+    return this.http
+      .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
+        headers: { Authorization: `Bearer ${this.token}` },
       })
-    );
+      .pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('Agent deleted...', '', {
+              timeOut: 1000,
+            });
+          }
+        })
+      );
   }
   //You can add parameters that you want to update
   updateAgent(agentId: number, firstNameValue: string) {
     return this.http
-      .patch(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
-        firstName: firstNameValue,
-      })
+      .patch(
+        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
+        {
+          firstName: firstNameValue,
+        },
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
       .pipe(
         tap((res) => {
           if (res) {
@@ -131,5 +148,11 @@ export class BackOfficeService {
         this.router.navigateByUrl('/emp-signin').then();
       });
     return '';
+  }
+
+  getAllAgents(): Observable<any> {
+    return this.http.get(`${this.BACK_OFFICE_URL}/agents`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
 }

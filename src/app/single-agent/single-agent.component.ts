@@ -36,9 +36,6 @@ export class SingleAgentComponent implements OnInit {
   deleteAgent(agent: any) {
     this.backOfficeService.deleteAgent(agent.id);
     this.agents.splice(this.agents.indexOf(agent), 1);
-    console.log(this.agents);
-    
-
   }
 
   openDialog() {

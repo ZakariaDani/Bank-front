@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
   selector: 'app-add-agent',
@@ -7,17 +8,21 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-agent.component.css']
 })
 export class AddAgentComponent implements OnInit {
-  firstName:any;
-  LastName: any;
-  dateOfBirth:any;
-  adress:any;
-  email:any;
-  phone:any;
-  matricule:any;
-  patente:any;
-  description:any;
-  fileName = '';
-  constructor(public dialogAdd: MatDialogRef<AddAgentComponent>) { }
+  fileName='';
+  formData = new FormData();
+  agent = {
+    firstName: '',
+    LastName: '',
+    dateOfBirth: '',
+    adress: '',
+    email: '',
+    phone: '',
+    matricule: '',
+    patente: '',
+    description: '',
+    file: this.formData,
+  }
+  constructor(public dialogAdd: MatDialogRef<AddAgentComponent>, private backOfficeService: BackOfficeService) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +31,8 @@ export class AddAgentComponent implements OnInit {
     this.dialogAdd.close();
   }
   create() {
-    console.log(this.email);
-    
+    console.log(this.agent.email);
+    this.backOfficeService.createAgent(this.agent);
     this.dialogAdd.close();
   }
   onFileSelected(event: any) {
@@ -36,7 +41,7 @@ export class AddAgentComponent implements OnInit {
         if (file) {
 
             this.fileName = file.name;
-            
+            this.formData.append("fileID", file);
         }
   }
 }

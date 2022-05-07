@@ -10,8 +10,8 @@
           <input
             matInput
             name="firstName"
-            [(ngModel)]="firstName"
-            [value]="firstName"
+            [(ngModel)]="agent.firstName"
+            [value]="agent.firstName"
           />
         </mat-form-field>
 
@@ -20,8 +20,8 @@
           <input
             matInput
             name="LastName"
-            [(ngModel)]="LastName"
-            [value]="LastName"
+            [(ngModel)]="agent.LastName"
+            [value]="agent.LastName"
           />
         </mat-form-field>
       </p>
@@ -32,8 +32,8 @@
             matInput
             type="date"
             name="dateOfBirth"
-            [(ngModel)]="dateOfBirth"
-            [value]="dateOfBirth"
+            [(ngModel)]="agent.dateOfBirth"
+            [value]="agent.dateOfBirth"
           />
         </mat-form-field>
 
@@ -42,20 +42,20 @@
           <input
             matInput
             name="password"
-            [(ngModel)]="adress"
-            [value]="adress"
+            [(ngModel)]="agent.adress"
+            [value]="agent.adress"
           />
         </mat-form-field>
       </p>
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
         <mat-form-field style="width: 45%">
           <mat-label>Email</mat-label>
-          <input matInput name="email" [(ngModel)]="email" [value]="email" />
+          <input matInput name="email" [(ngModel)]="agent.email" [value]="agent.email" />
         </mat-form-field>
 
         <mat-form-field style="width: 45%">
           <mat-label>{{ "HOME.PHONE" | translate }}</mat-label>
-          <input matInput name="LastName" [(ngModel)]="phone" [value]="phone" />
+          <input matInput name="LastName" [(ngModel)]="agent.phone" [value]="agent.phone" />
         </mat-form-field>
       </p>
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
@@ -64,8 +64,8 @@
           <input
             matInput
             name="matricule"
-            [(ngModel)]="matricule"
-            [value]="matricule"
+            [(ngModel)]="agent.matricule"
+            [value]="agent.matricule"
           />
         </mat-form-field>
 
@@ -74,8 +74,8 @@
           <input
             matInput
             name="patente"
-            [(ngModel)]="patente"
-            [value]="patente"
+            [(ngModel)]="agent.patente"
+            [value]="agent.patente"
           />
         </mat-form-field>
       </p>
@@ -97,8 +97,8 @@
           <textarea
             matInput
             name="description"
-            [(ngModel)]="description"
-            [value]="description"
+            [(ngModel)]="agent.description"
+            [value]="agent.description"
           ></textarea>
         </mat-form-field>
         <div style="width: 45%;">
