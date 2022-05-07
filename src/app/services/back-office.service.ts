@@ -32,8 +32,8 @@ export class BackOfficeService {
       .subscribe(
         //@ts-ignore
         (res: { token: string }) => {
-          this.token = res.token;
-          if (this.token) {
+          //this.token = res.token;
+          if (res) {
             this.toast
               .success('Login successful, Working on it...', '', {
                 timeOut: 1000,
