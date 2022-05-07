@@ -1,0 +1,35 @@
+mat-card-header .box {
+    display: flex;
+    align-items: center;
+  }
+  mat-card-header .box div:first-of-type {
+    order: 2;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-card-header img {
+    border-radius: 50%;
+  }
+  .card {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80vw;
+  }
+  .buttons {
+    
+    margin-left: auto;
+  }
+  .buttons button {
+    margin-right: 8px;
+  }
+  mat-card-content .inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+  }
+#ldsfjk32{
+  padding: 30px;
+}
