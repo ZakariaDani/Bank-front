@@ -34,9 +34,8 @@ export class SigninService {
 
       .subscribe(
         //@ts-ignore
-        (res: { "refresh-token": string, "acces-tocken": string }) => {
+        (res: { 'refresh-token': string; 'acces-tocken': string }) => {
           this.token = res['acces-tocken'];
-          jwt_decode(res['acces-tocken'])
           if (this.token) {
             this.toast
               .success('Login successful, Working on it...', '', {
@@ -45,10 +44,15 @@ export class SigninService {
               })
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
-                console.log(this.token);
-                
+                const decryptedResponse: any = jwt_decode(res['acces-tocken']);
+                console.log(decryptedResponse.roles[0]);
                 localStorage.setItem('act', btoa(this.token));
-                this.router.navigateByUrl('/home_client').then();
+                if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
+                  this.router.navigateByUrl('/agent').then();
+                }
+                if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
+                  this.router.navigateByUrl('/backoffice').then();
+                }
               });
           }
         },

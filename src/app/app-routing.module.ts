@@ -15,9 +15,9 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
 import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
-import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -25,17 +25,14 @@ import { AgentSettingsComponent } from './agent-settings/agent-settings.componen
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'backoffice',
-    pathMatch: 'full',
-  },
-  {
     path: 'agent',
     component: NavBarAgentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'backoffice',
     component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'emp-signin',
@@ -87,6 +84,11 @@ const routes: Routes = [
     path: 'agent/settings',
     component: AgentSettingsComponent,
   },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

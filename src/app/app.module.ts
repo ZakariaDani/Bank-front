@@ -42,9 +42,7 @@ import { ThemeService } from './services/theme.service';
 
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
 
-import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
-import { ClientServiceComponent } from './client-service/client-service.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
 
 import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
@@ -52,8 +50,8 @@ import { ClientsComponent } from './clients/clients.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { SingleClientComponent } from './single-client/single-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
-import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
 
 
 
