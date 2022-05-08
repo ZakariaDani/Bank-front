@@ -25,37 +25,6 @@ export class BackOfficeService {
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
   }
-
-  login(email: string, password: string) {
-    this.http
-      .post(`${this.BACK_OFFICE_URL}/login`, { email, password })
-      .subscribe(
-        //@ts-ignore
-        (res: { token: string }) => {
-          //this.token = res.token;
-          if (res) {
-            this.toast
-              .success('Login successful, Working on it...', '', {
-                timeOut: 1000,
-                positionClass: 'toast-top-center',
-              })
-              .onHidden.subscribe(() => {
-                this.jwtToken$.next(this.token);
-                localStorage.setItem('bot', btoa(this.token));
-                this.router.navigateByUrl('/backoffice').then();
-              });
-            console.log(res);
-          }
-        },
-        (err: any) => {
-          this.toast.error('Login failed!', '', {
-            timeOut: 1000,
-            positionClass: 'toast-top-center',
-          });
-        }
-      );
-  }
-
   createAgent(agent: any) {
     const {
       firstName,
