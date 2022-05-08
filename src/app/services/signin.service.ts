@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -29,12 +30,13 @@ export class SigninService {
 
   login(identifiant: string, password: string) {
     this.http
-      .post(`${this.CLIENT_URL}/login`, { identifiant, password })
+      .post(`${this.CLIENT_URL}`, { email: identifiant, password })
 
       .subscribe(
         //@ts-ignore
-        (res: { token: string }) => {
-          this.token = res.token;
+        (res: { "refresh-token": string, "acces-tocken": string }) => {
+          this.token = res['acces-tocken'];
+          jwt_decode(res['acces-tocken'])
           if (this.token) {
             this.toast
               .success('Login successful, Working on it...', '', {
@@ -43,6 +45,8 @@ export class SigninService {
               })
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
+                console.log(this.token);
+                
                 localStorage.setItem('act', btoa(this.token));
                 this.router.navigateByUrl('/home_client').then();
               });
