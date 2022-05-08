@@ -49,6 +49,9 @@
     "LICENCE": "N° de patente",
     "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce",
     "CREATE": "Créer",
+    "_HOME":"Acceuil",
+    "PROFILE":"Profil",
+    "HISTORY":"Historique",
     "CANCEL": "Annuler",
     "SAVE": "Enregister",
     "THEME": "Thème"

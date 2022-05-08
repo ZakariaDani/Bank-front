@@ -19,6 +19,7 @@ export class BackofficeSettingsComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+  
   saveSettings(settings: any) {
     this.settings = settings;
     this.router.navigate(['backoffice']);

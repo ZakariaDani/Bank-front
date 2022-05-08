@@ -1,11 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-client-profile',
   templateUrl: './client-profile.component.html',
   styleUrls: ['./client-profile.component.css']
 })
 export class ClientProfileComponent implements OnInit {
+
+
+  constructor(private router:Router) { }
+
+  ngOnInit(): void {
+  }
+
+  goToHome(){
+    this.router.navigate(["client-home"]);
+    console.log("aa")
+  }
+  save(){
+    console.log()
+  }
 
   panelOpenState = false;
   agentDetails = {
@@ -35,8 +52,6 @@ export class ClientProfileComponent implements OnInit {
       },
     ],
   };
-  constructor() {}
 
-  ngOnInit(): void {}
 
 }

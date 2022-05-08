@@ -1,0 +1,62 @@
+
+    
+<mat-sidenav-container class="example-container" autosize>
+    
+    <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    fixedInViewport="true"
+    fixedTopGap="0"
+    fixedBottomGap="0"
+    >
+        <mat-card class="px-4">
+            <mat-card-header>
+            <div mat-card-avatar class="sidebar-content--image-client"></div>
+            <mat-card-subtitle class="mb-2">abdelali</mat-card-subtitle>
+            <mat-card-subtitle>el hammadi</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    
+    <mat-list>
+        <mat-list-item>
+        <button mat-flat-button (click)="goToHome()">
+            <mat-icon mat-list-icon color="primary">home</mat-icon>
+            <span class="ml-2">{{"HOME._HOME" | translate}}</span>
+        </button>
+        </mat-list-item>
+        <mat-list-item>
+        <button mat-flat-button (click)="goToProfile()">
+            <mat-icon mat-list-icon color="primary">
+            person
+            </mat-icon>
+            <span class="ml-2">{{"HOME.PROFILE"|translate}}</span>
+        </button>
+        </mat-list-item>
+        
+        
+        <mat-list-item>
+            <button mat-flat-button (click)="goToHistory()">
+            <mat-icon mat-list-icon color="primary">history</mat-icon>
+            <span class="ml-2">{{"HOME.HISTORY" | translate }}</span>
+            </button>
+        </mat-list-item>
+
+        <mat-list-item>
+            <button mat-flat-button (click)="logout()">
+            <mat-icon mat-list-icon color="primary">logout</mat-icon>
+            <span class="ml-2">{{ "HOME.ICON_LOGOUT" | translate }}</span>
+            </button>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+    </mat-list>
+    
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
