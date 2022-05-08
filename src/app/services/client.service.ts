@@ -27,33 +27,6 @@ export class ClientService {
     return this.jwtToken$.asObservable();
   }
 
-  login(phone: string, password: string) {
-    this.http
-      .post(`${this.CLIENT_URL}/login`, { phone, password })
-
-      .subscribe(
-        //@ts-ignore
-        (res: { token: string }) => {
-          this.token = res.token;
-          if (this.token) {
-            this.toast
-              .success('Login successful, Working on it...', '', {
-                timeOut: 700,
-                positionClass: 'toast-top-center',
-              })
-              .onHidden.subscribe(() => {
-                this.jwtToken$.next(this.token);
-                localStorage.setItem('act', btoa(this.token));
-                this.router.navigateByUrl('/home_client').then();
-              });
-          }
-        },
-        (err: HttpErrorResponse) => {
-          this.toast.error('Authentification failed!', '', { timeOut: 1000 });
-        }
-      );
-  }
-
   register(client: any) {
     return this.http
       .post(`${this.CLIENT_URL}/register`, client)

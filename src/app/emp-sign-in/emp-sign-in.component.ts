@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BackOfficeService } from '../services/back-office.service';
+import { SigninService } from '../services/signin.service';
 
 @Component({
   selector: 'app-emp-sign-in',
@@ -9,7 +10,7 @@ import { BackOfficeService } from '../services/back-office.service';
 })
 export class EmpSignInComponent implements OnInit {
   hide = true;
-  constructor(private backOfficeService: BackOfficeService) {}
+  constructor(private backOfficeService: BackOfficeService, private signinService: SigninService) {}
 
   ngOnInit(): void {}
   toggleHide() {
@@ -20,7 +21,7 @@ export class EmpSignInComponent implements OnInit {
       return;
     }
     const { email, password } = signinForm.value;
-    this.backOfficeService.login(email, password);
+    this.signinService.login(email, password);
     console.log(email, password);
 
     return signinForm.reset();

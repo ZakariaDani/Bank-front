@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
+import { SigninService } from '../services/signin.service';
 
 @Component({
   selector: 'app-client-sign-in',
@@ -12,7 +13,7 @@ export class ClientSignInComponent implements OnInit {
 
   hide = true;
 
-  constructor(private clientService: ClientService, private router: Router) { }
+  constructor(private clientService: ClientService, private signinService: SigninService, private router: Router) { }
 
   ngOnInit(): void {
     this.clientService.jwtUserToken.subscribe(token => {
@@ -31,7 +32,7 @@ export class ClientSignInComponent implements OnInit {
       return;
     }
     const {username, password} = signinForm.value;
-    this.clientService.login(username, password);
+    this.signinService.login(username, password);
     return signinForm.reset();
   }
 }
