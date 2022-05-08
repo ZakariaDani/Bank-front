@@ -2,16 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditAgentComponent } from '../edit-agent/edit-agent.component';
+import { EditClientComponent } from '../edit-client/edit-client.component';
 import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
-  selector: 'app-single-agent',
-  templateUrl: './single-agent.component.html',
-  styleUrls: ['./single-agent.component.css'],
+  selector: 'app-single-client',
+  templateUrl: './single-client.component.html',
+  styleUrls: ['./single-client.component.css']
 })
-export class SingleAgentComponent implements OnInit {
-  @Input() agent: any;
-  @Input() agents: any;
+export class SingleClientComponent implements OnInit {
+
+  @Input() client: any;
 
   constructor(
     private dialog: MatDialog,
@@ -22,25 +23,20 @@ export class SingleAgentComponent implements OnInit {
   ngOnInit(): void {}
 
   getImageUrl() {
-    return `https://avatars.dicebear.com/api/adventurer/${this.agent.firstName}.svg`;
+    return `https://avatars.dicebear.com/api/adventurer/${this.client.firstName}.svg`;
   }
 
   goToProfilePage(id: string) {
-    this.router.navigate(['backoffice', 'agents', id]);
+    this.router.navigate(['agent', 'client', id]);
   }
 
-  toggleFavorite(agent: any) {
-    agent.isFavorite = !agent.isFavorite;
+  toggleFavorite(client: any) {
+    client.isFavorite = !client.isFavorite;
+    
   }
-
-  deleteAgent(agent: any) {
-    this.backOfficeService.deleteAgent(agent.id);
-    this.agents.splice(this.agents.indexOf(agent), 1);
-  }
-
   openDialog() {
-    const dialogAdd = this.dialog.open(EditAgentComponent, {
-      data: this.agent,
+    const dialogAdd = this.dialog.open(EditClientComponent, {
+      data: this.client,
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
@@ -48,7 +44,7 @@ export class SingleAgentComponent implements OnInit {
     });
     dialogAdd.afterClosed().subscribe((data) => {
       this.backOfficeService
-        .updateAgent(this.agent.id, '')
+        .updateAgent(this.client.id, '')
         .subscribe((result: any) => {
           console.log(result);
         });

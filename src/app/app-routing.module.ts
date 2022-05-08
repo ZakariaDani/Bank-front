@@ -10,15 +10,28 @@ import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-se
 
 import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import { HomeComponent } from './home/home.component';
+
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
+import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { AddClientComponent } from './add-client/add-client.component';
+import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
+
+
+
+
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'backoffice',
     pathMatch: 'full',
+  },
+  {
+    path: 'agent',
+    component: NavBarAgentComponent,
   },
   {
     path: 'backoffice',
@@ -65,6 +78,14 @@ const routes: Routes = [
   {
     path: 'backoffice/agents/:id',
     component: AgentProfileComponent,
+  },
+  {
+    path: 'agent/client/:id',
+    component: ClientProfileComponent,
+  },
+  {
+    path: 'agent/settings',
+    component: AgentSettingsComponent,
   },
 ];
 

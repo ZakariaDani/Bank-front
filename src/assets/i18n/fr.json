@@ -31,12 +31,15 @@
     "AGENTS_MOST_CLIENTS": "Agents avec plus de clients",
     "AGENTS_LEAST_CLIENTS": "Agents avec moins de clients",
     "BOOKMARKED_AGENTS": "Agents favoris",
+    "BOOKMARKED_CLIENTS":"Clients favoris",
+    "MY_CLIENTS":"Mes clients",
     "ADD_AGENT": "Ajouter un nouveau agent",
     "SEARCH": "Rechercher",
     "VIEW_LINK": "Voir le profil",
     "EDIT_LINK": "éditer le profil",
     "F_NAME": "Nom",
     "L_NAME": "Prénom",
+    "ADD_CLIENT":"Ajouter un nouveau client",
     "D_OF_BIRTH": "Date de naissance",
     "ADRESS": "Adresse",
     "PHONE": "Numéro de téléphone",
@@ -58,6 +61,12 @@
     "CLIENTS_NUMBER": "Nombre de clients",
     "LICENCE_NUMBER": "Numéro de licence",
     "TIMELINE": "échéancier"
+  },
+  "CLIENT_PROFILE": {
+    "JOIN_DATE": "Date d’adhésion",
+    "CLIENTS_AGENT": "l'agent Du compte",
+    "SOLD": "Sold",
+    "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {
     "SAVE": "Sauvegarder",

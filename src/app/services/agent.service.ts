@@ -6,10 +6,10 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class BackOfficeService {
+export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
+  private AGENT_URL = 'http://localhost:8080/api/v1/Agent';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -25,7 +25,38 @@ export class BackOfficeService {
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
   }
-  createAgent(agent: any) {
+
+  login(email: string, password: string) {
+    this.http
+      .post(`${this.AGENT_URL}/login`, { email, password })
+      .subscribe(
+        //@ts-ignore
+        (res: { token: string }) => {
+          this.token = res.token;
+          if (this.token) {
+            this.toast
+              .success('Login successful, Working on it...', '', {
+                timeOut: 1000,
+                positionClass: 'toast-top-center',
+              })
+              .onHidden.subscribe(() => {
+                this.jwtToken$.next(this.token);
+                localStorage.setItem('bot', btoa(this.token));
+                this.router.navigateByUrl('/backoffice').then();
+              });
+            console.log(res);
+          }
+        },
+        (err: any) => {
+          this.toast.error('Login failed!', '', {
+            timeOut: 1000,
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
+  }
+
+  createClient(client: any) {
     const {
       firstName,
       LastName,
@@ -33,31 +64,16 @@ export class BackOfficeService {
       adress,
       email,
       phone,
-      matricule,
-      patente,
-      description,
-      file,
-    } = agent;
+    } = client;
     return this.http
-      .post(
-        `${this.BACK_OFFICE_URL}/agents`,
-        {
-          firstName,
-          LastName,
-          dateOfBirth,
-          adress,
-          email,
-          phone,
-          matricule,
-          patente,
-          description,
-          file,
-          password: agent.LastName + Math.floor(Math.random() * 1000),
-        },
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+      .post(`${this.AGENT_URL}/agents`, {
+        firstName,
+        LastName,
+        dateOfBirth,
+        adress,
+        email,
+        phone,
+      })
       .pipe(
         tap((res) => {
           if (res) {
@@ -69,33 +85,23 @@ export class BackOfficeService {
       );
   }
 
-  deleteAgent(agentId: number) {
-    return this.http
-      .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
-        headers: { Authorization: `Bearer ${this.token}` },
+  deleteClient(clientId: number) {
+    return this.http.delete(`${this.AGENT_URL}/clients/${clientId}`).pipe(
+      tap((res) => {
+        if (res) {
+          this.toast.success('Agent deleted...', '', {
+            timeOut: 1000,
+          });
+        }
       })
-      .pipe(
-        tap((res) => {
-          if (res) {
-            this.toast.success('Agent deleted...', '', {
-              timeOut: 1000,
-            });
-          }
-        })
-      );
+    );
   }
   //You can add parameters that you want to update
-  updateAgent(agentId: number, firstNameValue: string) {
+  updateClient(clientId: number, firstNameValue: string) {
     return this.http
-      .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
-        {
-          firstName: firstNameValue,
-        },
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+      .patch(`${this.AGENT_URL}/clients/${clientId}`, {
+        firstName: firstNameValue,
+      })
       .pipe(
         tap((res) => {
           if (res) {
@@ -117,11 +123,5 @@ export class BackOfficeService {
         this.router.navigateByUrl('/emp-signin').then();
       });
     return '';
-  }
-
-  getAllAgents(): Observable<any> {
-    return this.http.get(`${this.BACK_OFFICE_URL}/agents`, {
-      headers: { Authorization: `Bearer ${this.token}` },
-    });
   }
 }
