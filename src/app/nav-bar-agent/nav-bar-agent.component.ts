@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AddClientComponent } from '../add-client/add-client.component';
 import { ClientsComponent } from '../clients/clients.component';
 import { AgentService } from '../services/agent.service';
+import { SigninService } from '../services/signin.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class NavBarAgentComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private backOfficeService: AgentService,
+    private signinService: SigninService,
     private router: Router
   ) {}
 
@@ -58,6 +60,6 @@ export class NavBarAgentComponent implements OnInit {
     });
   }
   logout() {
-    this.backOfficeService.logout();
+    this.signinService.logout();
   }
 }

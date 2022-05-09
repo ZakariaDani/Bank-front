@@ -27,12 +27,18 @@ const routes: Routes = [
   {
     path: 'agent',
     component: NavBarAgentComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_AGENT'
+    }
   },
   {
     path: 'backoffice',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_BACKOFFICE'
+    }
   },
   {
     path: 'emp-signin',
@@ -51,6 +57,7 @@ const routes: Routes = [
   {
     path: 'client-home',
     component: ClientHomeComponent,
+    canActivate: [AuthGuard],
     children:[  
       {
       path:"profile",
@@ -71,18 +78,34 @@ const routes: Routes = [
   {
     path: 'backoffice/settings',
    component: BackofficeSettingsComponent,
+   canActivate: [AuthGuard],
+   data: {
+    role: 'ROLE_BACKOFFICE'
+  }
   },
   {
     path: 'backoffice/agents/:id',
     component: AgentProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_BACKOFFICE'
+    }
   },
   {
     path: 'agent/client/:id',
     component: ClientProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_AGENT'
+    }
   },
   {
     path: 'agent/settings',
     component: AgentSettingsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_AGENT'
+    }
   },
   {
     path: '**',
