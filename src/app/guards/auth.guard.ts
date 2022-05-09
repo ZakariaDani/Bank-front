@@ -24,11 +24,19 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     return this.signinService.jwtUserToken.pipe(map((result)=>!!result), tap((result)=> {
+      console.log(result);
+      const userRole = this.signinService.getRole();
+      
       if(!result) {
         this.router.navigateByUrl('/emp-signin').then();
         return result;
       }
+      if (route.data['role'] && route.data['role'].indexOf(userRole) === -1) {
+        this.router.navigate(['/emp-signin']);
+        result = false;
+      }
       return result;
     }));
   }
+
 }

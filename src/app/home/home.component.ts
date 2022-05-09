@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
 import { AgentsComponent } from '../agents/agents.component';
 import { BackOfficeService } from '../services/back-office.service';
+import { SigninService } from '../services/signin.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private backOfficeService: BackOfficeService,
+    private signinService: SigninService,
     private router: Router
   ) {}
 
@@ -68,6 +70,6 @@ export class HomeComponent implements OnInit {
     });
   }
   logout() {
-    this.backOfficeService.logout();
+    this.signinService.logout();
   }
 }

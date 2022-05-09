@@ -15,7 +15,7 @@ export class BackOfficeService {
     private router: Router,
     private toast: ToastrService
   ) {
-    const fetchedToken = localStorage.getItem('bot');
+    const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
       this.token = atob(fetchedToken);
       this.jwtToken$.next(this.token);
@@ -105,18 +105,6 @@ export class BackOfficeService {
           }
         })
       );
-  }
-
-  logout() {
-    this.token = '';
-    this.jwtToken$.next(this.token);
-    this.toast
-      .success('logged out successfully', '', { timeOut: 700 })
-      .onHidden.subscribe(() => {
-        localStorage.removeItem('bot');
-        this.router.navigateByUrl('/emp-signin').then();
-      });
-    return '';
   }
 
   getAllAgents(): Observable<any> {

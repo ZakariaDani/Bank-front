@@ -9,6 +9,8 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class SigninService {
+  roleAs: any;
+  isLogin = false;
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
   private CLIENT_URL = 'http://localhost:8080/login';
@@ -47,6 +49,8 @@ export class SigninService {
                 const decryptedResponse: any = jwt_decode(res['acces-tocken']);
                 console.log(decryptedResponse.roles[0]);
                 localStorage.setItem('act', btoa(this.token));
+                localStorage.setItem('ROLE', decryptedResponse.roles[0]);
+                localStorage.setItem('STATE', 'true');
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
                 }
@@ -60,5 +64,35 @@ export class SigninService {
           this.toast.error('Authentification failed!', '', { timeOut: 1000 });
         }
       );
+  }
+
+  logout() {
+    this.token = '';
+    this.jwtToken$.next(this.token);
+    this.toast
+      .success('logged out successfully', '', { timeOut: 700 })
+      .onHidden.subscribe(() => {
+        localStorage.removeItem('act');
+        localStorage.removeItem('ROLE');
+        localStorage.setItem('STATE', 'false');
+        this.router.navigateByUrl('/emp-signin').then();
+      });
+    return '';
+  }
+
+
+  isLoggedIn() {
+    const loggedIn = localStorage.getItem('STATE');
+    if (loggedIn == 'true')
+      this.isLogin = true;
+    else
+      this.isLogin = false;
+    return this.isLogin;
+  }
+
+
+  getRole() {
+    this.roleAs = localStorage.getItem('ROLE');
+    return this.roleAs;
   }
 }
