@@ -7,7 +7,7 @@ import { ClientService } from '../services/client.service';
   templateUrl: './client-register.component.html',
   styleUrls: [
     './client-register.component.css',
-    '../client-sign-in/client-sign-in.component.css',
+    '../sign-in/sign-in.component.css',
   ],
 })
 export class ClientRegisterComponent implements OnInit {

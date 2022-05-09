@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
   selector: 'app-agents',
@@ -59,9 +60,11 @@ export class AgentsComponent implements OnInit {
     },
   ];
   searchTerm = '';
-  constructor() {}
+  constructor(private backOfficeService: BackOfficeService) {}
 
   ngOnInit(): void {
+    console.log(this.backOfficeService.getAllAgents());
+    
     this.filteredAgents = this.agents;
   }
 

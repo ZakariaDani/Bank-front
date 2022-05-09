@@ -1,7 +1,7 @@
 <div class="bigContainer d-flex  align-items-center justify-content-md-start justify-content-center">
     <mat-card class="home-card col-11 col-md-6 col-sm-9 col-lg-5 col-xl-4 ml-md-5 p-md-4">
       <mat-card-title class="pt-3 pb-4 font-weight-bold">{{
-        "SIGNIN_CLIENT.TITLE" | translate
+        "SIGNIN.TITLE" | translate
       }}</mat-card-title>
       <mat-card-content>
         <form #signinForm="ngForm" (submit)="onSubmit(signinForm)">
@@ -9,14 +9,14 @@
             <p>
               <mat-form-field appearance="fill" style="width: 100%">
                 <mat-label>{{
-                  "SIGNIN_CLIENT.USERNAME_PLACEHOLDER" | translate
+                  "SIGNIN.IDENTIFIER" | translate
                 }}</mat-label>
-                <input matInput style="height: 25px;" id="email" name="email" required ngModel />
+                <input matInput type="tel" style="height: 25px;" id="identifiant" name="identifiant" required ngModel />
               </mat-form-field>
               <br />
               <mat-form-field appearance="fill" style="width: 100%;">
                 <mat-label>{{
-                  "SIGNIN_CLIENT.PASSWORD_PLACEHOLDER" | translate
+                  "SIGNIN.PASSWORD_PLACEHOLDER" | translate
                 }}</mat-label>
                 <div style="display: flex;">
                   <input
@@ -43,7 +43,7 @@
               type="submit"
               [disabled]="signinForm.invalid"
             >
-              {{ "SIGNIN_CLIENT.BUTTON" | translate }}
+              {{ "SIGNIN.BUTTON" | translate }}
             </button>
           </div>
           <hr class="my-4"/>
@@ -56,7 +56,7 @@
               [disabled]="signinForm.invalid"
               routerLink="/client-register"
             >
-              {{ "SIGNIN_CLIENT.SECOND_BUTTON" | translate }}
+              {{ "SIGNIN.SECOND_BUTTON" | translate }}
           </a>
           </div>
           

@@ -1,16 +1,11 @@
 {
-  "SIGNIN_EMP": {
-    "TITLE": "Sign In Back/Agent Office",
-    "EMAIL_PLACEHOLDER": "Enter your email",
-    "PASSWORD_PLACEHOLDER": "Enter your password",
-    "BUTTON": "signIN"
-  },
-  "SIGNIN_CLIENT":{
+  "SIGNIN":{
     "TITLE":"E-Banking login",
     "USERNAME_PLACEHOLDER":"Enter your username",
     "PASSWORD_PLACEHOLDER":"Enter your password",
     "BUTTON":"Log in",
-    "SECOND_BUTTON":"Register"
+    "SECOND_BUTTON":"Register",
+    "IDENTIFIER": "Identifier"
   },
   "REGISTER_CLIENT":{
     "TITLE":"E-Banking register",

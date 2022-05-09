@@ -1,16 +1,11 @@
 {
-  "SIGNIN_EMP": {
-    "TITLE": "Se connecter Admin/Agent ",
-    "EMAIL_PLACEHOLDER": "Entrer votre Email",
-    "PASSWORD_PLACEHOLDER": "Tapez votre mot de passe",
-    "BUTTON": "Se connecter"
-  },
-  "SIGNIN_CLIENT":{
+  "SIGNIN":{
     "TITLE":"E-Banking authentification",
     "USERNAME_PLACEHOLDER":"Entrer votre nom d'utilisateur",
     "PASSWORD_PLACEHOLDER":"Entrer votre mot de pass",
     "BUTTON":"Se connecter",
-    "SECOND_BUTTON":"S'inscrire"
+    "SECOND_BUTTON":"S'inscrire",
+    "IDENTIFIER": "Identifiant"
   },
   "REGISTER_CLIENT":{
     "TITLE":"E-Banking l'ouverture d'un compte",
