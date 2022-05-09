@@ -13,7 +13,7 @@ export class SigninService {
   isLogin = false;
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private CLIENT_URL = 'http://localhost:8080/login';
+  private AUTH_URL = 'http://localhost:8080/login';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -32,7 +32,7 @@ export class SigninService {
 
   login(identifiant: string, password: string) {
     this.http
-      .post(`${this.CLIENT_URL}`, { email: identifiant, password })
+      .post(`${this.AUTH_URL}`, { identifiant, password })
 
       .subscribe(
         //@ts-ignore
@@ -57,6 +57,9 @@ export class SigninService {
                 if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
                   this.router.navigateByUrl('/backoffice').then();
                 }
+                if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
+                  this.router.navigateByUrl('/client-home').then();
+                }
               });
           }
         },
@@ -75,21 +78,10 @@ export class SigninService {
         localStorage.removeItem('act');
         localStorage.removeItem('ROLE');
         localStorage.setItem('STATE', 'false');
-        this.router.navigateByUrl('/emp-signin').then();
+        this.router.navigateByUrl('/').then();
       });
     return '';
   }
-
-
-  isLoggedIn() {
-    const loggedIn = localStorage.getItem('STATE');
-    if (loggedIn == 'true')
-      this.isLogin = true;
-    else
-      this.isLogin = false;
-    return this.isLogin;
-  }
-
 
   getRole() {
     this.roleAs = localStorage.getItem('ROLE');

@@ -15,7 +15,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { EmpSignInComponent } from './emp-sign-in/emp-sign-in.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -29,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-import { ClientSignInComponent } from './client-sign-in/client-sign-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -63,14 +62,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    EmpSignInComponent,
     HomeComponent,
     HeaderComponent,
     AgentsComponent,
     SingleAgentComponent,
     AddAgentComponent,
 
-    ClientSignInComponent,
+    SignInComponent,
     ClientRegisterComponent,
 
     EditAgentComponent,
