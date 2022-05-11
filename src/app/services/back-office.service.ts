@@ -38,6 +38,7 @@ export class BackOfficeService {
       description,
       file,
     } = agent;
+
     return this.http
       .post(
         `${this.BACK_OFFICE_URL}/agents`,

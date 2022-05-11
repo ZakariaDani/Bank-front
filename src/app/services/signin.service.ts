@@ -32,7 +32,7 @@ export class SigninService {
 
   login(identifiant: string, password: string) {
     this.http
-      .post(`${this.AUTH_URL}`, { identifiant, password })
+      .post(`${this.AUTH_URL}`, { email: identifiant, password })
 
       .subscribe(
         //@ts-ignore

@@ -62,11 +62,13 @@ export class HomeComponent implements OnInit {
       height: '60vh',
     });
     dialogAdd.afterClosed().subscribe((data) => {
-      this.backOfficeService.createAgent(data).subscribe((result: any) => {
-        console.log(result);
-        this.agents.push(result);
-        this.backOfficeService.createAgent(null);
-      });
+      if (data) {
+        this.backOfficeService.createAgent(data).subscribe((result: any) => {
+          console.log(result);
+          this.agents.push(result);
+          this.backOfficeService.createAgent(result);
+        });
+      }
     });
   }
   logout() {

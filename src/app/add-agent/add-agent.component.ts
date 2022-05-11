@@ -5,12 +5,12 @@ import { BackOfficeService } from '../services/back-office.service';
 @Component({
   selector: 'app-add-agent',
   templateUrl: './add-agent.component.html',
-  styleUrls: ['./add-agent.component.css']
+  styleUrls: ['./add-agent.component.css'],
 })
 export class AddAgentComponent implements OnInit {
-  fileName='';
+  fileName = '';
   formData = new FormData();
-  agent = {
+  agent: any = {
     firstName: '',
     LastName: '',
     dateOfBirth: '',
@@ -21,27 +21,38 @@ export class AddAgentComponent implements OnInit {
     patente: '',
     description: '',
     file: this.formData,
-  }
-  constructor(public dialogAdd: MatDialogRef<AddAgentComponent>, private backOfficeService: BackOfficeService) { }
+  };
+  constructor(
+    public dialogAdd: MatDialogRef<AddAgentComponent>,
+    private backOfficeService: BackOfficeService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   OnCancel() {
     this.dialogAdd.close();
   }
   create() {
-    console.log(this.agent.email);
-    this.backOfficeService.createAgent(this.agent);
+    console.log(this.agent);
+    this.backOfficeService.createAgent(this.agent).subscribe(
+      (res) => {
+        console.log(res, 'res');
+        this.dialogAdd.close();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    console.log('done');
+
     this.dialogAdd.close();
   }
   onFileSelected(event: any) {
-    const file:File = event.target.files[0];
+    const file: File = event.target.files[0];
 
-        if (file) {
-
-            this.fileName = file.name;
-            this.formData.append("fileID", file);
-        }
+    if (file) {
+      this.fileName = file.name;
+      this.formData.append('fileID', file);
+    }
   }
 }
