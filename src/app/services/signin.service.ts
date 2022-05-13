@@ -47,10 +47,11 @@ export class SigninService {
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
                 const decryptedResponse: any = jwt_decode(res['acces-tocken']);
-                console.log(decryptedResponse.roles[0]);
+                console.log(decryptedResponse, 'res');
                 localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
                 localStorage.setItem('STATE', 'true');
+                localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
                 }
@@ -77,6 +78,7 @@ export class SigninService {
       .onHidden.subscribe(() => {
         localStorage.removeItem('act');
         localStorage.removeItem('ROLE');
+        localStorage.removeItem('backofficeEmail');
         localStorage.setItem('STATE', 'false');
         this.router.navigateByUrl('/').then();
       });

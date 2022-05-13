@@ -12,7 +12,7 @@ export class AddAgentComponent implements OnInit {
   formData = new FormData();
   agent: any = {
     firstName: '',
-    LastName: '',
+    lastName: '',
     dateOfBirth: '',
     adress: '',
     email: '',

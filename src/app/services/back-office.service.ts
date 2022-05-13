@@ -29,7 +29,7 @@ export class BackOfficeService {
   createAgent(agent: any) {
     const {
       firstName,
-      LastName,
+      lastName,
       dateOfBirth,
       adress,
       email,
@@ -45,7 +45,7 @@ export class BackOfficeService {
         `${this.BACK_OFFICE_URL}/agents`,
         {
           firstName,
-          LastName,
+          lastName,
           dateOfBirth,
           adress,
           email,
@@ -54,7 +54,8 @@ export class BackOfficeService {
           patente,
           description,
           file: null,
-          password: agent.LastName + Math.floor(Math.random() * 1000),
+          password: agent.lastName + Math.floor(Math.random() * 1000),
+          backofficeEmail: localStorage.getItem('backofficeEmail'),
         },
         {
           headers: { Authorization: `Bearer ${this.token}` },
