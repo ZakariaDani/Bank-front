@@ -17,7 +17,8 @@ export class BackOfficeService {
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken;
+      console.log(this.token);
       this.jwtToken$.next(this.token);
     }
   }
@@ -52,7 +53,7 @@ export class BackOfficeService {
           matricule,
           patente,
           description,
-          file,
+          file: null,
           password: agent.LastName + Math.floor(Math.random() * 1000),
         },
         {

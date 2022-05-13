@@ -28,23 +28,21 @@ export class ClientService {
   }
 
   register(client: any) {
-    return this.http
-      .post(`${this.CLIENT_URL}/register`, client)
-      .subscribe(
-        () => {
-          this.toast
-            .success('Register successful, please logIn...', '', {
-              timeOut: 700,
-              positionClass: 'toast-top-center',
-            })
-            .onHidden.subscribe(() => {
-              this.router.navigateByUrl('/client-signin').then();
-            });
-        },
-        () => {
-          this.toast.error('Client already exists !', '', { timeOut: 1000 });
-        }
-      );
+    return this.http.post(`${this.CLIENT_URL}/register`, client).subscribe(
+      () => {
+        this.toast
+          .success('Register successful, please logIn...', '', {
+            timeOut: 700,
+            positionClass: 'toast-top-center',
+          })
+          .onHidden.subscribe(() => {
+            this.router.navigateByUrl('/client-signin').then();
+          });
+      },
+      () => {
+        this.toast.error('Client already exists !', '', { timeOut: 1000 });
+      }
+    );
   }
 
   logout() {
@@ -58,5 +56,4 @@ export class ClientService {
       });
     return '';
   }
-
 }

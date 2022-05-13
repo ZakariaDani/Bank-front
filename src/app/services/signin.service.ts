@@ -21,7 +21,7 @@ export class SigninService {
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
   }
@@ -32,7 +32,7 @@ export class SigninService {
 
   login(identifiant: string, password: string) {
     this.http
-      .post(`${this.AUTH_URL}`, { identifiant: identifiant, password })
+      .post(`${this.AUTH_URL}`, { email: identifiant, password })
 
       .subscribe(
         //@ts-ignore
@@ -48,7 +48,7 @@ export class SigninService {
                 this.jwtToken$.next(this.token);
                 const decryptedResponse: any = jwt_decode(res['acces-tocken']);
                 console.log(decryptedResponse.roles[0]);
-                localStorage.setItem('act', btoa(this.token));
+                localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
                 localStorage.setItem('STATE', 'true');
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {

@@ -27,44 +27,35 @@ export class AgentService {
   }
 
   login(email: string, password: string) {
-    this.http
-      .post(`${this.AGENT_URL}/login`, { email, password })
-      .subscribe(
-        //@ts-ignore
-        (res: { token: string }) => {
-          this.token = res.token;
-          if (this.token) {
-            this.toast
-              .success('Login successful, Working on it...', '', {
-                timeOut: 1000,
-                positionClass: 'toast-top-center',
-              })
-              .onHidden.subscribe(() => {
-                this.jwtToken$.next(this.token);
-                localStorage.setItem('bot', btoa(this.token));
-                this.router.navigateByUrl('/backoffice').then();
-              });
-            console.log(res);
-          }
-        },
-        (err: any) => {
-          this.toast.error('Login failed!', '', {
-            timeOut: 1000,
-            positionClass: 'toast-top-center',
-          });
+    this.http.post(`${this.AGENT_URL}/login`, { email, password }).subscribe(
+      //@ts-ignore
+      (res: { token: string }) => {
+        this.token = res.token;
+        if (this.token) {
+          this.toast
+            .success('Login successful, Working on it...', '', {
+              timeOut: 1000,
+              positionClass: 'toast-top-center',
+            })
+            .onHidden.subscribe(() => {
+              this.jwtToken$.next(this.token);
+              localStorage.setItem('bot', btoa(this.token));
+              this.router.navigateByUrl('/backoffice').then();
+            });
+          console.log(res);
         }
-      );
+      },
+      (err: any) => {
+        this.toast.error('Login failed!', '', {
+          timeOut: 1000,
+          positionClass: 'toast-top-center',
+        });
+      }
+    );
   }
 
   createClient(client: any) {
-    const {
-      firstName,
-      LastName,
-      dateOfBirth,
-      adress,
-      email,
-      phone,
-    } = client;
+    const { firstName, LastName, dateOfBirth, adress, email, phone } = client;
     return this.http
       .post(`${this.AGENT_URL}/agents`, {
         firstName,
