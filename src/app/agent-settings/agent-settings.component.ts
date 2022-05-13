@@ -22,10 +22,10 @@ export class AgentSettingsComponent implements OnInit {
   ngOnInit(): void {}
   saveSettings(settings: any) {
     this.settings = settings;
-    this.router.navigate(['backoffice']);
+    this.router.navigate(['agent']);
   }
   goBackToHome() {
-    this.router.navigate(['backoffice']);
+    this.router.navigate(['agent']);
   }
 
 }
