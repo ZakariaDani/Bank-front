@@ -26,34 +26,6 @@ export class AgentService {
     return this.jwtToken$.asObservable();
   }
 
-  login(email: string, password: string) {
-    this.http.post(`${this.AGENT_URL}/login`, { email, password }).subscribe(
-      //@ts-ignore
-      (res: { token: string }) => {
-        this.token = res.token;
-        if (this.token) {
-          this.toast
-            .success('Login successful, Working on it...', '', {
-              timeOut: 1000,
-              positionClass: 'toast-top-center',
-            })
-            .onHidden.subscribe(() => {
-              this.jwtToken$.next(this.token);
-              localStorage.setItem('bot', btoa(this.token));
-              this.router.navigateByUrl('/backoffice').then();
-            });
-          console.log(res);
-        }
-      },
-      (err: any) => {
-        this.toast.error('Login failed!', '', {
-          timeOut: 1000,
-          positionClass: 'toast-top-center',
-        });
-      }
-    );
-  }
-
   createClient(client: any) {
     const { firstName, LastName, dateOfBirth, adress, email, phone } = client;
     return this.http
@@ -92,27 +64,6 @@ export class AgentService {
     return this.http
       .patch(`${this.AGENT_URL}/clients/${clientId}`, {
         firstName: firstNameValue,
-      })
-      .pipe(
-        tap((res) => {
-          if (res) {
-            this.toast.success('agent updated successfully', '', {
-              timeOut: 1000,
-            });
-          }
-        })
-      );
-  }
-
-  logout() {
-    this.token = '';
-    this.jwtToken$.next(this.token);
-    this.toast
-      .success('logged out successfully', '', { timeOut: 700 })
-      .onHidden.subscribe(() => {
-        localStorage.removeItem('bot');
-        this.router.navigateByUrl('/emp-signin').then();
       });
-    return '';
   }
 }
