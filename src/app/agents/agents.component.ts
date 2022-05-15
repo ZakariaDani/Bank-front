@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
@@ -59,13 +59,15 @@ export class AgentsComponent implements OnInit {
       agentsCount: 3,
     },
   ];
+  @Output() agentsEvent = new EventEmitter<any>();
   searchTerm = '';
   constructor(private backOfficeService: BackOfficeService) {}
 
   ngOnInit(): void {
-    console.log(this.backOfficeService.getAllAgents());
-    
-    this.filteredAgents = this.agents;
+    this.backOfficeService.getAllAgents().subscribe((agents) => {
+      this.agents = agents;
+      this.filteredAgents = this.agents;
+    });
   }
 
   showBookmarkedAgents() {

@@ -29,7 +29,7 @@ export class BackOfficeService {
   createAgent(agent: any) {
     const {
       firstName,
-      LastName,
+      lastName,
       dateOfBirth,
       adress,
       email,
@@ -45,7 +45,7 @@ export class BackOfficeService {
         `${this.BACK_OFFICE_URL}/agents`,
         {
           firstName,
-          LastName,
+          lastName,
           dateOfBirth,
           adress,
           email,
@@ -112,6 +112,15 @@ export class BackOfficeService {
   getAllAgents(): Observable<any> {
     return this.http.get(`${this.BACK_OFFICE_URL}/agents`, {
       headers: { Authorization: `Bearer ${this.token}` },
-    });
+    }).pipe(
+      tap((res) => {
+        if (res) {
+          console.log(res);
+        }
+        else{
+          console.log("not getted");
+        }
+      })
+    );
   }
 }

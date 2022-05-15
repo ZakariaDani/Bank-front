@@ -44,16 +44,4 @@ export class ClientService {
       }
     );
   }
-
-  logout() {
-    this.token = '';
-    this.jwtToken$.next(this.token);
-    this.toast
-      .success('logged out successfully', '', { timeOut: 500 })
-      .onHidden.subscribe(() => {
-        localStorage.removeItem('act');
-        this.router.navigateByUrl('/home_client').then();
-      });
-    return '';
-  }
 }
