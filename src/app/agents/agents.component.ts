@@ -68,8 +68,6 @@ export class AgentsComponent implements OnInit {
       this.agents = agents;
       this.filteredAgents = this.agents;
     });
-    
-    this.filteredAgents = this.agents;
   }
 
   showBookmarkedAgents() {
