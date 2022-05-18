@@ -19,9 +19,9 @@
           <mat-label>{{ "HOME.L_NAME" | translate }}</mat-label>
           <input
             matInput
-            name="LastName"
-            [(ngModel)]="agent.LastName"
-            [value]="agent.LastName"
+            name="lastName"
+            [(ngModel)]="agent.lastName"
+            [value]="agent.lastName"
           />
         </mat-form-field>
       </p>
@@ -50,12 +50,22 @@
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
         <mat-form-field style="width: 45%">
           <mat-label>Email</mat-label>
-          <input matInput name="email" [(ngModel)]="agent.email" [value]="agent.email" />
+          <input
+            matInput
+            name="email"
+            [(ngModel)]="agent.email"
+            [value]="agent.email"
+          />
         </mat-form-field>
 
         <mat-form-field style="width: 45%">
           <mat-label>{{ "HOME.PHONE" | translate }}</mat-label>
-          <input matInput name="LastName" [(ngModel)]="agent.phone" [value]="agent.phone" />
+          <input
+            matInput
+            name="LastName"
+            [(ngModel)]="agent.phone"
+            [value]="agent.phone"
+          />
         </mat-form-field>
       </p>
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
@@ -101,14 +111,14 @@
             [value]="agent.description"
           ></textarea>
         </mat-form-field>
-        <div style="width: 45%;">
+        <div style="width: 45%">
           <input
             type="file"
             class="file-input"
             (change)="onFileSelected($event)"
             #fileUpload
           />
-          <div class="file-upload" style="display: flex; padding: 9% 0%;">
+          <div class="file-upload" style="display: flex; padding: 9% 0%">
             {{ fileName || "No file uploaded yet." }}
 
             <button

@@ -54,7 +54,8 @@ export class BackOfficeService {
           patente,
           description,
           file: null,
-          password: agent.LastName + Math.floor(Math.random() * 1000),
+          password: agent.lastName + Math.floor(Math.random() * 1000),
+          backofficeEmail: localStorage.getItem('backofficeEmail'),
         },
         {
           headers: { Authorization: `Bearer ${this.token}` },
