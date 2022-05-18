@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EditAgentComponent } from '../edit-agent/edit-agent.component';
 import { EditClientComponent } from '../edit-client/edit-client.component';
 import { BackOfficeService } from '../services/back-office.service';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-single-client',
@@ -16,7 +17,7 @@ export class SingleClientComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private backOfficeService: BackOfficeService,
+    private clientService: ClientService,
     private router: Router
   ) {}
 
@@ -41,13 +42,6 @@ export class SingleClientComponent implements OnInit {
       hasBackdrop: true,
       role: 'dialog',
       height: '50vh',
-    });
-    dialogAdd.afterClosed().subscribe((data) => {
-      this.backOfficeService
-        .updateAgent(this.client.id, '')
-        .subscribe((result: any) => {
-          console.log(result);
-        });
     });
   }
 }

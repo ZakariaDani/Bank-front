@@ -17,9 +17,7 @@ export class EditAgentComponent implements OnInit {
   OnCancel() {
     this.dialogAdd.close();
   }
-  save() {
-    console.log(this.agent.email);
-    this.backOfficeService.updateAgent(this.agent.id, this.agent)
+  save() {  
     this.dialogAdd.close();
   }
 }

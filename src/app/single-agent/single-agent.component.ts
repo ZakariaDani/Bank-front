@@ -48,7 +48,7 @@ export class SingleAgentComponent implements OnInit {
     });
     dialogAdd.afterClosed().subscribe((data) => {
       this.backOfficeService
-        .updateAgent(this.agent.id, '')
+        .updateAgent("hamid", this.agent.idCardNumber)
         .subscribe((result: any) => {
           console.log(result);
         });

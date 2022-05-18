@@ -87,10 +87,10 @@ export class BackOfficeService {
       );
   }
   //You can add parameters that you want to update
-  updateAgent(agentId: number, firstNameValue: string) {
+  updateAgent(firstNameValue: string, id: number) {
     return this.http
-      .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
+      .put(
+        `${this.BACK_OFFICE_URL}/agents/${id}`,
         {
           firstName: firstNameValue,
         },
