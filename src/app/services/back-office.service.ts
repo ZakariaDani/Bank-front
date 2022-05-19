@@ -73,6 +73,8 @@ export class BackOfficeService {
   }
 
   deleteAgent(agentId: number) {
+    console.log(agentId);
+    
     return this.http
       .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
         headers: { Authorization: `Bearer ${this.token}` },
@@ -88,10 +90,12 @@ export class BackOfficeService {
       );
   }
   //You can add parameters that you want to update
-  updateAgent(firstNameValue: string, id: number) {
+  updateAgent(firstNameValue: string, agentId: number) {
+    console.log(firstNameValue, agentId, "*******");
+    
     return this.http
-      .put(
-        `${this.BACK_OFFICE_URL}/agents/${id}`,
+      .patch(
+        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
         {
           firstName: firstNameValue,
         },

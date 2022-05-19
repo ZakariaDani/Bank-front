@@ -34,8 +34,9 @@ export class SingleAgentComponent implements OnInit {
   }
 
   deleteAgent(agent: any) {
-    this.backOfficeService.deleteAgent(agent.id);
-    this.agents.splice(this.agents.indexOf(agent), 1);
+    this.backOfficeService.deleteAgent(agent.idCardNumber).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   openDialog() {
@@ -45,13 +46,6 @@ export class SingleAgentComponent implements OnInit {
       hasBackdrop: true,
       role: 'dialog',
       height: '50vh',
-    });
-    dialogAdd.afterClosed().subscribe((data) => {
-      this.backOfficeService
-        .updateAgent("hamid", this.agent.idCardNumber)
-        .subscribe((result: any) => {
-          console.log(result);
-        });
     });
   }
 }

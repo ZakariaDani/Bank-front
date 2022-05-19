@@ -56,19 +56,11 @@ export class HomeComponent implements OnInit {
 
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
+      data: this.agents,
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
       height: '60vh',
-    });
-    dialogAdd.afterClosed().subscribe((data) => {
-      if (data) {
-        this.backOfficeService.createAgent(data).subscribe((result: any) => {
-          console.log(result);
-          this.agents.push(result);
-          this.backOfficeService.createAgent(result);
-        });
-      }
     });
   }
   logout() {

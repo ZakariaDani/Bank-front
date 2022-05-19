@@ -32,12 +32,11 @@
             <mat-label>{{"HOME.D_OF_BIRTH" | translate}}</mat-label>
             <input
               matInput
-              type="text"
+              type="date"
               name="dateOfBirth"
               [(ngModel)]="agent.dateOfBirth"
               [value]="agent.dateOfBirth"
             />
-            <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
   
           <mat-form-field style="width: 45%">

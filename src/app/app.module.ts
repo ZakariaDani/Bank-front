@@ -51,9 +51,7 @@ import { SingleClientComponent } from './single-client/single-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
-
-
-
+import { BackOfficeService } from './services/back-office.service';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -77,10 +75,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
     MenuThemeComponent,
 
-
     BackofficeSettingsComponent,
-        ClientHomeComponent,
-        ClientHistoryComponent,
+    ClientHomeComponent,
+    ClientHistoryComponent,
 
     NavBarAgentComponent,
     ClientsComponent,
@@ -92,8 +89,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientsComponent,
     ClientProfileComponent,
     AddClientComponent,
-    AgentSettingsComponent
-
+    AgentSettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,7 +125,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       progressAnimation: 'increasing',
     }),
   ],
-  providers: [StyleManagerService, ThemeService],
+  providers: [StyleManagerService, ThemeService, BackOfficeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

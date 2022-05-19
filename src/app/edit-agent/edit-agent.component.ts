@@ -18,6 +18,13 @@ export class EditAgentComponent implements OnInit {
     this.dialogAdd.close();
   }
   save() {  
+    console.log(this.agent);
+    
+    this.backOfficeService
+        .updateAgent("hamid", this.agent.idCardNumber)
+        .subscribe((result: any) => {
+          console.log(result);
+        });
     this.dialogAdd.close();
   }
 }
