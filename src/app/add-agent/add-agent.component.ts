@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
@@ -23,6 +23,7 @@ export class AddAgentComponent implements OnInit {
     file: this.formData,
   };
   constructor(
+    @Inject(MAT_DIALOG_DATA) public agents: any,
     public dialogAdd: MatDialogRef<AddAgentComponent>,
     private backOfficeService: BackOfficeService
   ) {}
@@ -31,12 +32,15 @@ export class AddAgentComponent implements OnInit {
 
   OnCancel() {
     this.dialogAdd.close();
+    console.log(this.agents);
+    
   }
   create() {
     console.log(this.agent);
     this.backOfficeService.createAgent(this.agent).subscribe(
       (res) => {
         console.log(res, 'res');
+        this.agents.push(this.agent);
         this.dialogAdd.close();
       },
       (err) => {
