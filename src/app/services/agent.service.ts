@@ -61,9 +61,8 @@ export class AgentService {
   }
   //You can add parameters that you want to update
   updateClient(clientId: number, firstNameValue: string) {
-    return this.http
-      .patch(`${this.AGENT_URL}/clients/${clientId}`, {
-        firstName: firstNameValue,
-      });
+    return this.http.patch(`${this.AGENT_URL}/clients/${clientId}`, {
+      firstName: firstNameValue,
+    });
   }
 }

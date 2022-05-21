@@ -34,7 +34,7 @@ export class SingleAgentComponent implements OnInit {
   }
 
   deleteAgent(agent: any) {
-    this.backOfficeService.deleteAgent(agent.idCardNumber).subscribe((res) => {
+    this.backOfficeService.deleteAgent(agent.email).subscribe((res) => {
       console.log(res);
     });
   }

@@ -72,15 +72,16 @@ export class BackOfficeService {
       );
   }
 
-  deleteAgent(agentId: number) {
-    console.log(agentId);
-    
+  deleteAgent(agentEmail: string) {
+    console.log(agentEmail, 'agentId');
+
     return this.http
-      .delete(`${this.BACK_OFFICE_URL}/agents/${agentId}`, {
+      .delete(`${this.BACK_OFFICE_URL}/agents/${agentEmail}`, {
         headers: { Authorization: `Bearer ${this.token}` },
       })
       .pipe(
         tap((res) => {
+          console.log(res);
           if (res) {
             this.toast.success('Agent deleted...', '', {
               timeOut: 1000,
@@ -91,8 +92,8 @@ export class BackOfficeService {
   }
   //You can add parameters that you want to update
   updateAgent(firstNameValue: string, agentId: number) {
-    console.log(firstNameValue, agentId, "*******");
-    
+    console.log(firstNameValue, agentId, '*******');
+
     return this.http
       .patch(
         `${this.BACK_OFFICE_URL}/agents/${agentId}`,
@@ -115,17 +116,18 @@ export class BackOfficeService {
   }
 
   getAllAgents(): Observable<any> {
-    return this.http.get(`${this.BACK_OFFICE_URL}/agents`, {
-      headers: { Authorization: `Bearer ${this.token}` },
-    }).pipe(
-      tap((res) => {
-        if (res) {
-          console.log(res);
-        }
-        else{
-          console.log("not getted");
-        }
+    return this.http
+      .get(`${this.BACK_OFFICE_URL}/agents`, {
+        headers: { Authorization: `Bearer ${this.token}` },
       })
-    );
+      .pipe(
+        tap((res) => {
+          if (res) {
+            console.log(res);
+          } else {
+            console.log('not getted');
+          }
+        })
+      );
   }
 }
