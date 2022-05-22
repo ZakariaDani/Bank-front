@@ -35,6 +35,7 @@ export class SingleAgentComponent implements OnInit {
 
   deleteAgent(agent: any) {
     this.backOfficeService.deleteAgent(agent.email).subscribe((res) => {
+      this.agents.splice(this.agents.indexOf(agent), 1);
       console.log(res);
     });
   }
