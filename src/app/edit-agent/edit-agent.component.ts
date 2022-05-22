@@ -21,7 +21,7 @@ export class EditAgentComponent implements OnInit {
     console.log(this.agent);
     
     this.backOfficeService
-        .updateAgent("hamid", this.agent.idCardNumber)
+        .updateAgent(this.agent, this.agent.idCardNumber)
         .subscribe((result: any) => {
           console.log(result);
         });
