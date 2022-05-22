@@ -91,15 +91,13 @@ export class BackOfficeService {
       );
   }
   //You can add parameters that you want to update
-  updateAgent(firstNameValue: string, agentId: number) {
-    console.log(firstNameValue, agentId, '*******');
+  updateAgent(agent: any, agentId: string) {
+    console.log(agent, agentId, '*******');
 
     return this.http
       .patch(
         `${this.BACK_OFFICE_URL}/agents/${agentId}`,
-        {
-          firstName: firstNameValue,
-        },
+        agent,
         {
           headers: { Authorization: `Bearer ${this.token}` },
         }
