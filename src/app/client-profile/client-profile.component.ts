@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { AgentService } from '../services/agent.service';
 
 
 @Component({
@@ -10,10 +11,20 @@ import { Router } from '@angular/router';
 })
 export class ClientProfileComponent implements OnInit {
 
-
-  constructor(private router:Router) { }
+  id=3;
+  clientDetails:any;
+  constructor(private agentService:AgentService,private router:Router) { }
 
   ngOnInit(): void {
+    this.agentService.getClientById(this.id).subscribe({
+      next:(res:any)=>{
+        this.clientDetails = res;
+        console.log(this.clientDetails)
+      },
+      error:(error)=>{
+        console.log(error)
+      }
+    });
   }
 
   goToHome(){
@@ -25,16 +36,8 @@ export class ClientProfileComponent implements OnInit {
   }
 
   panelOpenState = false;
-  agentDetails = {
-    id: 2,
-    firstName: 'Aymane',
-    lastName: 'Daif',
-    image: 'https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg',
-    email: 'aymaned345@gmail.com',
-    joinDate: '2019-12-12',
-    clientSold: 1200.00,
-    clientAgent: 'Hamid Chlada',
-    timeline: [
+  
+  timeline= [
       {
         title: 'Transfert',
         description: 'Transfert of 10 $',
@@ -50,8 +53,8 @@ export class ClientProfileComponent implements OnInit {
         description: 'You Have Deposite 100 $',
         date: '2020-05-04',
       },
-    ],
-  };
+    ]
+
 
 
 }

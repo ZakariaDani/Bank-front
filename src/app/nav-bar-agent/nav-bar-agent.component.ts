@@ -19,7 +19,7 @@ export class NavBarAgentComponent implements OnInit {
     private dialog: MatDialog,
     private backOfficeService: AgentService,
     private signinService: SigninService,
-    private router: Router
+    private router: Router,
   ) {}
 
   clients: any = [];
@@ -49,15 +49,7 @@ export class NavBarAgentComponent implements OnInit {
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
-      height: '60vh',
-    });
-    dialogAdd.afterClosed().subscribe((data) => {
-      this.backOfficeService.createClient(data).subscribe((result: any) => {
-        console.log(result);
-        this.clients.push(result);
-        this.backOfficeService.createClient(null);
-      });
-    });
+    }).close(()=>{this.ngOnInit})
   }
   logout() {
     this.signinService.logout();

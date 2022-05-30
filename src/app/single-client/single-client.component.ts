@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditAgentComponent } from '../edit-agent/edit-agent.component';
 import { EditClientComponent } from '../edit-client/edit-client.component';
+import { AgentService } from '../services/agent.service';
 import { BackOfficeService } from '../services/back-office.service';
 import { ClientService } from '../services/client.service';
 
@@ -17,7 +18,7 @@ export class SingleClientComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private clientService: ClientService,
+    private agentService: AgentService,
     private router: Router
   ) {}
 
@@ -33,7 +34,8 @@ export class SingleClientComponent implements OnInit {
 
   toggleFavorite(client: any) {
     client.isFavorite = !client.isFavorite;
-    
+    console.log(client.id)
+    this.agentService.toggleFav(client.id)
   }
   openDialog() {
     const dialogAdd = this.dialog.open(EditClientComponent, {
@@ -41,7 +43,6 @@ export class SingleClientComponent implements OnInit {
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
-      height: '50vh',
     });
   }
 }

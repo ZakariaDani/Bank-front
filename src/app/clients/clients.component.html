@@ -1,4 +1,4 @@
-<div>
+<div id="container">
 <form class="search" (submit)="filterclients()">
     <mat-form-field appearance="outline">
       <input
@@ -9,10 +9,10 @@
       />
     </mat-form-field>
 </form>
-<mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem">
-<mat-grid-tile *ngFor="let client of filteredclients">
+<div id="content">
+<div id="elem" *ngFor="let client of filteredclients">
     <app-single-client [client]="client"></app-single-client>
-</mat-grid-tile>
-</mat-grid-list>
+</div>
+</div>
 </div>
   

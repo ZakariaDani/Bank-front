@@ -15,7 +15,6 @@ img {
   position: fixed;
   z-index: 100;
 }
-
-.main {
-  height: 9vh;
+main{
+  margin-bottom: 20px;
 }
