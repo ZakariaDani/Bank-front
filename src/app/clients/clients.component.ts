@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgentService } from '../services/agent.service';
 
 @Component({
   selector: 'app-clients',
@@ -45,17 +46,18 @@ export class ClientsComponent implements OnInit {
       lastName: 'Hammadi',
       isFavorite: false,
     },
-    {
-      id: 7,
-      firstName: 'Abdelhakim',
-      lastName: 'Benkirane',
-      isFavorite: false,
-    },
   ];
   searchTerm = '';
-  constructor() {}
+  constructor(private agentService:AgentService) {}
 
   ngOnInit(): void {
+    this.filteredclients = this.clients;
+    this.agentService.getAllClients().subscribe((clients) => {
+      clients.forEach((client: any) => {
+        this.clients.push(client);
+      });
+      console.log(this.clients);
+    });
     this.filteredclients = this.clients;
   }
 

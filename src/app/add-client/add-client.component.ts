@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AgentService } from '../services/agent.service';
 
 @Component({
   selector: 'app-add-client',
@@ -8,36 +10,47 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddClientComponent implements OnInit {
 
-  firstName:any;
-  LastName: any;
-  dateOfBirth:any;
-  adress:any;
-  email:any;
-  phone:any;
-  matricule:any;
-  patente:any;
-  description:any;
-  fileName = '';
-  constructor(public dialogAdd: MatDialogRef<AddClientComponent>) { }
+  options!: FormGroup;
+  constructor(private fb: FormBuilder,private agentService:AgentService,public dialogAdd: MatDialogRef<AddClientComponent>) { }
 
   ngOnInit(): void {
+    this.options = new FormGroup({
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.pattern("^((\\+212-?)|0)?[0-9]{10}$")
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      address: new FormControl('', [
+        Validators.required,
+      ]),
+      birth: new FormControl('2001-01-12', [
+        Validators.required,
+      ]),
+      solde: new FormControl(0, [
+      ]),
+    });
+  
   }
-
   OnCancel() {
     this.dialogAdd.close();
   }
   create() {
-    console.log(this.email);
-    
-    this.dialogAdd.close();
-  }
-  onFileSelected(event: any) {
-    const file:File = event.target.files[0];
-
-        if (file) {
-
-            this.fileName = file.name;
-            
-        }
+    if(this.options.valid){
+      console.log(this.options.value);
+      this.agentService.addClient(this.options.value)
+      this.dialogAdd.close();
+    }
   }
 }

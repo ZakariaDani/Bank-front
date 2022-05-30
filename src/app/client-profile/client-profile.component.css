@@ -1,14 +1,14 @@
 
 .mat-card-lg-image{
-  background-image: url("https://avatars.dicebear.com/api/bottts/your-custom-seed.svg?scale=111&colors[]=blue");
   background-size: cover;
 }
-
+#cardprof{
+  height: calc(100vh - 80px);
+}
 mat-card-header .box {
     display: flex;
     align-items: center;
   }
-  mat-card-header .box div:first-of-type {
 
 mat-card-header div {
     order: 2;
@@ -40,11 +40,6 @@ mat-card-header div {
     flex-direction: column;
     justify-content: center;
     margin: 1rem;
-  }
-
-    margin: auto;
-    width: 100%;
-    max-width: 600px;
   }
   
   mat-card-content .boxes {

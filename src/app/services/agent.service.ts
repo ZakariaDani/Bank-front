@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = 'http://localhost:8080/api/v1/Agent';
+  private AGENT_URL = 'http://localhost:8080/api/v1/agent';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -25,29 +25,6 @@ export class AgentService {
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
   }
-
-  createClient(client: any) {
-    const { firstName, LastName, dateOfBirth, adress, email, phone } = client;
-    return this.http
-      .post(`${this.AGENT_URL}/agents`, {
-        firstName,
-        LastName,
-        dateOfBirth,
-        adress,
-        email,
-        phone,
-      })
-      .pipe(
-        tap((res) => {
-          if (res) {
-            this.toast.success('Agent created...', '', {
-              timeOut: 1000,
-            });
-          }
-        })
-      );
-  }
-
   deleteClient(clientId: number) {
     return this.http.delete(`${this.AGENT_URL}/clients/${clientId}`).pipe(
       tap((res) => {
@@ -59,10 +36,83 @@ export class AgentService {
       })
     );
   }
-  //You can add parameters that you want to update
-  updateClient(clientId: number, firstNameValue: string) {
-    return this.http.patch(`${this.AGENT_URL}/clients/${clientId}`, {
-      firstName: firstNameValue,
-    });
+  getAllClients(): Observable<any> {
+    return this.http
+      .get(`${this.AGENT_URL}/clients`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .pipe(
+        tap((res) => {
+          if (res) {
+            console.log(res);
+          } else {
+            console.log('not getted');
+          }
+        })
+      );
+  }
+  toggleFav(id: any){
+    return this.http
+      .post(
+        `${this.AGENT_URL}/toggleFav/${id}`,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+      .subscribe({
+        next:(resp)=>{
+          console.log(resp)
+        },
+        error:(err)=>{
+          console.log(err)
+        }
+      })
+  }
+
+  addClient(client: any){
+    return this.http
+      .post(
+        `${this.AGENT_URL}/addclient/`,client,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+      .subscribe({
+        next:(resp)=>{
+          console.log(resp)
+        },
+        error:(err)=>{
+          console.log(err)
+        }
+      })
+  }
+
+  getClientById(id: any){
+    return this.http
+      .get(
+        `${this.AGENT_URL}/getclient/${id}`,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+  }
+  updateClient(client: any, clientid: number) {
+
+    return this.http
+      .put(
+        `${this.AGENT_URL}/updateclient/${clientid}`,
+        client,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+      .subscribe({
+        next:(resp)=>{
+          console.log("updated"+resp)
+        },
+        error:(err)=>{
+          console.log("error updating")
+        }
+      })
   }
 }

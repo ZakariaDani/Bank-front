@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -52,6 +52,8 @@ import { EditClientComponent } from './edit-client/edit-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { BackOfficeService } from './services/back-office.service';
+import { AgentService } from './services/agent.service';
+import { MatNativeDateModule } from '@angular/material/core';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -111,6 +113,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatExpansionModule,
     MatMenuModule,
     HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -124,8 +131,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+
   ],
-  providers: [StyleManagerService, ThemeService, BackOfficeService],
+  providers: [StyleManagerService, ThemeService, BackOfficeService,AgentService,MatDatepickerModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
