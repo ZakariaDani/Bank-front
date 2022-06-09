@@ -1,7 +1,8 @@
 <div>
-<form class="search" (submit)="filterAgents()">
+<form class="search">
   <mat-form-field appearance="fill">
     <input
+      (keyup)="filterAgents()"
       matInput
       placeholder="Search"
       name="searchTerm"
