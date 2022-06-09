@@ -171,5 +171,20 @@ export class BackOfficeService {
       );
   }
 
+  getAgent(idCardNumber: any): Observable<any> {
+    return this.http
+      .get(`${this.BACK_OFFICE_URL}/agents/${idCardNumber}`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .pipe(
+        tap((res) => {
+          if (res) {
+            console.log(res);
+          } else {
+            console.log('not getted');
+          }
+        })
+      );
+  }
 
 }

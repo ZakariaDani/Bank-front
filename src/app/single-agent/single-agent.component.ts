@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditAgentComponent } from '../edit-agent/edit-agent.component';
@@ -12,6 +12,7 @@ import { BackOfficeService } from '../services/back-office.service';
 export class SingleAgentComponent implements OnInit {
   @Input() agent: any;
   @Input() agents: any;
+  @Input() bookmarkedAgents: any;
 
   constructor(
     private dialog: MatDialog,
@@ -30,9 +31,12 @@ export class SingleAgentComponent implements OnInit {
   }
 
   toggleFavorite(agent: any) {
-    this.backOfficeService.addToFavourite(agent).subscribe((res)=>{
-      console.log(res, "546541345");
+    this.backOfficeService.addToFavourite(agent).subscribe((res) => {
+      console.log(res, '546541345');
       this.agent.favorite = !agent.favorite;
+      if(!this.agent.favorite) {
+        this.bookmarkedAgents.splice(this.bookmarkedAgents.indexOf(this.agent), 1);
+      }
     });
   }
 

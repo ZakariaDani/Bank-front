@@ -1,0 +1,8 @@
+<div>
+    <mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem" *ngIf="bookmarkedAgents.length > 0">
+      <mat-grid-tile *ngFor="let agent of bookmarkedAgents">
+        <app-single-agent [agent]="agent" [bookmarkedAgents]="bookmarkedAgents"></app-single-agent>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
