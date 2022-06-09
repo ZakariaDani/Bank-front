@@ -1,13 +1,13 @@
 <mat-card class="card">
   <mat-card-header>
-    <img mat-card-lg-image [src]="agentDetails.image" />
+    <img mat-card-lg-image [src]="agent.image" />
     <div>
       <mat-card-title>
         {{
-          agentDetails.firstName + " " + agentDetails.lastName
+          agent.firstName + " " + agent.lastName
         }}</mat-card-title
       >
-      <mat-card-subtitle>{{ agentDetails.email }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ agent.email }}</mat-card-subtitle>
     </div>
   </mat-card-header>
   <mat-divider inset></mat-divider>
@@ -19,7 +19,7 @@
           <mat-icon color="warn">calendar_month</mat-icon>
           {{ "AGENT_PROFILE.JOIN_DATE" | translate }}</span
         >
-        <strong>{{ agentDetails.joinDate }}</strong>
+        <strong>{{ agent.joinDate }}</strong>
       </div>
 
       <div class="box">
@@ -27,7 +27,7 @@
           <mat-icon color="warn">numbers</mat-icon>
           {{ "AGENT_PROFILE.CLIENTS_NUMBER" | translate }}</span
         >
-        <strong>{{ agentDetails.clientNumbers }}</strong>
+        <strong>{{ agent.idCardNumber }}</strong>
       </div>
 
       <div class="box">
@@ -35,7 +35,7 @@
           <mat-icon color="warn">badge</mat-icon>
           {{ "AGENT_PROFILE.LICENCE_NUMBER" | translate }}</span
         >
-        <strong>{{ agentDetails.licenceNumber }}</strong>
+        <strong>{{ agent.patente }}</strong>
       </div>
     </div>
   </mat-card-content>
@@ -52,7 +52,7 @@
             ><strong>{{ "AGENT_PROFILE.TIMELINE" | translate }}</strong>
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-timeline [timeline]="agentDetails.timeline"></app-timeline>
+        <app-timeline [timeline]="agent.timeline"></app-timeline>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-footer>

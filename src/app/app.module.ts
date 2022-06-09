@@ -54,6 +54,7 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { BackOfficeService } from './services/back-office.service';
 import { AgentService } from './services/agent.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -92,6 +93,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientProfileComponent,
     AddClientComponent,
     AgentSettingsComponent,
+    BookmarkedAgentsComponent,
   ],
   imports: [
     BrowserModule,
