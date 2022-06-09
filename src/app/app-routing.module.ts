@@ -70,8 +70,6 @@ const routes: Routes = [
       }
     ]
   },
-  
-
   {
     path: 'backoffice/settings',
    component: BackofficeSettingsComponent,

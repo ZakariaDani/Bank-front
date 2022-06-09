@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { ClientRegisterComponent } from '../client-register/client-register.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -72,6 +73,10 @@ export class AgentService {
       )
   }
   toggleFav(id: any){
+    console.log(this.token)
+    console.log('****************************');
+    
+    console.log(`${this.AGENT_URL}/toggleFav/${id}`);
     return this.http
       .post(
         `${this.AGENT_URL}/toggleFav/${id}`,{},

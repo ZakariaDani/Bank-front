@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AddClientComponent } from '../add-client/add-client.component';
 import { AssigneClientComponent } from '../assigne-client/assigne-client.component';
@@ -18,10 +19,13 @@ export class NavBarAgentComponent implements OnInit {
   showFiller = false;
   constructor(
     private dialog: MatDialog,
-    private backOfficeService: AgentService,
+    private agentService: AgentService,
     private signinService: SigninService,
     private router: Router,
-  ) {}
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Home Agent");
+  }
 
   clients: any = [];
   isFavoriteclientsShown = false;

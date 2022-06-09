@@ -30,7 +30,10 @@ export class SingleAgentComponent implements OnInit {
   }
 
   toggleFavorite(agent: any) {
-    agent.isFavorite = !agent.isFavorite;
+    this.backOfficeService.addToFavourite(agent).subscribe((res)=>{
+      console.log(res, "546541345");
+      this.agent.favorite = !agent.favorite;
+    });
   }
 
   deleteAgent(agent: any) {

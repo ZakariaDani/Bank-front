@@ -8,9 +8,7 @@ import { AgentService } from '../services/agent.service';
 })
 export class ClientsComponent implements OnInit {
   filteredclients: any;
-  clients:any[] = [
-    
-  ];
+  clients:any[] = [];
   searchTerm = '';
   constructor(private agentService:AgentService) {}
 
