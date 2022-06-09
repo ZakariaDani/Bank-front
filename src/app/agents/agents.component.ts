@@ -7,7 +7,7 @@ import { BackOfficeService } from '../services/back-office.service';
   styleUrls: ['./agents.component.css'],
 })
 export class AgentsComponent implements OnInit {
-  filteredAgents: any;
+  filteredAgents = [];
   @Input() agents: any;
   searchTerm = '';
   constructor(private backOfficeService: BackOfficeService) {}
@@ -18,15 +18,17 @@ export class AgentsComponent implements OnInit {
         this.agents.push(agent);
       });
       
-      console.log(this.filterAgents);
-      
     });
 
     this.filteredAgents = this.agents;
+    console.log("okkk",this.filteredAgents);
+    
   }
 
   showBookmarkedAgents() {
-    this.filteredAgents = this.agents.filter((agent: any) => agent.isFavorite);
+    this.backOfficeService.getFavoriteAgents().subscribe((filteredAgents) => {
+      this.filteredAgents = filteredAgents;
+    });
   }
 
   showAllAgents() {

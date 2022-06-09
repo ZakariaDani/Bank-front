@@ -128,4 +128,46 @@ export class BackOfficeService {
         })
       );
   }
+
+
+  addToFavourite(agent:any) {
+    console.log(agent, agent.id, '*******');
+
+    return this.http
+      .patch(
+        `${this.BACK_OFFICE_URL}/agents/${agent.id}/favorite`,
+        {isFavorite: agent.isFavorite},
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+      .pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('agent updated successfully', '', {
+              timeOut: 1000,
+            });
+          }
+        })
+      );
+  }
+
+
+  getFavoriteAgents(): Observable<any> {
+    return this.http
+      .get(`${this.BACK_OFFICE_URL}/agents/favorites`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .pipe(
+        tap((res) => {
+          if (res) {
+            console.log(res);
+          } else {
+            console.log('not getted');
+          }
+        })
+      );
+  }
+
+
 }

@@ -31,6 +31,7 @@ export class SingleAgentComponent implements OnInit {
 
   toggleFavorite(agent: any) {
     agent.isFavorite = !agent.isFavorite;
+    this.backOfficeService.addToFavourite(agent);
   }
 
   deleteAgent(agent: any) {
