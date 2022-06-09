@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { ClientRegisterComponent } from '../client-register/client-register.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,9 +16,9 @@ export class AgentService {
     private router: Router,
     private toast: ToastrService
   ) {
-    const fetchedToken = localStorage.getItem('bot');
+    const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken
       this.jwtToken$.next(this.token);
     }
   }
@@ -51,7 +52,12 @@ export class AgentService {
         })
       );
   }
-  toggleFav(id: any){
+  toggleFav(id: number){
+    console.log(this.token)
+    console.log('****************************');
+    
+    console.log(`${this.AGENT_URL}/toggleFav/${id}`);
+    
     return this.http
       .post(
         `${this.AGENT_URL}/toggleFav/${id}`,

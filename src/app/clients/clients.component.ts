@@ -9,44 +9,7 @@ import { AgentService } from '../services/agent.service';
 export class ClientsComponent implements OnInit {
 
   filteredclients: any;
-  clients = [
-    {
-      id: 1,
-      firstName: 'Zakaria',
-      lastName: 'Dani',
-      isFavorite: false,
-    },
-    {
-      id: 2,
-      firstName: 'Aymane',
-      lastName: 'Daif',
-      isFavorite: true,
-    },
-    {
-      id: 3,
-      firstName: 'Marouane',
-      lastName: 'Zibout',
-      isFavorite: true,
-    },
-    {
-      id: 4,
-      firstName: 'Souhail',
-      lastName: 'Slaoui',
-      isFavorite: true,
-    },
-    {
-      id: 5,
-      firstName: 'Bahomane',
-      lastName: 'Yousef',
-      isFavorite: true,
-    },
-    {
-      id: 6,
-      firstName: 'Abdelali',
-      lastName: 'Hammadi',
-      isFavorite: false,
-    },
-  ];
+  clients:any[] = [];
   searchTerm = '';
   constructor(private agentService:AgentService) {}
 
