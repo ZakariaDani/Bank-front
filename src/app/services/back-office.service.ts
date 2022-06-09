@@ -131,18 +131,20 @@ export class BackOfficeService {
 
 
   addToFavourite(agent:any) {
-    console.log(agent, agent.id, '*******');
+    console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http
       .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agent.id}/favorite`,
-        {isFavorite: agent.isFavorite},
+        `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}/favorite`,
+        {favorite: !agent.favorite},
         {
           headers: { Authorization: `Bearer ${this.token}` },
         }
       )
       .pipe(
         tap((res) => {
+          console.log(res,"hohohoho");
+          
           if (res) {
             this.toast.success('agent updated successfully', '', {
               timeOut: 1000,

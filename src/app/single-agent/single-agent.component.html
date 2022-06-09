@@ -2,7 +2,7 @@
   <mat-card-header>
     <button
       mat-icon-button
-      [color]="agent.isFavorite ? 'warn' : ''"
+      [color]="agent.favorite ? 'warn' : ''"
       (click)="toggleFavorite(agent)"
     >
       <mat-icon>favorite</mat-icon>
