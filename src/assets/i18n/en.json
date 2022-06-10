@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accept",
+    "DENY":"Deny",
+    "ASSIGNE":"Assign Client",
     "ICON_DASHBOARD": "Dashboard",
     "ICON_SETTINGS": "Settings",
     "ICON_LOGOUT": "Logout",

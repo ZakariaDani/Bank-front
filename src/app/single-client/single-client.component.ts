@@ -28,7 +28,7 @@ export class SingleClientComponent implements OnInit {
     return `https://avatars.dicebear.com/api/adventurer/${this.client.firstName}.svg`;
   }
 
-  goToProfilePage(id: string) {
+  goToProfilePage(id: any) {
     this.router.navigate(['agent', 'client', id]);
   }
 
