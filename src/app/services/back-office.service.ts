@@ -53,7 +53,7 @@ export class BackOfficeService {
           matricule,
           patente,
           description,
-          file: null,
+          file,
           password: agent.lastName + Math.floor(Math.random() * 1000),
           backofficeEmail: localStorage.getItem('backofficeEmail'),
         },
@@ -171,5 +171,20 @@ export class BackOfficeService {
       );
   }
 
+  getAgent(idCardNumber: any): Observable<any> {
+    return this.http
+      .get(`${this.BACK_OFFICE_URL}/agents/${idCardNumber}`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .pipe(
+        tap((res) => {
+          if (res) {
+            console.log(res);
+          } else {
+            console.log('not getted');
+          }
+        })
+      );
+  }
 
 }

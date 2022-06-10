@@ -33,7 +33,6 @@ export class AddAgentComponent implements OnInit {
   OnCancel() {
     this.dialogAdd.close();
     console.log(this.agents);
-    
   }
   create() {
     console.log(this.agent);
@@ -41,6 +40,7 @@ export class AddAgentComponent implements OnInit {
       (res) => {
         console.log(res, 'res');
         this.agents.push(this.agent);
+        console.log(this.agents, 'pushed');
         this.dialogAdd.close();
       },
       (err) => {
