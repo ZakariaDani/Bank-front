@@ -13,7 +13,6 @@ export class BackOfficeService {
   private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
   constructor(
     private http: HttpClient,
-    private router: Router,
     private toast: ToastrService
   ) {
     const fetchedToken = localStorage.getItem('act');
