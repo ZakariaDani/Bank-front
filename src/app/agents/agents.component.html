@@ -11,6 +11,7 @@
   </mat-form-field>
 </form>
 <mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem">
+
   <mat-grid-tile *ngFor="let agent of valueService._agents">
     <app-single-agent [agent]="agent" [agents]="valueService._agents"></app-single-agent>
   </mat-grid-tile>

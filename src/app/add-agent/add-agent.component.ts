@@ -9,7 +9,6 @@ import { ValueService } from '../services/value.service';
   styleUrls: ['./add-agent.component.css'],
 })
 export class AddAgentComponent implements OnInit {
-  fileName = '';
   formData = new FormData();
   agent: any = {
     firstName: '',
@@ -21,8 +20,9 @@ export class AddAgentComponent implements OnInit {
     matricule: '',
     patente: '',
     description: '',
-    file: this.formData,
+    fileName: '',
   };
+  selectedFile: any = null;
   constructor(
     @Inject(MAT_DIALOG_DATA) public agents: any,
     public dialogAdd: MatDialogRef<AddAgentComponent>,
@@ -38,27 +38,32 @@ export class AddAgentComponent implements OnInit {
   }
   create() {
     console.log(this.agent);
-    this.backOfficeService.createAgent(this.valueService._agents).subscribe(
-      (res) => {
-        console.log(res, 'res');
-        this.valueService._agents.push(this.agent);
-        console.log(this.agents, 'pushed');
-        this.dialogAdd.close();
+    this.backOfficeService.createAgent(this.agent).subscribe(
+      (res: any) => {
+        //this.agents.push(this.agent);
+
+        this.backOfficeService.createAgentImage(
+          res.idCardNumber,
+          this.selectedFile
+        );
+
       },
       (err) => {
         console.log(err);
       }
     );
+
     console.log('done');
 
     this.dialogAdd.close();
   }
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-
-    if (file) {
-      this.fileName = file.name;
+    if (event.target && event.target.files) {
+      const file: File = event.target.files[0];
+      this.agent.fileName = file.name;
       this.formData.append('fileID', file);
+      console.log('db', file);
+      this.selectedFile = file;
     }
   }
 }
