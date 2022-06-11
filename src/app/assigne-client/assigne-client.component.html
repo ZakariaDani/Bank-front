@@ -1,0 +1,17 @@
+<div id="container">
+    <div *ngIf="show">
+        No Data To Show
+    </div>
+    <mat-card  *ngFor="let client of clients">
+        <div class="info">
+            {{client.firstName}} {{client.lastName}} 
+        </div>
+        <div class="action">
+            <button mat-raised-button color="primary" (click)="onAccept(client)"> {{ "HOME.ACCEPTE" | translate }}</button>
+            <button mat-raised-button color="warn" (click)="onReject(client)">{{ "HOME.DENY" | translate }}</button>
+        </div>  
+    </mat-card>
+    <button style="flex:right; margin: 20px 0px" mat-flat-button color="warn" (click)="OnCancel()">
+        {{ "BACKOFFICE_SETTINGS.CLOSE" | translate }}
+    </button>
+</div>

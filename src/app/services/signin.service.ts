@@ -51,12 +51,13 @@ export class SigninService {
                 localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
                 localStorage.setItem('STATE', 'true');
-                localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
+                  localStorage.setItem('agentEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
                   this.router.navigateByUrl('/backoffice').then();
+                  localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
                   this.router.navigateByUrl('/client-home').then();

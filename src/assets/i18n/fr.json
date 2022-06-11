@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accepter",
+    "DENY":"Refuser",
+    "ASSIGNE":"Assigner un client",
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",
     "ICON_LOGOUT": "Se déconnecter",

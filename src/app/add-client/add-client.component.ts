@@ -51,6 +51,7 @@ export class AddClientComponent implements OnInit {
       console.log(this.options.value);
       this.agentService.addClient(this.options.value)
       this.dialogAdd.close();
+      window.location.reload();
     }
   }
 }
