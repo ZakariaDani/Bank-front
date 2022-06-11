@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Agent } from '../models/agent.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +27,7 @@ export class BackOfficeService {
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
   }
-  createAgent(agent: any) {
+  createAgent(agent: Agent) {
     const {
       firstName,
       lastName,
@@ -91,12 +92,12 @@ export class BackOfficeService {
       );
   }
   //You can add parameters that you want to update
-  updateAgent(agent: any, agentId: string) {
-    console.log(agent, agentId, '*******');
+  updateAgent(agent: Agent) {
+    console.log(agent, agent.idCardNumber, '*******');
 
     return this.http
       .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
+        `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}`,
         agent,
         {
           headers: { Authorization: `Bearer ${this.token}` },
@@ -130,7 +131,7 @@ export class BackOfficeService {
   }
 
 
-  addToFavourite(agent:any) {
+  addToFavourite(agent:Agent) {
     console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Agent } from '../models/agent.model';
 import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
@@ -9,21 +10,7 @@ import { BackOfficeService } from '../services/back-office.service';
 })
 export class AgentProfileComponent implements OnInit {
   panelOpenState = false;
-  agent: any = {
-    adress: '',
-    backOffice: { backId: null, email: '' },
-    dateOfBirth: null,
-    description: '',
-    email: '',
-    favorite: null,
-    file: '',
-    firstName: '',
-    idCardNumber: null,
-    lastName: '',
-    matricule: '',
-    patente: '',
-    phone: '',
-  };
+  agent?: Agent;
   constructor(
     private backOfficeService: BackOfficeService,
     private route: ActivatedRoute
