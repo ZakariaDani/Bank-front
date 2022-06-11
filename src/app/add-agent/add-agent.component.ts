@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackOfficeService } from '../services/back-office.service';
+import { ValueService } from '../services/value.service';
 
 @Component({
   selector: 'app-add-agent',
@@ -25,21 +26,22 @@ export class AddAgentComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public agents: any,
     public dialogAdd: MatDialogRef<AddAgentComponent>,
-    private backOfficeService: BackOfficeService
+    private backOfficeService: BackOfficeService,
+    public valueService: ValueService
   ) {}
 
   ngOnInit(): void {}
 
   OnCancel() {
     this.dialogAdd.close();
-    console.log(this.agents);
+    console.log(this.valueService._agents);
   }
   create() {
     console.log(this.agent);
-    this.backOfficeService.createAgent(this.agent).subscribe(
+    this.backOfficeService.createAgent(this.valueService._agents).subscribe(
       (res) => {
         console.log(res, 'res');
-        this.agents.push(this.agent);
+        this.valueService._agents.push(this.agent);
         console.log(this.agents, 'pushed');
         this.dialogAdd.close();
       },
