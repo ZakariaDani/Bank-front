@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
 import { SigninService } from '../services/signin.service';
+import { ValueService } from '../services/value.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,11 @@ export class HomeComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private signinService: SigninService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private valueService: ValueService
+  ) {
+    
+  }
 
   ngOnInit(): void {}
 
@@ -39,7 +43,7 @@ export class HomeComponent implements OnInit {
 
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
-      //data: this.agents,
+      data: this.valueService._agents,
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackOfficeService } from '../services/back-office.service';
+import { ValueService } from '../services/value.service';
 
 @Component({
   selector: 'app-agents',
@@ -7,25 +8,24 @@ import { BackOfficeService } from '../services/back-office.service';
   styleUrls: ['./agents.component.css'],
 })
 export class AgentsComponent implements OnInit {
-  agents: any = [];
   searchTerm = '';
- 
-  constructor(private backOfficeService: BackOfficeService) {}
 
-  ngOnInit(): void {    
+  constructor(
+    private backOfficeService: BackOfficeService,
+    public valueService: ValueService
+  ) {}
+
+  ngOnInit(): void {
     this.backOfficeService.getAllAgents().subscribe((agents) => {
-      agents.forEach((agent: any) => {
-        this.agents.push(agent);
-      });
-      
+      this.valueService._agents = agents;
     });
-    
   }
 
   filterAgents() {
     if (this.searchTerm !== '') {
-      this.agents = this.agents.filter((agent: any) =>
-        agent.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
+      this.valueService._agents = this.valueService._agents.filter(
+        (agent: any) =>
+          agent.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
   }
