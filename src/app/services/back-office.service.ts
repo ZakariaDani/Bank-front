@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class BackOfficeService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
+  private BACK_OFFICE_URL = 'http://localhost:1947/api/v1/backoffice';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -25,6 +25,26 @@ export class BackOfficeService {
 
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
+  }
+  createAgentImage(agentId: string, file: File) {
+    let formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http
+      .post(`${this.BACK_OFFICE_URL}/agents/${agentId}/image`, formData, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+        reportProgress: true,
+        observe: 'response'
+      })
+      .subscribe({
+        next: (response: any) => {
+          console.log(response);
+        },
+        error: (response: any) => {
+          console.log(response);
+        },
+      });
   }
   createAgent(agent: any) {
     const {
@@ -53,7 +73,7 @@ export class BackOfficeService {
           matricule,
           patente,
           description,
-          file,
+
           password: agent.lastName + Math.floor(Math.random() * 1000),
           backofficeEmail: localStorage.getItem('backofficeEmail'),
         },
@@ -95,13 +115,9 @@ export class BackOfficeService {
     console.log(agent, agentId, '*******');
 
     return this.http
-      .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agentId}`,
-        agent,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+      .patch(`${this.BACK_OFFICE_URL}/agents/${agentId}`, agent, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
       .pipe(
         tap((res) => {
           if (res) {
@@ -129,22 +145,21 @@ export class BackOfficeService {
       );
   }
 
-
-  addToFavourite(agent:any) {
+  addToFavourite(agent: any) {
     console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http
       .patch(
         `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}/favorite`,
-        {favorite: !agent.favorite},
+        { favorite: !agent.favorite },
         {
           headers: { Authorization: `Bearer ${this.token}` },
         }
       )
       .pipe(
         tap((res) => {
-          console.log(res,"hohohoho");
-          
+          console.log(res, 'hohohoho');
+
           if (res) {
             this.toast.success('agent updated successfully', '', {
               timeOut: 1000,
@@ -153,7 +168,6 @@ export class BackOfficeService {
         })
       );
   }
-
 
   getFavoriteAgents(): Observable<any> {
     return this.http
@@ -186,5 +200,4 @@ export class BackOfficeService {
         })
       );
   }
-
 }

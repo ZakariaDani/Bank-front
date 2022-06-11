@@ -10,15 +10,15 @@ import { ClientRegisterComponent } from '../client-register/client-register.comp
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = 'http://localhost:8080/api/v1/agent';
-  public currentmail:any='';
+  private AGENT_URL = 'http://localhost:1947/api/v1/agent';
+  public currentmail: any = '';
   constructor(
     private http: HttpClient,
     private router: Router,
     private toast: ToastrService
   ) {
     const fetchedToken = localStorage.getItem('act');
-    this.currentmail = localStorage.getItem("agentEmail");
+    this.currentmail = localStorage.getItem('agentEmail');
 
     if (fetchedToken) {
       this.token = fetchedToken;
@@ -30,10 +30,10 @@ export class AgentService {
     return this.jwtToken$.asObservable();
   }
   deleteClient(clientId: number) {
-    return this.http.delete(`${this.AGENT_URL}/deleteclient/${clientId}`,{
-      headers: {Authorization: `Bearer ${this.token}`},
-      responseType: 'text'
-    })
+    return this.http.delete(`${this.AGENT_URL}/deleteclient/${clientId}`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+      responseType: 'text',
+    });
   }
   getAllClients(): Observable<any> {
     return this.http
@@ -51,94 +51,77 @@ export class AgentService {
       );
   }
   getClientsWithoutAgent(): Observable<any> {
-    return this.http
-      .get(`${this.AGENT_URL}/clientswithoutagent`, {
-        headers: { Authorization: `Bearer ${this.token}` },
-      })
+    return this.http.get(`${this.AGENT_URL}/clientswithoutagent`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
   getCurrentAgent(): Observable<any> {
-    return this.http
-      .get(`${this.AGENT_URL}/getcurrentinfo`, {
-        headers: { Authorization: `Bearer ${this.token}` },
-      })
+    return this.http.get(`${this.AGENT_URL}/getcurrentinfo`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
-  assigneClient(obj: any){
-    return this.http
-      .post(
-        `${this.AGENT_URL}/assigneagent`,obj,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-          responseType: 'text'
-        },
-      )
+  assigneClient(obj: any) {
+    return this.http.post(`${this.AGENT_URL}/assigneagent`, obj, {
+      headers: { Authorization: `Bearer ${this.token}` },
+      responseType: 'text',
+    });
   }
-  toggleFav(id: any){
-    console.log(this.token)
+  toggleFav(id: any) {
+    console.log(this.token);
     console.log('****************************');
-    
+
     console.log(`${this.AGENT_URL}/toggleFav/${id}`);
     return this.http
       .post(
-        `${this.AGENT_URL}/toggleFav/${id}`,{},
+        `${this.AGENT_URL}/toggleFav/${id}`,
+        {},
         {
           headers: { Authorization: `Bearer ${this.token}` },
-          responseType: 'text'
+          responseType: 'text',
         }
       )
       .subscribe({
-        next:(resp)=>{
-          console.log(resp)
+        next: (resp) => {
+          console.log(resp);
         },
-        error:(err)=>{
-          console.log(err)
-        }
-      })
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
-  addClient(client: any){
+  addClient(client: any) {
     return this.http
-      .post(
-        `${this.AGENT_URL}/addclient/`,client,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+      .post(`${this.AGENT_URL}/addclient/`, client, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
       .subscribe({
-        next:(resp)=>{
-          console.log(resp)
+        next: (resp) => {
+          console.log(resp);
         },
-        error:(err)=>{
-          console.log(err)
-        }
-      })
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
-  getClientById(id: any){
-    return this.http
-      .get(
-        `${this.AGENT_URL}/getclient/${id}`,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+  getClientById(id: any) {
+    return this.http.get(`${this.AGENT_URL}/getclient/${id}`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
   updateClient(client: any, clientid: number) {
-
     return this.http
-      .put(
-        `${this.AGENT_URL}/updateclient/${clientid}`,
-        client,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
-      .subscribe({
-        next:(resp)=>{
-          console.log("updated"+resp)
-        },
-        error:(err)=>{
-          console.log("error updating")
-        }
+      .put(`${this.AGENT_URL}/updateclient/${clientid}`, client, {
+        headers: { Authorization: `Bearer ${this.token}` },
       })
+      .subscribe({
+        next: (resp) => {
+          console.log('updated' + resp);
+        },
+        error: (err) => {
+          console.log('error updating');
+        },
+      });
   }
 }

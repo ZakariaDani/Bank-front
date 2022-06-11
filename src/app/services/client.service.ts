@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export class ClientService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private CLIENT_URL = 'http://localhost:8080/api/v1/client';
+  private CLIENT_URL = 'http://localhost:1947/api/v1/client';
   constructor(
     private http: HttpClient,
     private router: Router,

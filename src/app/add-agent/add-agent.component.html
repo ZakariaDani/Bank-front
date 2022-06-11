@@ -115,11 +115,12 @@
           <input
             type="file"
             class="file-input"
+            name="file"
             (change)="onFileSelected($event)"
             #fileUpload
           />
           <div class="file-upload" style="display: flex; padding: 9% 0%">
-            {{ fileName || "No file uploaded yet." }}
+            {{ agent?.fileName || "No file uploaded yet." }}
 
             <button
               mat-mini-fab
