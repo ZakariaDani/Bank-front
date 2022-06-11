@@ -11,14 +11,17 @@ export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
   private AGENT_URL = 'http://localhost:8080/api/v1/agent';
+  public currentmail:any='';
   constructor(
     private http: HttpClient,
     private router: Router,
     private toast: ToastrService
   ) {
     const fetchedToken = localStorage.getItem('act');
+    this.currentmail = localStorage.getItem("agentEmail");
+
     if (fetchedToken) {
-      this.token = fetchedToken
+      this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
   }
@@ -27,15 +30,10 @@ export class AgentService {
     return this.jwtToken$.asObservable();
   }
   deleteClient(clientId: number) {
-    return this.http.delete(`${this.AGENT_URL}/clients/${clientId}`).pipe(
-      tap((res) => {
-        if (res) {
-          this.toast.success('Agent deleted...', '', {
-            timeOut: 1000,
-          });
-        }
-      })
-    );
+    return this.http.delete(`${this.AGENT_URL}/deleteclient/${clientId}`,{
+      headers: {Authorization: `Bearer ${this.token}`},
+      responseType: 'text'
+    })
   }
   getAllClients(): Observable<any> {
     return this.http
@@ -52,17 +50,39 @@ export class AgentService {
         })
       );
   }
-  toggleFav(id: number){
+  getClientsWithoutAgent(): Observable<any> {
+    return this.http
+      .get(`${this.AGENT_URL}/clientswithoutagent`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+  }
+  getCurrentAgent(): Observable<any> {
+    return this.http
+      .get(`${this.AGENT_URL}/getcurrentinfo`, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+  }
+  assigneClient(obj: any){
+    return this.http
+      .post(
+        `${this.AGENT_URL}/assigneagent`,obj,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+          responseType: 'text'
+        },
+      )
+  }
+  toggleFav(id: any){
     console.log(this.token)
     console.log('****************************');
     
     console.log(`${this.AGENT_URL}/toggleFav/${id}`);
-    
     return this.http
       .post(
-        `${this.AGENT_URL}/toggleFav/${id}`,
+        `${this.AGENT_URL}/toggleFav/${id}`,{},
         {
           headers: { Authorization: `Bearer ${this.token}` },
+          responseType: 'text'
         }
       )
       .subscribe({

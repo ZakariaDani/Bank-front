@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AddClientComponent } from '../add-client/add-client.component';
+import { AssigneClientComponent } from '../assigne-client/assigne-client.component';
 import { ClientsComponent } from '../clients/clients.component';
 import { AgentService } from '../services/agent.service';
 import { SigninService } from '../services/signin.service';
@@ -53,9 +54,16 @@ export class NavBarAgentComponent implements OnInit {
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
-    }).close(()=>{this.ngOnInit})
+    })
   }
   logout() {
     this.signinService.logout();
+  }
+  assigneclient(){
+    const dialogAdd = this.dialog.open(AssigneClientComponent, {
+      width: '50vw',
+      hasBackdrop: true,
+      role: 'dialog',
+    })
   }
 }

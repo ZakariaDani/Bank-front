@@ -7,7 +7,6 @@ import { AgentService } from '../services/agent.service';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-
   filteredclients: any;
   clients:any[] = [];
   searchTerm = '';
@@ -41,5 +40,4 @@ export class ClientsComponent implements OnInit {
       this.filteredclients = this.clients;
     }
   }
-
 }

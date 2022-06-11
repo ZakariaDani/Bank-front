@@ -54,7 +54,7 @@ export class BackOfficeService {
           matricule,
           patente,
           description,
-          file: null,
+          file,
           password: agent.lastName + Math.floor(Math.random() * 1000),
           backofficeEmail: localStorage.getItem('backofficeEmail'),
         },
