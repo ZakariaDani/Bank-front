@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Agent } from '../models/agent.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +13,6 @@ export class BackOfficeService {
   private BACK_OFFICE_URL = 'http://localhost:1947/api/v1/backoffice';
   constructor(
     private http: HttpClient,
-    private router: Router,
     private toast: ToastrService
   ) {
     const fetchedToken = localStorage.getItem('act');
@@ -47,6 +47,8 @@ export class BackOfficeService {
       });
   }
   createAgent(agent: any) {
+
+ 
     const {
       firstName,
       lastName,
@@ -111,13 +113,19 @@ export class BackOfficeService {
       );
   }
   //You can add parameters that you want to update
-  updateAgent(agent: any, agentId: string) {
-    console.log(agent, agentId, '*******');
+  updateAgent(agent: Agent) {
+    console.log(agent, agent.idCardNumber, '*******');
 
     return this.http
-      .patch(`${this.BACK_OFFICE_URL}/agents/${agentId}`, agent, {
-        headers: { Authorization: `Bearer ${this.token}` },
-      })
+
+      .patch(
+        `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}`,
+        agent,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      )
+
       .pipe(
         tap((res) => {
           if (res) {
@@ -145,7 +153,9 @@ export class BackOfficeService {
       );
   }
 
+
   addToFavourite(agent: any) {
+
     console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http

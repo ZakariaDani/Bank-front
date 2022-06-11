@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  
   constructor(private router: Router) {}
   ngOnInit(): void {
     console.log('jijijiji');
