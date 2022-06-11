@@ -40,7 +40,7 @@ export class AddAgentComponent implements OnInit {
     console.log(this.agent);
     this.backOfficeService.createAgent(this.agent).subscribe(
       (res: any) => {
-        //this.agents.push(this.agent);
+        this.valueService._agents.push(this.agent);
 
         this.backOfficeService.createAgentImage(
           res.idCardNumber,
