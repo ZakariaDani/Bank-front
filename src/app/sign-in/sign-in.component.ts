@@ -10,6 +10,7 @@ import { SigninService } from '../services/signin.service';
 })
 export class SignInComponent implements OnInit {
   hide = true;
+  public IS_A_NUMBER = new RegExp("^[0-9]+");
 
   constructor(
     private signinService: SigninService,
@@ -22,12 +23,15 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(signinForm: NgForm) {
+    
     console.log(signinForm.value);
     if (signinForm.invalid) {
       return;
     }
     const { identifiant, password } = signinForm.value;
+  
     this.signinService.login(identifiant, password);
     return signinForm.reset();
+
   }
 }

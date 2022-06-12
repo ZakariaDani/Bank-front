@@ -5,10 +5,10 @@
       <div>
         <mat-card-title>
           {{
-            agentDetails.firstName + " " + agentDetails.lastName
-          }}</mat-card-title
-        >
-        <mat-card-subtitle>{{ agentDetails.email }}</mat-card-subtitle>
+            client?.fname + " " + client?.lname
+          }}
+          </mat-card-title>
+        <mat-card-subtitle>{{ client?.email }}</mat-card-subtitle>
       </div>
     </mat-card-header>
     <mat-divider inset></mat-divider>
@@ -19,7 +19,7 @@
             <mat-icon color="warn">calendar_month</mat-icon>
             {{ "CLIENT_PROFILE.JOIN_DATE" | translate }}</span
           >
-          <strong>{{ agentDetails.joinDate }}</strong>
+          <strong>{{ client?.birth }}</strong>
         </div>
   
         <div class="box">
@@ -27,7 +27,7 @@
             <mat-icon color="warn">numbers</mat-icon>
             {{ "CLIENT_PROFILE.SOLD" | translate }}</span
           >
-          <strong>{{ agentDetails.clientSold |  currency:' MAD '}}</strong>
+          <strong>{{ client?.solde |  currency:' MAD '}}</strong>
         </div>
   
         <div class="box">
@@ -35,7 +35,7 @@
             <mat-icon color="warn">badge</mat-icon>
             {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
           >
-          <strong>{{ agentDetails.clientAgent }}</strong>
+          <strong>{{ agentDetails?.clientAgent }}</strong>
         </div>
       </div>
     </mat-card-content>

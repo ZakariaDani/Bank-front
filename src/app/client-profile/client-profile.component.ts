@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { ClientService } from '../services/client.service';
 
 
 @Component({
@@ -10,19 +11,24 @@ import { Router } from '@angular/router';
 })
 export class ClientProfileComponent implements OnInit {
 
-
-  constructor(private router:Router) { }
+  public client:any;
+  
+  constructor(
+    private router:Router,
+    private clientService:ClientService) { }
 
   ngOnInit(): void {
+    this.clientService.getClientInfo().subscribe(
+      (response)=>{
+        this.client=response;
+      }
+    )
   }
 
   goToHome(){
     this.router.navigate(["client-home"]);
-    console.log("aa")
   }
-  save(){
-    console.log()
-  }
+
 
   panelOpenState = false;
   agentDetails = {

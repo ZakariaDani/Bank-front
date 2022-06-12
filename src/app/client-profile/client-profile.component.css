@@ -8,17 +8,15 @@ mat-card-header .box {
     display: flex;
     align-items: center;
   }
-  mat-card-header .box div:first-of-type {
 
 mat-card-header div {
     order: 2;
     justify-content: center;
     display: flex;
     flex-direction: column;
-  }
+}
 
   
-
 
   mat-card-header img {
     border-radius: 50%;
@@ -40,7 +38,6 @@ mat-card-header div {
     flex-direction: column;
     justify-content: center;
     margin: 1rem;
-  }
 
     margin: auto;
     width: 100%;

@@ -27,6 +27,7 @@ import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
@@ -51,6 +52,7 @@ import { SingleClientComponent } from './single-client/single-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
 
 
 
@@ -92,7 +94,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientsComponent,
     ClientProfileComponent,
     AddClientComponent,
-    AgentSettingsComponent
+    AgentSettingsComponent,
+    ClientMainPageComponent
 
   ],
   imports: [
@@ -114,6 +117,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatDatepickerModule,
     MatExpansionModule,
     MatMenuModule,
+    MatTabsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

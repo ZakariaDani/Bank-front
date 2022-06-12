@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { ClientServiceComponent } from './client-service/client-service.component';
 
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
@@ -17,6 +16,7 @@ import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
 
 
 
@@ -66,7 +66,7 @@ const routes: Routes = [
       },
       {
         path:"",
-        component:ClientServiceComponent
+        component:ClientMainPageComponent
       }
     ]
   },

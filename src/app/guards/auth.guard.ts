@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
     return this.signinService.jwtUserToken.pipe(
       map((result) => !!result),
       tap((result) => {
+
         console.log(result);
         const userRole = this.signinService.getRole();
 
