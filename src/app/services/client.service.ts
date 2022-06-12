@@ -190,4 +190,11 @@ export class ClientService {
       }
     );
   }
+
+  getAllTransactions(){
+
+    return this.http.get(`${this.CLIENT_URL}/getTransactions`,
+      {headers:{"Authorization":`Bearer ${this.token}`}}
+      );
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-client-history',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientHistoryComponent implements OnInit {
 
-  constructor() { }
+  public transactions = [];
+  displayedColumns: string[] = ['emitter', 'receiver', 'amount', 'date'];
+  constructor(private clientService:ClientService,
+              private toast:ToastrService,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.clientService.getAllTransactions().subscribe(
+      (response: any)=>{
+        this.transactions = response.reverse();
+      },
+      (error)=>{
+        this.toast.error(
+          "There is something wrong with the server try later",
+          "",
+          {timeOut:2000}
+
+        ).onHidden.subscribe(
+          ()=>{
+            this.router.navigate(["client-home"])
+          }
+        )
+      }
+    )
   }
 
 }

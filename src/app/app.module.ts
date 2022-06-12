@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
@@ -118,6 +119,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatExpansionModule,
     MatMenuModule,
     MatTabsModule,
+    MatTableModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

@@ -1,1 +1,36 @@
-<p>client-history works!</p>
+<div class="my_container row pt-3">
+    <table mat-table [dataSource]="transactions" class="col-11 col-md-10 col-lg-8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="emitter">
+          <th mat-header-cell *matHeaderCellDef> Emitter </th>
+          <td mat-cell *matCellDef="let element"> {{element.emitter}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="receiver">
+          <th mat-header-cell *matHeaderCellDef> Receiver </th>
+          <td mat-cell *matCellDef="let element"> {{element.receiver}} </td>
+        </ng-container>
+   
+        <!-- Weight Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} DH </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+      </table>   
+      
+</div>
