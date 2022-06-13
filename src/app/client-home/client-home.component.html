@@ -54,8 +54,16 @@
     </mat-list>
     
     </mat-sidenav>
-    
+   
     <mat-sidenav-content>
+        <button mat-mini-fab color="accent" (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon *ngIf="sidenav._getWidth() < 10"
+              >chevron_right</mat-icon
+            >
+            <mat-icon mat-list-icon *ngIf="sidenav._getWidth() > 10"
+              >chevron_left</mat-icon
+            >
+          </button>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -90,7 +90,7 @@ export class ClientService {
       .error('Invalid phone number', '', { timeOut: 2000 })
       return false;
     }
-    if(new RegExp("[0-9]+").test(amount) == false){
+    if(new RegExp("^[0-9]+$").test(amount) == false){
       this.toast
       .error('The amount must be a type number', '', { timeOut: 2000 })
       return false;
