@@ -36,6 +36,12 @@
             <span>{{ "HOME.ICON_LOGOUT" | translate }}</span>
           </button>
         </mat-list-item>
+        <mat-list-item>
+          <button mat-flat-button (click)="assigneclient()">
+            <mat-icon mat-list-icon color="primary">contacts</mat-icon>
+            <span>{{ "HOME.ASSIGNE" | translate }}</span>
+          </button>
+        </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
       <mat-list>
@@ -53,7 +59,7 @@
         {{ "HOME.ADD_CLIENT" | translate }}</a
       >
     </mat-sidenav>
-  
+
     <mat-sidenav-content>
       <button mat-mini-fab color="accent" (click)="sidenav.toggle()">
         <mat-icon mat-list-icon *ngIf="sidenav._getWidth() < 10"
@@ -63,9 +69,9 @@
           >chevron_left</mat-icon
         >
       </button>
-  
       <!-- content -->
       <app-clients></app-clients>
     </mat-sidenav-content>
+    
   </mat-sidenav-container>
   

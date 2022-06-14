@@ -12,6 +12,7 @@ import {Client} from "../models/client";
 export class ClientService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
+
   private CLIENT_URL = 'http://localhost:8081/api/v1/client';
   private client:any ={};
   private transactionId = 0;

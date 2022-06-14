@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Agent } from '../models/agent.model';
+import { BackOfficeService } from '../services/back-office.service';
 
 @Component({
   selector: 'app-agent-profile',
@@ -7,34 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentProfileComponent implements OnInit {
   panelOpenState = false;
-  agentDetails = {
-    id: 2,
-    firstName: 'Aymane',
-    lastName: 'Daif',
-    image: 'https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg',
-    email: 'aymaned345@gmail.com',
-    joinDate: '2019-12-12',
-    clientNumbers: 12,
-    licenceNumber: '59846523161',
-    timeline: [
-      {
-        title: 'add client',
-        description: 'John Doe was added as a client',
-        date: '2019-12-12',
-      },
-      {
-        title: 'add client',
-        description: 'Jane Doe was added as a client',
-        date: '2020-12-12',
-      },
-      {
-        title: 'remove client',
-        description: 'John Doe was removed as a client',
-        date: '2020-05-04',
-      },
-    ],
-  };
-  constructor() {}
+  agent?: Agent;
+  constructor(
+    private backOfficeService: BackOfficeService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.backOfficeService
+      .getAgent(this.route.snapshot.paramMap.get('id'))
+      .subscribe((agent) => {
+        this.agent = agent;
+      });
+  }
 }

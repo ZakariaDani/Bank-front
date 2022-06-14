@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
-import { AgentsComponent } from '../agents/agents.component';
-import { BackOfficeService } from '../services/back-office.service';
 import { SigninService } from '../services/signin.service';
+import { ValueService } from '../services/value.service';
 
 @Component({
   selector: 'app-home',
@@ -15,60 +14,40 @@ export class HomeComponent implements OnInit {
   showFiller = false;
   constructor(
     private dialog: MatDialog,
-    private backOfficeService: BackOfficeService,
     private signinService: SigninService,
-    private router: Router
-  ) {}
-
-  agents: any = [];
-  isFavoriteAgentsShown = false;
-
-  @ViewChild(AgentsComponent)
-  agentsComponent!: AgentsComponent;
+    private router: Router,
+    private valueService: ValueService
+  ) {
+    
+  }
 
   ngOnInit(): void {}
 
   goToSettingsPage() {
-    this.router.navigate(['backoffice', 'settings']);
+    this.router.navigate(['backoffice/settings']);
   }
 
   showBookmarkedAgents() {
-    this.isFavoriteAgentsShown = true;
-    this.agentsComponent.showBookmarkedAgents();
+    this.router.navigate(['backoffice/bookmarked']);
   }
 
   showAllAgents() {
-    this.isFavoriteAgentsShown = false;
-    this.agentsComponent.showAllAgents();
+    this.router.navigate(['backoffice']);
   }
 
   showAgentsWithMostClients() {
-    this.isFavoriteAgentsShown = false;
-
-    this.agentsComponent.showAgentsWithMostClients();
   }
 
   showAgentsWithLeastClients() {
-    this.isFavoriteAgentsShown = false;
-
-    this.agentsComponent.showAgentsWithLeastClients();
   }
 
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
+      data: this.valueService._agents,
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',
       height: '60vh',
-    });
-    dialogAdd.afterClosed().subscribe((data) => {
-      if (data) {
-        this.backOfficeService.createAgent(data).subscribe((result: any) => {
-          console.log(result);
-          this.agents.push(result);
-          this.backOfficeService.createAgent(result);
-        });
-      }
     });
   }
   logout() {

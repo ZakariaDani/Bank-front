@@ -13,7 +13,7 @@ export class SigninService {
   isLogin = false;
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AUTH_URL = 'http://localhost:8081/login';
+  private AUTH_URL = 'http://localhost:8080/login';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -21,7 +21,7 @@ export class SigninService {
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
   }
@@ -46,16 +46,18 @@ export class SigninService {
               })
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
-                const decryptedResponse: any = jwt_decode(res['access-token']);
-                console.log(decryptedResponse.roles[0]);
-                localStorage.setItem('act', btoa(this.token));
+                const decryptedResponse: any = jwt_decode(res['acces-tocken']);
+                console.log(decryptedResponse, 'res');
+                localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
                 localStorage.setItem('STATE', 'true');
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
+                  localStorage.setItem('agentEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
                   this.router.navigateByUrl('/backoffice').then();
+                  localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
                   this.router.navigateByUrl('/client-home').then();
@@ -77,6 +79,7 @@ export class SigninService {
       .onHidden.subscribe(() => {
         localStorage.removeItem('act');
         localStorage.removeItem('ROLE');
+        localStorage.removeItem('backofficeEmail');
         localStorage.setItem('STATE', 'false');
         this.router.navigateByUrl('/').then();
       });

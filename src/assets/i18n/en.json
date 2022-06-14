@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accept",
+    "DENY":"Deny",
+    "ASSIGNE":"Assign Client",
     "ICON_DASHBOARD": "Dashboard",
     "ICON_SETTINGS": "Settings",
     "ICON_LOGOUT": "Logout",
@@ -49,7 +52,8 @@
     "PROFILE":"Profile",
     "CANCEL": "Cancel", 
     "SAVE": "Save",
-    "THEME": "Theme"
+    "THEME": "Theme",
+    "SOLD":"Balance"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",
@@ -60,6 +64,7 @@
   "CLIENT_PROFILE": {
     "JOIN_DATE": "Join date",
     "CLIENTS_AGENT": "Account Agent",
+    "BIRTH_DATE":"Birthday",
     "SOLD": "Balance",
     "TIMELINE": "Transactions"
   },

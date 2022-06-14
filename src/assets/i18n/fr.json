@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accepter",
+    "DENY":"Refuser",
+    "ASSIGNE":"Assigner un client",
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",
     "ICON_LOGOUT": "Se déconnecter",
@@ -49,7 +52,8 @@
     "HISTORY":"Historique",
     "CANCEL": "Annuler",
     "SAVE": "Enregister",
-    "THEME": "Thème"
+    "THEME": "Thème",
+    "SOLD":"Sold"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
@@ -61,6 +65,7 @@
     "JOIN_DATE": "Date d’adhésion",
     "CLIENTS_AGENT": "l'agent Du compte",
     "SOLD": "Sold",
+    "BIRTH_DATE":"Date de naissance",
     "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {
