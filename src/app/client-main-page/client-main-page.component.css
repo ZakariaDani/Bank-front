@@ -1,0 +1,116 @@
+.my_container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+.mat-card{
+    height:170px;
+    position: relative;
+    overflow: hidden;
+    justify-items: flex-start;
+}
+img{
+    height: 120px;
+    max-width: 80%;
+    max-height: 120px;
+    object-fit: contain;
+    object-position: center;
+}
+button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: none;
+    height: 35px;
+}
+#next_page_recharge{
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.smooth_transition{
+    transition:transform 0.4s ease-in-out;
+}
+.to_the_left{
+    transform: translateX(-100vw);
+}
+.to_the_right{
+    transform: translateX(100vw);
+}
+.recharge_container{
+    min-height: 100vh;
+    position:relative;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+#return_icon{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top:10px;
+    left:10px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(41, 41, 41);
+    animation:flash 0.7s ease-in-out infinite;
+    cursor: pointer;
+    color:white;
+    border-radius: 50%;
+}
+
+@keyframes flash {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+#verificationContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100px;
+    font-size: 20px;
+    background-color: orange;
+    color:white;
+    z-index: 10;align-self: center;
+    transition: all 0.3s ease-in-out;
+}
+.opacity-translate{
+    opacity:0;
+    transform:translateY(-100px);
+}
+.my_input{
+    outline:none;
+    text-align: center;
+    width: 100px;
+}
+.close_icon{
+    height: 25px;
+    width: 25px;
+    font-size: 15px;
+    border-radius: 50%;
+    background-color: black;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+}

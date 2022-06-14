@@ -15,10 +15,9 @@ mat-card-header div {
     justify-content: center;
     display: flex;
     flex-direction: column;
-  }
+}
 
   
-
 
   mat-card-header img {
     border-radius: 50%;
@@ -39,7 +38,9 @@ mat-card-header div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 1rem;
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
   }
   
   mat-card-content .boxes {

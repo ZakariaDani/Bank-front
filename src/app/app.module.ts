@@ -27,6 +27,8 @@ import { SingleAgentComponent } from './single-agent/single-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
@@ -51,11 +53,14 @@ import { SingleClientComponent } from './single-client/single-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { ClientProfileComponent } from './client-profile/client-profile.component';
+import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
+
 import { BackOfficeService } from './services/back-office.service';
 import { AgentService } from './services/agent.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AssigneClientComponent } from './assigne-client/assigne-client.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -93,6 +98,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientProfileComponent,
     AddClientComponent,
     AgentSettingsComponent,
+    ClientMainPageComponent
     AssigneClientComponent,
     BookmarkedAgentsComponent,
   ],
@@ -115,6 +121,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatDatepickerModule,
     MatExpansionModule,
     MatMenuModule,
+    MatTabsModule,
+    MatTableModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,

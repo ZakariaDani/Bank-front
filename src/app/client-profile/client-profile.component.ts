@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { AgentService } from '../services/agent.service';
+
+import { Router } from '@angular/router';
+import { ClientService } from '../services/client.service';
 
 
 @Component({
@@ -11,36 +12,24 @@ import { AgentService } from '../services/agent.service';
 })
 export class ClientProfileComponent implements OnInit {
 
-  clientDetails:any;
-  id:any;  
-  private sub: any;
-  constructor(private agentService:AgentService,private router:Router, private activate:ActivatedRoute) { }
+
+  public client:any;
+  
+  constructor(
+    private router:Router,
+    private clientService:ClientService) { }
 
   ngOnInit(): void {
-    this.sub = this.activate.params.subscribe(params => {
-      this.id = +params['id']; 
-   });
-   console.log(this.id);
-    this.agentService.getClientById(this.id).subscribe({
-      next:(res:any)=>{
-        this.clientDetails = res;
-        console.log(this.clientDetails)
-      },
-      error:(error)=>{
-        console.log(error)
+    this.clientService.getClientInfo().subscribe(
+      (response)=>{
+        this.client=response;
       }
-    });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+    )
   }
   goToHome(){
     this.router.navigate(["client-home"]);
-    console.log("aa")
   }
-  save(){
-    console.log()
-  }
+
 
   panelOpenState = false;
   

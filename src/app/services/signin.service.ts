@@ -13,7 +13,7 @@ export class SigninService {
   isLogin = false;
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AUTH_URL = 'http://localhost:1947/login';
+  private AUTH_URL = 'http://localhost:8080/login';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -32,12 +32,12 @@ export class SigninService {
 
   login(identifiant: string, password: string) {
     this.http
-      .post(`${this.AUTH_URL}`, { identifiant: identifiant, password })
+      .post(`${this.AUTH_URL}`, { identifiant, password })
 
       .subscribe(
         //@ts-ignore
-        (res: { 'refresh-token': string; 'acces-tocken': string }) => {
-          this.token = res['acces-tocken'];
+        (res: { 'refresh-token': string; 'access-token': string }) => {
+          this.token = res['access-token'];
           if (this.token) {
             this.toast
               .success('Login successful, Working on it...', '', {

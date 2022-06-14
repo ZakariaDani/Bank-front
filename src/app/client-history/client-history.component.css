@@ -1,0 +1,11 @@
+.my_container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    
+}
+
+table{
+    height: fit-content;
+}
