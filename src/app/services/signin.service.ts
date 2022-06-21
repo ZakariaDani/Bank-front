@@ -46,7 +46,7 @@ export class SigninService {
               })
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
-                const decryptedResponse: any = jwt_decode(res['acces-tocken']);
+                const decryptedResponse: any = jwt_decode(res['access-token']);
                 console.log(decryptedResponse, 'res');
                 localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);

@@ -18,11 +18,20 @@ import { AuthGuard } from './guards/auth.guard';
 import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
 import { AgentsComponent } from './agents/agents.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
+import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
 
 const routes: Routes = [
   {
     path: 'agent',
     component: NavBarAgentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_AGENT',
+    },
+  },
+  {
+    path: 'agent/client/:id',
+    component: AgentClientProfileComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'ROLE_AGENT',
@@ -83,11 +92,6 @@ const routes: Routes = [
         component:ClientMainPageComponent
       }
     ]
-
-        path: '',
-        component: ClientServiceComponent,
-      },
-    ],
   },
 
   
@@ -115,7 +119,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ enableTracing: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

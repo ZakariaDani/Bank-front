@@ -60,6 +60,7 @@ import { AgentService } from './services/agent.service';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AssigneClientComponent } from './assigne-client/assigne-client.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
+import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -98,9 +99,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientProfileComponent,
     AddClientComponent,
     AgentSettingsComponent,
-    ClientMainPageComponent
+    ClientMainPageComponent,
     AssigneClientComponent,
     BookmarkedAgentsComponent,
+    AgentClientProfileComponent,
   ],
   imports: [
     BrowserModule,

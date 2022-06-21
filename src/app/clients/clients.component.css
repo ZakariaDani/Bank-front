@@ -7,7 +7,7 @@ mat-form-field {
 }
 #container{
   padding: 30px;
-  height: 130vh;
+  height: auto;
 }
 #content{
   display: flex;
