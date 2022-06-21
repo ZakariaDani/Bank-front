@@ -28,7 +28,7 @@ export class SingleClientComponent implements OnInit {
     return `https://avatars.dicebear.com/api/adventurer/${this.client.firstName}.svg`;
   }
 
-  goToProfilePage(id: any) {
+  goToProfilePage(id: string) {
     this.router.navigate(['agent', 'client', id]);
   }
 
@@ -41,6 +41,7 @@ export class SingleClientComponent implements OnInit {
     const dialogAdd = this.dialog.open(EditClientComponent, {
       data: this.client,
       width: '50vw',
+      minWidth:'300px',
       hasBackdrop: true,
       role: 'dialog',
     });

@@ -32,11 +32,11 @@ export class ClientsComponent implements OnInit {
   }
 
   filterclients() {
-    if (this.searchTerm !== '') {
-      this.filteredclients = this.clients.filter((client) =>
-        client.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    } else {
+    if (this.searchTerm!=='') {
+        this.filteredclients = this.clients.filter((client)=>
+          client.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+    }else{
       this.filteredclients = this.clients;
     }
   }
