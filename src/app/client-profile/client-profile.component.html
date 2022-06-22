@@ -1,7 +1,7 @@
 <div id="cardprof">
 <mat-card class="card">
     <mat-card-header>
-      <img mat-card-lg-image [src]="agentDetails.image" />
+      <img mat-card-lg-image src="https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg" />
       <div>
         <mat-card-title>
           {{
@@ -9,6 +9,9 @@
           }}
           </mat-card-title>
         <mat-card-subtitle>{{ client?.email }}</mat-card-subtitle>
+        <mat-card-title>{{ (client==null)?"":client.firstName + " " + client.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ (client==null)?"":client.email}}</mat-card-subtitle>
+        <mat-card-subtitle>{{ (client==null)?"":client.address}}</mat-card-subtitle>
       </div>
     </mat-card-header>
     <mat-divider inset></mat-divider>
@@ -17,7 +20,7 @@
         <div class="box">
           <span>
             <mat-icon color="warn">calendar_month</mat-icon>
-            {{ "CLIENT_PROFILE.JOIN_DATE" | translate }}</span
+            {{ "CLIENT_PROFILE.BIRTH_DATE" | translate }}</span
           >
           <strong>{{ client?.birth }}</strong>
         </div>
@@ -35,12 +38,24 @@
             <mat-icon color="warn">badge</mat-icon>
             {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
           >
-          <strong>{{ agentDetails?.clientAgent }}</strong>
-        </div>
+          <strong>{{ client?.clientAgent }}</strong>
+      </div>
       </div>
     </mat-card-content>
     <mat-divider inset></mat-divider>
-  
-   
+    <mat-card-footer>
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title
+              ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-footer>
   </mat-card>
 </div>

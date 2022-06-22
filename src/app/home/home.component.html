@@ -65,7 +65,6 @@
       {{ "HOME.ADD_AGENT" | translate }}</a
     >
   </mat-sidenav>
-
   <mat-sidenav-content>
     <button mat-mini-fab color="accent" (click)="sidenav.toggle()">
       <mat-icon mat-list-icon *ngIf="sidenav._getWidth() < 10"
@@ -75,8 +74,6 @@
         >chevron_left</mat-icon
       >
     </button>
-
-    <!-- content -->
-    <app-agents></app-agents>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

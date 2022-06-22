@@ -12,6 +12,7 @@ import {Client} from "../models/client";
 export class ClientService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
+
   private CLIENT_URL = 'http://localhost:8081/api/v1/client';
   private client:any ={};
   private transactionId = 0;
@@ -23,7 +24,7 @@ export class ClientService {
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
   }
@@ -199,5 +200,4 @@ export class ClientService {
       {headers:{"Authorization":`Bearer ${this.token}`}}
     );
   }
-
 }

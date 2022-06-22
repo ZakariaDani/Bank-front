@@ -2,7 +2,7 @@
   <mat-card-header>
     <button
       mat-icon-button
-      [color]="agent.isFavorite ? 'warn' : ''"
+      [color]="agent.favorite ? 'warn' : ''"
       (click)="toggleFavorite(agent)"
     >
       <mat-icon>favorite</mat-icon>
@@ -22,7 +22,7 @@
     <mat-card-title>{{ agent.firstName }} {{ agent.lastName }}</mat-card-title>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="primary" (click)="goToProfilePage(agent.id)">
+    <button mat-button color="primary" (click)="goToProfilePage(agent.idCardNumber)">
       {{ "HOME.VIEW_LINK" | translate }}
     </button>
     <button mat-button (click)="openDialog()">

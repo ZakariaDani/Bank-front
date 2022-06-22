@@ -12,6 +12,7 @@
             name="firstName"
             [(ngModel)]="agent.firstName"
             [value]="agent.firstName"
+            required
           />
         </mat-form-field>
 
@@ -19,9 +20,10 @@
           <mat-label>{{ "HOME.L_NAME" | translate }}</mat-label>
           <input
             matInput
-            name="LastName"
-            [(ngModel)]="agent.LastName"
-            [value]="agent.LastName"
+            name="lastName"
+            [(ngModel)]="agent.lastName"
+            [value]="agent.lastName"
+            required
           />
         </mat-form-field>
       </p>
@@ -34,6 +36,7 @@
             name="dateOfBirth"
             [(ngModel)]="agent.dateOfBirth"
             [value]="agent.dateOfBirth"
+            required
           />
         </mat-form-field>
 
@@ -44,18 +47,31 @@
             name="password"
             [(ngModel)]="agent.adress"
             [value]="agent.adress"
+            required
           />
         </mat-form-field>
       </p>
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
         <mat-form-field style="width: 45%">
           <mat-label>Email</mat-label>
-          <input matInput name="email" [(ngModel)]="agent.email" [value]="agent.email" />
+          <input
+            matInput
+            name="email"
+            [(ngModel)]="agent.email"
+            [value]="agent.email"
+            required
+          />
         </mat-form-field>
 
         <mat-form-field style="width: 45%">
           <mat-label>{{ "HOME.PHONE" | translate }}</mat-label>
-          <input matInput name="LastName" [(ngModel)]="agent.phone" [value]="agent.phone" />
+          <input
+            matInput
+            name="LastName"
+            [(ngModel)]="agent.phone"
+            [value]="agent.phone"
+            required
+          />
         </mat-form-field>
       </p>
       <p style="display: flex; justify-content: space-between; padding: 0 10%">
@@ -66,6 +82,7 @@
             name="matricule"
             [(ngModel)]="agent.matricule"
             [value]="agent.matricule"
+            required
           />
         </mat-form-field>
 
@@ -76,6 +93,7 @@
             name="patente"
             [(ngModel)]="agent.patente"
             [value]="agent.patente"
+            required
           />
         </mat-form-field>
       </p>
@@ -101,15 +119,16 @@
             [value]="agent.description"
           ></textarea>
         </mat-form-field>
-        <div style="width: 45%;">
+        <div style="width: 45%">
           <input
             type="file"
             class="file-input"
+            name="file"
             (change)="onFileSelected($event)"
             #fileUpload
           />
-          <div class="file-upload" style="display: flex; padding: 9% 0%;">
-            {{ fileName || "No file uploaded yet." }}
+          <div class="file-upload" style="display: flex; padding: 9% 0%">
+            {{ agent?.fileName || "No file uploaded yet." }}
 
             <button
               mat-mini-fab

@@ -13,14 +13,12 @@ import { ClientProfileComponent } from './client-profile/client-profile.componen
 import { ClientHomeComponent } from './client-home/client-home.component';
 import { ClientHistoryComponent } from './client-history/client-history.component';
 import { NavBarAgentComponent } from './nav-bar-agent/nav-bar-agent.component';
-import { AddClientComponent } from './add-client/add-client.component';
 import { AgentSettingsComponent } from './agent-settings/agent-settings.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
-
-
-
-
+import { AgentsComponent } from './agents/agents.component';
+import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
+import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
 
 const routes: Routes = [
   {
@@ -28,21 +26,46 @@ const routes: Routes = [
     component: NavBarAgentComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_AGENT'
-    }
+      role: 'ROLE_AGENT',
+    },
+  },
+  {
+    path: 'agent/client/:id',
+    component: AgentClientProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_AGENT',
+    },
   },
   {
     path: 'backoffice',
     component: HomeComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_BACKOFFICE'
-    }
+      role: 'ROLE_BACKOFFICE',
+    },
+    children: [
+      {
+        path: 'settings',
+        component: BackofficeSettingsComponent,
+      },
+      {
+        path: '',
+        component: AgentsComponent,
+      },
+      {
+        path: 'bookmarked',
+        component: BookmarkedAgentsComponent,
+      },
+      {
+        path: 'agents/:id',
+        component: AgentProfileComponent,
+      },
+    ],
   },
   {
     path: '',
     component: SignInComponent,
-
   },
   {
     path: 'client-register',
@@ -53,16 +76,16 @@ const routes: Routes = [
     component: ClientHomeComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_CLIENT'
+      role: 'ROLE_CLIENT',
     },
-    children:[  
+    children: [
       {
-      path:"profile",
-      component:ClientProfileComponent
+        path: 'profile',
+        component: ClientProfileComponent,
       },
       {
-        path:"history",
-        component:ClientHistoryComponent
+        path: 'history',
+        component: ClientHistoryComponent,
       },
       {
         path:"",
@@ -70,49 +93,33 @@ const routes: Routes = [
       }
     ]
   },
-  
 
-  {
-    path: 'backoffice/settings',
-   component: BackofficeSettingsComponent,
-   canActivate: [AuthGuard],
-   data: {
-    role: 'ROLE_BACKOFFICE'
-  }
-  },
-  {
-    path: 'backoffice/agents/:id',
-    component: AgentProfileComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ROLE_BACKOFFICE'
-    }
-  },
+  
   {
     path: 'agent/client/:id',
     component: ClientProfileComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_AGENT'
-    }
+      role: 'ROLE_AGENT',
+    },
   },
   {
     path: 'agent/settings',
     component: AgentSettingsComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ROLE_AGENT'
-    }
+      role: 'ROLE_AGENT',
+    },
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: ''
-  }
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ enableTracing: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

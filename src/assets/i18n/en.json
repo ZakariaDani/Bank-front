@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accept",
+    "DENY":"Deny",
+    "ASSIGNE":"Assign Client",
     "ICON_DASHBOARD": "Dashboard",
     "ICON_SETTINGS": "Settings",
     "ICON_LOGOUT": "Logout",
@@ -60,7 +63,8 @@
     "RECEIVER_PLACE_HOLDER":"Enter the phone number of the receiver",
     "VALIDATE":"Validate",
     "SEND":"Send",
-    "SAFE_TRANSACTION":"Make safe transactions"
+    "SAFE_TRANSACTION":"Make safe transactions",
+    "SOLD":"Balance"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",
@@ -71,6 +75,7 @@
   "CLIENT_PROFILE": {
     "JOIN_DATE": "Join date",
     "CLIENTS_AGENT": "Account Agent",
+    "BIRTH_DATE":"Birthday",
     "SOLD": "Balance",
     "TIMELINE": "Transactions"
   },

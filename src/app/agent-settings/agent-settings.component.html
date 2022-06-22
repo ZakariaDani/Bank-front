@@ -2,7 +2,7 @@
 <mat-card class="card">
     <mat-card-header>
       <div class="box">
-        <img mat-card-lg-image [src]="backOfficeDetails.image" />
+        <img mat-card-lg-image [src]="image" />
         <div>
           <mat-card-title>
             {{
@@ -73,6 +73,7 @@
           />
           <mat-icon matSuffix>mode_edit</mat-icon>
         </mat-form-field>
+        <!--
         <mat-form-field>
           <mat-label>{{ "BACKOFFICE_SETTINGS.JOIN_DATE" | translate }}</mat-label>
           <input
@@ -83,6 +84,7 @@
             [value]="backOfficeDetails.joinDate"
           />
         </mat-form-field>
+        -->
       </div>
     </mat-card-content>
   </mat-card>

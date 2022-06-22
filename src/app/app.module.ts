@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -56,8 +56,12 @@ import { AgentSettingsComponent } from './agent-settings/agent-settings.componen
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientMainPageComponent } from './client-main-page/client-main-page.component';
 
-
-
+import { BackOfficeService } from './services/back-office.service';
+import { AgentService } from './services/agent.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AssigneClientComponent } from './assigne-client/assigne-client.component';
+import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
+import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -81,10 +85,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
     MenuThemeComponent,
 
-
     BackofficeSettingsComponent,
-        ClientHomeComponent,
-        ClientHistoryComponent,
+    ClientHomeComponent,
+    ClientHistoryComponent,
 
     NavBarAgentComponent,
     ClientsComponent,
@@ -97,8 +100,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientProfileComponent,
     AddClientComponent,
     AgentSettingsComponent,
-    ClientMainPageComponent
-
+    ClientMainPageComponent,
+    AssigneClientComponent,
+    BookmarkedAgentsComponent,
+    AgentClientProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +128,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -136,8 +146,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+
   ],
-  providers: [StyleManagerService, ThemeService],
+  providers: [StyleManagerService, ThemeService, BackOfficeService,AgentService,MatDatepickerModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

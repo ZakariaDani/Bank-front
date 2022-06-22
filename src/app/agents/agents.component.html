@@ -1,7 +1,8 @@
 <div>
-<form class="search" (submit)="filterAgents()">
+<form class="search">
   <mat-form-field appearance="fill">
     <input
+      (keyup)="filterAgents()"
       matInput
       placeholder="Search"
       name="searchTerm"
@@ -10,7 +11,10 @@
   </mat-form-field>
 </form>
 <mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem">
-  <mat-grid-tile *ngFor="let agent of filteredAgents">
-    <app-single-agent [agent]="agent" [agents]="agents"></app-single-agent>
+
+  <mat-grid-tile *ngFor="let agent of valueService._agents">
+    <app-single-agent [agent]="agent" [agents]="valueService._agents"></app-single-agent>
   </mat-grid-tile>
 </mat-grid-list>
+</div>
+

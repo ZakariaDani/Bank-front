@@ -20,6 +20,9 @@
     "SECOND_BUTTON":"Register"
   },
   "HOME": {
+    "ACCEPTE":"Accepter",
+    "DENY":"Refuser",
+    "ASSIGNE":"Assigner un client",
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",
     "ICON_LOGOUT": "Se déconnecter",
@@ -60,7 +63,8 @@
     "RECEIVER_PLACE_HOLDER":"Veuillez entrer le numéro de téléphone du récepteur",
     "VALIDATE":"Valider",
     "SEND":"Envoyer",
-    "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité"
+    "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité",
+    "SOLD":"Sold"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
@@ -72,6 +76,7 @@
     "JOIN_DATE": "Date d’adhésion",
     "CLIENTS_AGENT": "l'agent Du compte",
     "SOLD": "Sold",
+    "BIRTH_DATE":"Date de naissance",
     "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {

@@ -21,7 +21,7 @@ export class SigninService {
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
-      this.token = atob(fetchedToken);
+      this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
   }
@@ -31,12 +31,13 @@ export class SigninService {
   }
 
   login(identifiant: string, password: string) {
+    console.log({identifiant,password});
     this.http
       .post(`${this.AUTH_URL}`, { identifiant, password })
 
       .subscribe(
         //@ts-ignore
-        (res: { 'refresh-token': string; 'access-token': string }) => {
+        (res: { 'refresh-token': string,'access-token': string }) => {
           this.token = res['access-token'];
           if (this.token) {
             this.toast
@@ -47,15 +48,16 @@ export class SigninService {
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
                 const decryptedResponse: any = jwt_decode(res['access-token']);
-                console.log(decryptedResponse.roles[0]);
-                localStorage.setItem('act', btoa(this.token));
+                localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
                 localStorage.setItem('STATE', 'true');
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
+                  localStorage.setItem('agentEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
                   this.router.navigateByUrl('/backoffice').then();
+                  localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
                   this.router.navigateByUrl('/client-home').then();
@@ -63,7 +65,8 @@ export class SigninService {
               });
           }
         },
-        (err: HttpErrorResponse) => {
+        (error) => {
+          console.log(error.error.toString());
           this.toast.error('Authentification failed!', '', { timeOut: 1000 });
         }
       );
@@ -77,6 +80,7 @@ export class SigninService {
       .onHidden.subscribe(() => {
         localStorage.removeItem('act');
         localStorage.removeItem('ROLE');
+        localStorage.removeItem('backofficeEmail');
         localStorage.setItem('STATE', 'false');
         this.router.navigateByUrl('/').then();
       });

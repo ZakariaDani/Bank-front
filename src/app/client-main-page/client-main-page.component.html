@@ -1,5 +1,5 @@
 <div class="d-flex" class="my_container">
-    <mat-tab-group class="mt-5 ps-3 vw-100">
+    <mat-tab-group class="mt-5 ps-3">
         <mat-tab label='{{"HOME.RECHARGE" | translate}}'>
             <div class="recharge_container px-4 d-flex justify-content-center">
                 <div id="return_icon" class="d-none" (click)="return($event.currentTarget)">
@@ -57,8 +57,6 @@
             </div>
         </mat-tab>
     </mat-tab-group>   
-
-
 
     <div id="verificationContainer" class="col-6 px-3 pt-5 pb-3 rounded opacity-translate">
         <div class="close_icon" (click)="hideVerificationContainer()">

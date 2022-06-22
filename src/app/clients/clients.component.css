@@ -5,9 +5,17 @@ mat-form-field {
 .search {
   display: flex;
 }
-div{
+#container{
   padding: 30px;
-  height: 130vh;
+  height: auto;
 }
-
-  
+#content{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#elem{
+  margin: 10px;
+}
