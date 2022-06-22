@@ -14,7 +14,6 @@ export class ClientMainPageComponent implements OnInit {
   public telecom_entreprises = ["maroc_telecom","orange","inwi"]
   public selected_entreprise = "maroc_telecom";
   public recharge_amounts = [5,10,20,50,100,200];
-
   public verificationCode = "";
 
   constructor(private clientService:ClientService) { }
@@ -44,6 +43,7 @@ export class ClientMainPageComponent implements OnInit {
   hideVerificationContainer(){
     this.clientService.hideVerificationContainer();
   }
+  
   showVerificationContainer(){
     this.clientService.showVerficationContainer();
   }

@@ -66,6 +66,7 @@ export class ClientService {
   }
 
   getClientInfo():Observable<Client>{
+
     return this.http.get<Client>(`${this.CLIENT_URL}/getInfo`,
                 {
                   headers:{"Authorization":`Bearer ${this.token}`}
@@ -84,7 +85,7 @@ export class ClientService {
   }
 
   validateTransactionForm(phone:any,amount:any){
-    console.log("phone:"+phone);
+
     if(new RegExp("^0[5-7][0-9]+$").test(phone)  == false){
       this.toast
       .error('Invalid phone number', '', { timeOut: 2000 })
@@ -95,6 +96,7 @@ export class ClientService {
       .error('The amount must be a type number', '', { timeOut: 2000 })
       return false;
     }
+    
     return true;
   }
 
@@ -126,7 +128,6 @@ export class ClientService {
       return
     }
     const {receiverPhone ,amount } = rechargeForm.value;
-    console.log({receiverPhone,amount});
 
     const validatTransaction:boolean = this.validateTransactionForm(receiverPhone,amount);
 
@@ -191,10 +192,12 @@ export class ClientService {
     );
   }
 
-  getAllTransactions(){
+  getAllTransactions(item_per_page:number, pageIndex:number){
 
-    return this.http.get(`${this.CLIENT_URL}/getTransactions`,
+    return this.http.get
+    (`${this.CLIENT_URL}/getTransactions?page=${pageIndex}&pageSize=${item_per_page}`,
       {headers:{"Authorization":`Bearer ${this.token}`}}
-      );
+    );
   }
+
 }

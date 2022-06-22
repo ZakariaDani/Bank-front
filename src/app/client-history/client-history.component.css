@@ -1,8 +1,10 @@
 .my_container{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     max-width: 100%;
+    position: relative;
     
 }
 

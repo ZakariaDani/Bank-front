@@ -38,7 +38,7 @@ export class ClientProfileComponent implements OnInit {
     image: 'https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg',
     email: 'aymaned345@gmail.com',
     joinDate: '2019-12-12',
-    clientSold: 1200.00,
+    clientSold: 1200.00, 
     clientAgent: 'Hamid Chlada',
     timeline: [
       {

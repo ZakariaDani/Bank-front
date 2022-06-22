@@ -29,6 +29,7 @@ import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
@@ -120,6 +121,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatMenuModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

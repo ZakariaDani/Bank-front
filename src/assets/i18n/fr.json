@@ -49,7 +49,18 @@
     "HISTORY":"Historique",
     "CANCEL": "Annuler",
     "SAVE": "Enregister",
-    "THEME": "Thème"
+    "THEME": "Thème",
+    "RECHARGE":"Recharge télécom",
+    "TRANSACTION":"Transaction",
+    "PHONE_NUMBER":"Numéro de téléphone",
+    "PHONE_NUMBER_PLACE_HOLDER":"Veuillez entrer le numéro téléphone",
+    "AMOUNT":"Montant",
+    "AMOUNT_PLACE_HOLDER":"Veuillez entrer le montant à verser en DH",
+    "RECEIVER":"Récepteur",
+    "RECEIVER_PLACE_HOLDER":"Veuillez entrer le numéro de téléphone du récepteur",
+    "VALIDATE":"Valider",
+    "SEND":"Envoyer",
+    "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
