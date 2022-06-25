@@ -19,6 +19,7 @@ import { ClientMainPageComponent } from './client-main-page/client-main-page.com
 import { AgentsComponent } from './agents/agents.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
 import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -66,6 +67,7 @@ const routes: Routes = [
   {
     path: '',
     component: SignInComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'client-register',
