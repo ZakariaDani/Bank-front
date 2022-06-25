@@ -35,9 +35,6 @@ export class EditClientComponent implements OnInit {
         address: new FormControl(this.client.address, [
           Validators.required,
         ]),
-        birth: new FormControl(this.client.birth, [
-          Validators.required,
-        ]),
         solde: new FormControl(this.client.solde, [
         ]),
       });
@@ -53,7 +50,6 @@ export class EditClientComponent implements OnInit {
       this.client.lastName = this.options.value.lastName;
       this.client.email = this.options.value.email;
       this.client.phone = this.options.value.phone;
-      this.client.birth = this.options.value.birth;
       this.client.address = this.options.value.address;
       this.client.solde = this.options.value.solde;
       this.OnCancel();
