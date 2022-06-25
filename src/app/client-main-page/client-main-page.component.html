@@ -71,8 +71,15 @@
         <input id="verficationCode" type="text" name="verficationCode" class="my_input" 
         [(ngModel)]="verificationCode"/>
 
-        <div class=" btn btn-success mt-2 p-0 px-4 py-1" (click)="sendVerificationCode()">
+        <div class=" btn btn-success mt-2 p-0 px-4 py-1"
+         style="cursor:pointer"
+         [ngClass]="{'disabled':nbr_of_attempts>3}"
+         (click)="sendVerificationCode()">
             {{"HOME.VALIDATE" | translate}}
+        </div>
+        <div *ngIf="nbr_of_attempts>3" class="mt-2 text-danger"
+            style="font-size:15px">
+            You need to wait {{nbr_seconds_for_attempts}} seconds
         </div>
         <div style="font-size:16px" class="mt-3">
             Still didn't receive anything? 

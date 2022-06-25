@@ -12,21 +12,25 @@ import {Client} from "../models/client";
 export class ClientService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-
+  private MAX_ATTEMPTS_NUMBER = 3;
+  private attempts_number = 0;
   private CLIENT_URL = 'http://localhost:8081/api/v1/client';
   private client:any ={};
   private transactionId = 0;
+  private timeout_for_attempts = 30;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private toast: ToastrService
   ) {
+
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
       this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
+
   }
 
   get jwtUserToken(): Observable<string> {
@@ -48,8 +52,8 @@ export class ClientService {
             });
         }
         ,
-        () => {
-          this.toast.error('Client already exists !', '', { timeOut: 1000 });
+        (error) => {
+          this.toast.error(error.errro.toString(), '', { timeOut: 1000 });
         }
       );
   }
@@ -109,6 +113,9 @@ export class ClientService {
     const validTransaction:boolean = this.validateTransactionForm(receiverPhone,amount);
 
     if(validTransaction){
+
+      this.attempts_number = 0;
+
       this.http.post(`${this.CLIENT_URL}/make_transaction`,
       {receiverPhone,amount},{
           headers:{"Authorization":`Bearer ${this.token}`}
@@ -125,6 +132,7 @@ export class ClientService {
   }
 
   makeRechargeTelecom(rechargeForm:NgForm, telecomEntreprise:string){
+
     if(rechargeForm.invalid){
       return
     }
@@ -133,6 +141,8 @@ export class ClientService {
     const validatTransaction:boolean = this.validateTransactionForm(receiverPhone,amount);
 
     if(validatTransaction){
+      this.attempts_number = 0;
+
       this.http.post(`${this.CLIENT_URL}/make_telecom_recharge`,
       {telecomEntreprise,receiverPhone,amount},{
           headers:{"Authorization":`Bearer ${this.token}`}
@@ -149,7 +159,16 @@ export class ClientService {
   }
 
   sendVerificationCode(code:any){
-    if(new RegExp("^[0-9]+").test(code) == false){
+    this.attempts_number += 1
+    if(this.attempts_number >3){
+      this.toast.error(
+        "You have acheived the maximum number of attemps",
+        "",
+        {timeOut:2000}
+      );
+      return 
+    }
+    else if(new RegExp("^[0-9]+").test(code) == false){
       this.toast.error(
         "Invalid verification code",
         "",
@@ -172,16 +191,19 @@ export class ClientService {
       }
     ).subscribe(
       (response)=>{
+          setTimeout(()=>{
+            this.hideVerificationContainer()        
+          },100);
           this.toast.success(
             "The transaction has been successfully",
             "",
             {timeOut:2000}
           ).onHidden.subscribe(
             ()=>{
-              this.hideVerificationContainer();
               this.router.navigate(["client-home/history"])
-            }
+            },
           )
+        
       },
       (error)=>{
         this.toast.error(
@@ -199,5 +221,13 @@ export class ClientService {
     (`${this.CLIENT_URL}/getTransactions?page=${pageIndex}&pageSize=${item_per_page}`,
       {headers:{"Authorization":`Bearer ${this.token}`}}
     );
+  }
+
+  getAttemptsNumber(){
+    return this.attempts_number;
+  }
+  
+  setAttemptsNumber(n : number){
+    this.attempts_number = n;
   }
 }

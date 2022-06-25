@@ -64,7 +64,9 @@
     "VALIDATE":"Valider",
     "SEND":"Envoyer",
     "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité",
-    "SOLD":"Sold"
+    "SOLD":"Sold",
+    "EMITTER":"Émitteur"
+
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",

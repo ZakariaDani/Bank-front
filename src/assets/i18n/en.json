@@ -64,7 +64,8 @@
     "VALIDATE":"Validate",
     "SEND":"Send",
     "SAFE_TRANSACTION":"Make safe transactions",
-    "SOLD":"Balance"
+    "SOLD":"Balance",
+    "EMITTER":"Emitter"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",

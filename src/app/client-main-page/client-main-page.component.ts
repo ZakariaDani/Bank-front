@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ASTWithSource } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -15,11 +16,14 @@ export class ClientMainPageComponent implements OnInit {
   public selected_entreprise = "maroc_telecom";
   public recharge_amounts = [5,10,20,50,100,200];
   public verificationCode = "";
+  public nbr_of_attempts:number = 0;
+  public nbr_seconds_for_attempts:number = 30;
 
   constructor(private clientService:ClientService) { }
 
 
   ngOnInit(): void {
+    this.nbr_of_attempts = this.clientService.getAttemptsNumber();
   }
 
   next(entreprise:string){
@@ -57,10 +61,28 @@ export class ClientMainPageComponent implements OnInit {
   }
  
   sendVerificationCode(){
-    this.clientService.sendVerificationCode(this.verificationCode);
-    this.verificationCode = "";
+    if(this.nbr_of_attempts <4){
+      this.clientService.sendVerificationCode(this.verificationCode);
+      this.verificationCode = "";
+      this.nbr_of_attempts = this.clientService.getAttemptsNumber();
+
+      if(this.nbr_of_attempts == 4){
+        var interval = setInterval(()=>{ 
+          if (this.nbr_seconds_for_attempts >=1) { 
+            this.nbr_seconds_for_attempts -= 1;
+          }
+          else { 
+            this.nbr_of_attempts = 0;
+            this.nbr_seconds_for_attempts = 30
+            this.clientService.setAttemptsNumber(0);
+            clearInterval(interval);    
+          }
+       }, 1000);
+      }
+
+    }
   }
-  
+
   
 
   
