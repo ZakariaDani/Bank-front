@@ -13,13 +13,12 @@ import { ValueService } from '../services/value.service';
 })
 export class SingleAgentComponent implements OnInit {
   @Input() agent?: Agent;
-  @Input() bookmarkedAgents: any;
 
   constructor(
     private dialog: MatDialog,
     private backOfficeService: BackOfficeService,
     private router: Router,
-    private valueService:ValueService
+    private valueService: ValueService
   ) {}
 
   ngOnInit(): void {}
@@ -28,11 +27,11 @@ export class SingleAgentComponent implements OnInit {
     return `https://avatars.dicebear.com/api/adventurer/${this.agent?.firstName}.svg`;
   }
 
-  goToProfilePage() {   
+  goToProfilePage() {
     this.valueService.agents.forEach((a: Agent) => {
-      if(a.email===this.agent?.email){
-        console.log("hohooooooooooooooooo", a.idCardNumber);
-        
+      if (a.email === this.agent?.email) {
+        console.log('hohooooooooooooooooo', a.idCardNumber);
+
         this.router.navigate(['backoffice', 'agents', a.idCardNumber]);
       }
     });
@@ -42,15 +41,21 @@ export class SingleAgentComponent implements OnInit {
     this.backOfficeService.addToFavourite(agent).subscribe((res) => {
       console.log(res, '546541345');
       this.agent!.favorite = !agent.favorite;
-      if(!this.agent!.favorite) {
-        this.bookmarkedAgents.splice(this.bookmarkedAgents.indexOf(this.agent), 1);
+      if (!this.agent!.favorite) {
+        this.valueService.bookmarked.splice(
+          this.valueService.bookmarked.indexOf(this.agent),
+          1
+        );
       }
     });
   }
 
   deleteAgent(agent: any) {
     this.backOfficeService.deleteAgent(agent.email).subscribe((res) => {
-      this.valueService.agents.splice(this.valueService.agents.indexOf(agent), 1);
+      this.valueService.agents.splice(
+        this.valueService.agents.indexOf(agent),
+        1
+      );
       console.log(res);
     });
   }
