@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddAgentComponent } from '../add-agent/add-agent.component';
+import { AgentsComponent } from '../agents/agents.component';
 import { SigninService } from '../services/signin.service';
 import { ValueService } from '../services/value.service';
 
@@ -12,14 +13,16 @@ import { ValueService } from '../services/value.service';
 })
 export class HomeComponent implements OnInit {
   showFiller = false;
+  isFavoriteAgentsShown = false;
+
+  @ViewChild(AgentsComponent)
+  agentsComponent!: AgentsComponent;
   constructor(
     private dialog: MatDialog,
     private signinService: SigninService,
     private router: Router,
     private valueService: ValueService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {}
 
@@ -36,11 +39,16 @@ export class HomeComponent implements OnInit {
   }
 
   showAgentsWithMostClients() {
+    this.isFavoriteAgentsShown = false;
+
+    this.agentsComponent.showAgentsWithMostClients();
   }
 
   showAgentsWithLeastClients() {
-  }
+    this.isFavoriteAgentsShown = false;
 
+    this.agentsComponent.showAgentsWithLeastClients();
+  }
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
       data: this.valueService.agents,
