@@ -35,14 +35,14 @@ export class AddAgentComponent implements OnInit {
 
   OnCancel() {
     this.dialogAdd.close();
-    console.log(this.valueService._agents);
+    console.log(this.valueService.agents);
   }
   create(addAgentForm: NgForm) {
     if (addAgentForm.valid) {
       console.log(this.agent);
       this.backOfficeService.createAgent(this.agent).subscribe(
         (res: any) => {
-          this.valueService._agents.push(this.agent);
+          this.valueService.agents.push(this.agent);
 
           this.backOfficeService.createAgentImage(
             res.idCardNumber,
