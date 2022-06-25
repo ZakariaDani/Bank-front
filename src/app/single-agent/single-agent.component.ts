@@ -2,7 +2,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditAgentComponent } from '../edit-agent/edit-agent.component';
+import { Agent } from '../models/agent.model';
 import { BackOfficeService } from '../services/back-office.service';
+import { ValueService } from '../services/value.service';
 
 @Component({
   selector: 'app-single-agent',
@@ -10,31 +12,37 @@ import { BackOfficeService } from '../services/back-office.service';
   styleUrls: ['./single-agent.component.css'],
 })
 export class SingleAgentComponent implements OnInit {
-  @Input() agent: any;
-  @Input() agents: any;
+  @Input() agent?: Agent;
   @Input() bookmarkedAgents: any;
 
   constructor(
     private dialog: MatDialog,
     private backOfficeService: BackOfficeService,
-    private router: Router
+    private router: Router,
+    private valueService:ValueService
   ) {}
 
   ngOnInit(): void {}
 
   getImageUrl() {
-    return `https://avatars.dicebear.com/api/adventurer/${this.agent.firstName}.svg`;
+    return `https://avatars.dicebear.com/api/adventurer/${this.agent?.firstName}.svg`;
   }
 
-  goToProfilePage(id: string) {
-    this.router.navigate(['backoffice', 'agents', id]);
+  goToProfilePage() {   
+    this.valueService.agents.forEach((a: Agent) => {
+      if(a.email===this.agent?.email){
+        console.log("hohooooooooooooooooo", a.idCardNumber);
+        
+        this.router.navigate(['backoffice', 'agents', a.idCardNumber]);
+      }
+    });
   }
 
-  toggleFavorite(agent: any) {
+  toggleFavorite(agent: Agent) {
     this.backOfficeService.addToFavourite(agent).subscribe((res) => {
       console.log(res, '546541345');
-      this.agent.favorite = !agent.favorite;
-      if(!this.agent.favorite) {
+      this.agent!.favorite = !agent.favorite;
+      if(!this.agent!.favorite) {
         this.bookmarkedAgents.splice(this.bookmarkedAgents.indexOf(this.agent), 1);
       }
     });
@@ -42,7 +50,7 @@ export class SingleAgentComponent implements OnInit {
 
   deleteAgent(agent: any) {
     this.backOfficeService.deleteAgent(agent.email).subscribe((res) => {
-      this.agents.splice(this.agents.indexOf(agent), 1);
+      this.valueService.agents.splice(this.valueService.agents.indexOf(agent), 1);
       console.log(res);
     });
   }

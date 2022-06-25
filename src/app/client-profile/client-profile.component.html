@@ -9,9 +9,14 @@
           }}
           </mat-card-title>
         <mat-card-subtitle>{{ client?.email }}</mat-card-subtitle>
+<<<<<<< HEAD
+            (clientDetails==null)?"":clientDetails.firstName + " " + clientDetails.lastName
+          }}
+=======
         <mat-card-title>{{ (client==null)?"":client.firstName + " " + client.lastName }}</mat-card-title>
         <mat-card-subtitle>{{ (client==null)?"":client.email}}</mat-card-subtitle>
         <mat-card-subtitle>{{ (client==null)?"":client.address}}</mat-card-subtitle>
+>>>>>>> 9fb5a43c0c962b024e1d2fc6f6b15447888f2ff3
       </div>
     </mat-card-header>
     <mat-divider inset></mat-divider>
@@ -54,7 +59,7 @@
               ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <app-timeline [timeline]="timeline"></app-timeline>
+          <app-timeline [timeline]="agentDetails.timeline"></app-timeline>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card-footer>

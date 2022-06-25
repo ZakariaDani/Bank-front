@@ -9,6 +9,7 @@ import { ValueService } from '../services/value.service';
 })
 export class AgentsComponent implements OnInit {
   searchTerm = '';
+  filteredAgents = []
 
   constructor(
     private backOfficeService: BackOfficeService,
@@ -18,9 +19,8 @@ export class AgentsComponent implements OnInit {
   ngOnInit(): void {
     this.backOfficeService.getAllAgents().subscribe((agents) => {
       this.valueService.agents = agents;
-      console.log('********************************');
-      console.log(agents);
-      console.log('********************************');
+
+      this.filteredAgents = agents
     });
   }
   showAgentsWithMostClients() {
@@ -36,9 +36,14 @@ export class AgentsComponent implements OnInit {
   }
   filterAgents() {
     if (this.searchTerm !== '') {
-      this.valueService.agents = this.valueService.agents.filter((agent: any) =>
-        agent.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
+
+      this.filteredAgents = this.valueService.agents.filter(
+        (agent: any) =>
+          agent.firstName.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+    }
+    else {
+      this.filteredAgents = this.valueService.agents;
     }
   }
 }
