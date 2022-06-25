@@ -74,7 +74,7 @@
     "MESSAGE": "Update your personal details.",
     "F_NAME": "First name",
     "L_NAME": "Last name",
-    "JOIN_DATE": "Join date",
+    "BIRTH_DATE": "Birth date",
     "EMAIL": "Email",
     "PHONE": "Phone"
   }

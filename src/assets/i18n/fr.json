@@ -1,43 +1,43 @@
 {
-  "SIGNIN":{
-    "TITLE":"E-Banking authentification",
-    "USERNAME_PLACEHOLDER":"Entrer votre nom d'utilisateur",
-    "PASSWORD_PLACEHOLDER":"Entrer votre mot de pass",
-    "BUTTON":"Se connecter",
-    "SECOND_BUTTON":"S'inscrire",
+  "SIGNIN": {
+    "TITLE": "E-Banking authentification",
+    "USERNAME_PLACEHOLDER": "Entrer votre nom d'utilisateur",
+    "PASSWORD_PLACEHOLDER": "Entrer votre mot de pass",
+    "BUTTON": "Se connecter",
+    "SECOND_BUTTON": "S'inscrire",
     "IDENTIFIER": "Identifiant"
   },
-  "REGISTER_CLIENT":{
-    "TITLE":"E-Banking l'ouverture d'un compte",
-    "SELECT_TITLE":"Sélectioner un produit",
-    "MAXIMUM":"Plafond",
-    "FORM_TITLE":"Informations client",
-    "FIRSTNAME_HOLDER":"Enter votre prenom",
-    "LASTNAME_HOLDER":"Enter votre nom",
-    "EMAIL_HOLDER":"Enter votre email addresse",
-    "PHONE_HOLDER":"Enter votre numéro de téléphone",
-    "BUTTON":"Log in",
-    "SECOND_BUTTON":"Register"
+  "REGISTER_CLIENT": {
+    "TITLE": "E-Banking l'ouverture d'un compte",
+    "SELECT_TITLE": "Sélectioner un produit",
+    "MAXIMUM": "Plafond",
+    "FORM_TITLE": "Informations client",
+    "FIRSTNAME_HOLDER": "Enter votre prenom",
+    "LASTNAME_HOLDER": "Enter votre nom",
+    "EMAIL_HOLDER": "Enter votre email addresse",
+    "PHONE_HOLDER": "Enter votre numéro de téléphone",
+    "BUTTON": "Log in",
+    "SECOND_BUTTON": "Register"
   },
   "HOME": {
-    "ACCEPTE":"Accepter",
-    "DENY":"Refuser",
-    "ASSIGNE":"Assigner un client",
+    "ACCEPTE": "Accepter",
+    "DENY": "Refuser",
+    "ASSIGNE": "Assigner un client",
     "ICON_DASHBOARD": "Tableau de bord",
     "ICON_SETTINGS": "Paramètres",
     "ICON_LOGOUT": "Se déconnecter",
     "AGENTS_MOST_CLIENTS": "Agents avec plus de clients",
     "AGENTS_LEAST_CLIENTS": "Agents avec moins de clients",
     "BOOKMARKED_AGENTS": "Agents favoris",
-    "BOOKMARKED_CLIENTS":"Clients favoris",
-    "MY_CLIENTS":"Mes clients",
+    "BOOKMARKED_CLIENTS": "Clients favoris",
+    "MY_CLIENTS": "Mes clients",
     "ADD_AGENT": "Ajouter un nouveau agent",
     "SEARCH": "Rechercher",
     "VIEW_LINK": "Voir le profil",
     "EDIT_LINK": "éditer le profil",
     "F_NAME": "Nom",
     "L_NAME": "Prénom",
-    "ADD_CLIENT":"Ajouter un nouveau client",
+    "ADD_CLIENT": "Ajouter un nouveau client",
     "D_OF_BIRTH": "Date de naissance",
     "ADRESS": "Adresse",
     "PHONE": "Numéro de téléphone",
@@ -47,13 +47,13 @@
     "LICENCE": "N° de patente",
     "REGISTRATION_NUMBER": "N° d'immatriculation au registre de commerce",
     "CREATE": "Créer",
-    "_HOME":"Acceuil",
-    "PROFILE":"Profil",
-    "HISTORY":"Historique",
+    "_HOME": "Acceuil",
+    "PROFILE": "Profil",
+    "HISTORY": "Historique",
     "CANCEL": "Annuler",
     "SAVE": "Enregister",
     "THEME": "Thème",
-    "SOLD":"Sold"
+    "SOLD": "Sold"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
@@ -65,7 +65,7 @@
     "JOIN_DATE": "Date d’adhésion",
     "CLIENTS_AGENT": "l'agent Du compte",
     "SOLD": "Sold",
-    "BIRTH_DATE":"Date de naissance",
+    "BIRTH_DATE": "Date de naissance",
     "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {
@@ -74,7 +74,7 @@
     "MESSAGE": "Mettre à jour vos données personnelles.",
     "F_NAME": "Prénom",
     "L_NAME": "Nom",
-    "JOIN_DATE": "Date d’adhésion",
+    "BIRTH_DATE": "Date de naissance",
     "EMAIL": "Email",
     "PHONE": "Téléphone"
   }
