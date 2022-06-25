@@ -90,8 +90,8 @@ const routes: Routes = [
       {
         path:"",
         component:ClientMainPageComponent
-      }
-    ]
+      },
+    ],
   },
 
   

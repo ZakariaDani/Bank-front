@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SigninService } from '../services/signin.service';
 
@@ -14,8 +15,11 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private signinService: SigninService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Welcome');
+  }
 
   ngOnInit(): void {}
   toggleHide() {
@@ -31,7 +35,8 @@ export class SignInComponent implements OnInit {
     const { identifiant, password } = signinForm.value;
   
     this.signinService.login(identifiant, password);
-    return signinForm.reset();
+
+    //return signinForm.reset();
 
   }
 }
