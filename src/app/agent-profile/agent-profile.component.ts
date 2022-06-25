@@ -19,7 +19,7 @@ export class AgentProfileComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.backOfficeService
       .getAgent(this.route.snapshot.paramMap.get('id'))
       .subscribe((agent) => {

@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
 
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {
-      data: this.valueService._agents,
+      data: this.valueService.agents,
       width: '50vw',
       hasBackdrop: true,
       role: 'dialog',

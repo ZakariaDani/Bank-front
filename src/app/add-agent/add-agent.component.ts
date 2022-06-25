@@ -35,8 +35,9 @@ export class AddAgentComponent implements OnInit {
 
   OnCancel() {
     this.dialogAdd.close();
-    console.log(this.valueService._agents);
+    console.log(this.valueService.agents);
   }
+
   create(addAgentForm: NgForm) {
     if (addAgentForm.valid) {
       console.log(this.agent);
