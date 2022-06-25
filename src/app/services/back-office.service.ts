@@ -10,11 +10,8 @@ import { Agent } from '../models/agent.model';
 export class BackOfficeService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = 'http://localhost:1947/api/v1/backoffice';
-  constructor(
-    private http: HttpClient,
-    private toast: ToastrService
-  ) {
+  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
+  constructor(private http: HttpClient, private toast: ToastrService) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
       this.token = fetchedToken;
@@ -26,6 +23,15 @@ export class BackOfficeService {
   get jwtBackOfficeToken(): Observable<string> {
     return this.jwtToken$.asObservable();
   }
+
+  getImage(imageName: string): Observable<any> {
+    return this.http.get(`${this.BACK_OFFICE_URL}/agents/image/${imageName}`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+      responseType: 'blob',
+    });
+  }
   createAgentImage(agentId: string, file: File) {
     let formData = new FormData();
     formData.append('file', file, file.name);
@@ -35,7 +41,7 @@ export class BackOfficeService {
           Authorization: `Bearer ${this.token}`,
         },
         reportProgress: true,
-        observe: 'response'
+        observe: 'response',
       })
       .subscribe({
         next: (response: any) => {
@@ -47,8 +53,6 @@ export class BackOfficeService {
       });
   }
   createAgent(agent: any) {
-
- 
     const {
       firstName,
       lastName,
@@ -118,13 +122,9 @@ export class BackOfficeService {
 
     return this.http
 
-      .patch(
-        `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}`,
-        agent,
-        {
-          headers: { Authorization: `Bearer ${this.token}` },
-        }
-      )
+      .patch(`${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}`, agent, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
 
       .pipe(
         tap((res) => {
@@ -153,9 +153,7 @@ export class BackOfficeService {
       );
   }
 
-
   addToFavourite(agent: any) {
-
     console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http
@@ -210,5 +208,4 @@ export class BackOfficeService {
         })
       );
   }
-
 }

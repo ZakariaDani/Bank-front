@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Agent } from '../models/agent.model';
 import { BackOfficeService } from '../services/back-office.service';
@@ -11,9 +12,11 @@ import { BackOfficeService } from '../services/back-office.service';
 export class AgentProfileComponent implements OnInit {
   panelOpenState = false;
   agent?: Agent;
+  image: any;
   constructor(
     private backOfficeService: BackOfficeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -21,6 +24,20 @@ export class AgentProfileComponent implements OnInit {
       .getAgent(this.route.snapshot.paramMap.get('id'))
       .subscribe((agent) => {
         this.agent = agent;
+        this.getImage();
       });
+  }
+
+  getImage() {
+    let imageName = this.agent?.fileName || '';
+    this.backOfficeService.getImage(imageName).subscribe({
+      next: (response: any) => {
+        let unsafeImageUrl = URL.createObjectURL(response);
+        this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+      },
+      error: (response: any) => {
+        console.log(response, 'error getting image');
+      },
+    });
   }
 }
