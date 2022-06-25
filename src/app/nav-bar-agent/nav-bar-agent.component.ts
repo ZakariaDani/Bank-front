@@ -23,8 +23,8 @@ export class NavBarAgentComponent implements OnInit {
     private signinService: SigninService,
     private router: Router,
     private titleService: Title
-  ) {
-    this.titleService.setTitle("Home Agent");
+    ) {
+      this.titleService.setTitle('Agent');
   }
 
   clients: any = [];
