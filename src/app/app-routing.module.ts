@@ -19,7 +19,12 @@ import { ClientMainPageComponent } from './client-main-page/client-main-page.com
 import { AgentsComponent } from './agents/agents.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
 import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
+
+import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-clients.component';
+import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
+
 import { LoginGuard } from './guards/login.guard';
+
 
 const routes: Routes = [
   {
@@ -59,6 +64,14 @@ const routes: Routes = [
         component: BookmarkedAgentsComponent,
       },
       {
+        path: 'mostClients',
+        component: AgentsMostClientsComponent,
+      },
+      {
+        path: 'leastClients',
+        component: AgentsLeastClientsComponent,
+      },
+      {
         path: 'agents/:id',
         component: AgentProfileComponent,
       },
@@ -90,13 +103,12 @@ const routes: Routes = [
         component: ClientHistoryComponent,
       },
       {
-        path:"",
-        component:ClientMainPageComponent
+        path: '',
+        component: ClientMainPageComponent,
       },
     ],
   },
 
-  
   {
     path: 'agent/client/:id',
     component: ClientProfileComponent,
@@ -121,7 +133,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

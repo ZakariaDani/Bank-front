@@ -12,4 +12,5 @@ export interface Agent {
   favorite: boolean;
   dateOfBirth: string;
   fileName: string;
+  number_of_client: number;
 }
