@@ -9,8 +9,14 @@
           }}
           </mat-card-title>
         <mat-card-subtitle>{{ client?.email }}</mat-card-subtitle>
+<<<<<<< HEAD
             (clientDetails==null)?"":clientDetails.firstName + " " + clientDetails.lastName
           }}
+=======
+        <mat-card-title>{{ (client==null)?"":client.firstName + " " + client.lastName }}</mat-card-title>
+        <mat-card-subtitle>{{ (client==null)?"":client.email}}</mat-card-subtitle>
+        <mat-card-subtitle>{{ (client==null)?"":client.address}}</mat-card-subtitle>
+>>>>>>> 9fb5a43c0c962b024e1d2fc6f6b15447888f2ff3
       </div>
     </mat-card-header>
     <mat-divider inset></mat-divider>
@@ -37,7 +43,7 @@
             <mat-icon color="warn">badge</mat-icon>
             {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
           >
-          <strong>{{ agentDetails?.clientAgent }}</strong>
+          <strong>{{ client?.clientAgent }}</strong>
       </div>
       </div>
     </mat-card-content>

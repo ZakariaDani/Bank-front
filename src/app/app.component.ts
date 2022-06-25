@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   
   constructor(private router: Router) {}
   ngOnInit(): void {
-    console.log('jijijiji');
     switch (localStorage.getItem('ROLE')) {
       case 'ROLE_BACKOFFICE':
         this.router.navigateByUrl('/backoffice');

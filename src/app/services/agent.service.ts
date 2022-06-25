@@ -10,7 +10,7 @@ import { ClientRegisterComponent } from '../client-register/client-register.comp
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = 'http://localhost:1947/api/v1/agent';
+  private AGENT_URL = 'http://localhost:8080/api/v1/agent';
   public currentmail: any = '';
   constructor(
     private http: HttpClient,

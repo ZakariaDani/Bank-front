@@ -1,0 +1,62 @@
+<div id="cardprof">
+    <mat-card class="card">
+        <mat-card-header>
+          <img mat-card-lg-image src="https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg" />
+          <div>
+            <mat-card-title>
+              {{
+                (clientDetails==null)?"":clientDetails.firstName + " " + clientDetails.lastName
+              }}</mat-card-title
+            >
+            <mat-card-subtitle>{{ (clientDetails==null)?"":clientDetails.email}}</mat-card-subtitle>
+            <mat-card-subtitle>{{ (clientDetails==null)?"":clientDetails.address}}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-divider inset></mat-divider>
+        <mat-card-content>
+          <div class="boxes">
+            <div class="box">
+              <span>
+                <mat-icon color="warn">calendar_month</mat-icon>
+                {{ "CLIENT_PROFILE.BIRTH_DATE" | translate }}</span
+              >
+              <strong>{{ (clientDetails==null)?"":clientDetails.birth }}</strong>
+            </div>
+      
+            <div class="box">
+              <span>
+                <mat-icon color="warn">numbers</mat-icon>
+                {{ "CLIENT_PROFILE.SOLD" | translate }}</span
+              >
+              <strong>{{ (clientDetails==null)?"":clientDetails.solde |  currency:' MAD '}}</strong>
+            </div>
+      
+            <div class="box">
+              <span>
+                <mat-icon color="warn">badge</mat-icon>
+                {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
+              >
+              <strong>{{ (clientDetails==null)?"":clientDetails.phone }}</strong>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+      
+        <mat-card-footer>
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title
+                  ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-timeline [timeline]="timeline"></app-timeline>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    

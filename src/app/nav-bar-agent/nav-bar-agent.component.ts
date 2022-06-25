@@ -52,6 +52,7 @@ export class NavBarAgentComponent implements OnInit {
   openDialog() {
     const dialogAdd = this.dialog.open(AddClientComponent, {
       width: '50vw',
+      minWidth:'300px',
       hasBackdrop: true,
       role: 'dialog',
     })
@@ -63,6 +64,7 @@ export class NavBarAgentComponent implements OnInit {
     const dialogAdd = this.dialog.open(AssigneClientComponent, {
       width: '50vw',
       hasBackdrop: true,
+      minWidth:'300px',
       role: 'dialog',
     })
   }

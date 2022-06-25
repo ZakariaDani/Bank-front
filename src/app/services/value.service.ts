@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ValueService {
-  _agents: any = [];
+  private _agents: any = [];
 
   set agents(agents: any) {
     this._agents = agents;
