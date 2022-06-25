@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
     <div class="box">
-      <img mat-card-lg-image [src]="backOfficeDetails.image" />
+      <img mat-card-lg-image [src]="getImageUrl()" />
       <div>
         <mat-card-title>
           {{
@@ -73,13 +73,15 @@
         <mat-icon matSuffix>mode_edit</mat-icon>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ "BACKOFFICE_SETTINGS.JOIN_DATE" | translate }}</mat-label>
+        <mat-label>{{
+          "BACKOFFICE_SETTINGS.BIRTH_DATE" | translate
+        }}</mat-label>
         <input
           matInput
           type="date"
-          name="joinDate"
-          [(ngModel)]="backOfficeDetails.joinDate"
-          [value]="backOfficeDetails.joinDate"
+          name="birthDate"
+          [(ngModel)]="backOfficeDetails.birthDate"
+          [value]="backOfficeDetails.birthDate"
         />
       </mat-form-field>
     </div>

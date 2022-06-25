@@ -24,6 +24,29 @@ export class BackOfficeService {
     return this.jwtToken$.asObservable();
   }
 
+  getBackOffice(email: any): Observable<any> {
+    return this.http.get(`${this.BACK_OFFICE_URL}/${email}`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
+  }
+
+  updateBackOffice(backOffice: any) {
+    return this.http
+      .patch(`${this.BACK_OFFICE_URL}/${backOffice.email}`, backOffice, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+
+      .pipe(
+        tap((res) => {
+          if (res) {
+            this.toast.success('backoffice updated successfully', '', {
+              timeOut: 1000,
+            });
+          }
+        })
+      );
+  }
+
   getImage(imageName: string): Observable<any> {
     return this.http.get(`${this.BACK_OFFICE_URL}/agents/image/${imageName}`, {
       headers: {
