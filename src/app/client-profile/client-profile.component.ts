@@ -32,8 +32,16 @@ export class ClientProfileComponent implements OnInit {
 
 
   panelOpenState = false;
-  
-  timeline= [
+  agentDetails = {
+    id: 2,
+    firstName: 'Aymane',
+    lastName: 'Daif',
+    image: 'https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg',
+    email: 'aymaned345@gmail.com',
+    joinDate: '2019-12-12',
+    clientSold: 1200.00,
+    clientAgent: 'Hamid Chlada',
+    timeline: [
       {
         title: 'Transfert',
         description: 'Transfert of 10 $',
@@ -49,7 +57,8 @@ export class ClientProfileComponent implements OnInit {
         description: 'You Have Deposite 100 $',
         date: '2020-05-04',
       },
-    ]
+    ],
+  };
 
 
 

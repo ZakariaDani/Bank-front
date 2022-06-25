@@ -98,7 +98,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientProfileComponent,
     AddClientComponent,
     AgentSettingsComponent,
-    ClientMainPageComponent
+    ClientMainPageComponent,
     AssigneClientComponent,
     BookmarkedAgentsComponent,
   ],
