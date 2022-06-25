@@ -1,5 +1,5 @@
 <div>
-  <div>
+  <form #addAgentForm="ngForm">
     <div>
       <h3>{{ "HOME.PER_INFO" | translate }}</h3>
     </div>
@@ -13,6 +13,7 @@
             [(ngModel)]="agent.firstName"
             [value]="agent.firstName"
             required
+            minlength="4"
           />
         </mat-form-field>
 
@@ -24,6 +25,7 @@
             [(ngModel)]="agent.lastName"
             [value]="agent.lastName"
             required
+            minlength="4"
           />
         </mat-form-field>
       </p>
@@ -56,6 +58,7 @@
           <mat-label>Email</mat-label>
           <input
             matInput
+            type="email"
             name="email"
             [(ngModel)]="agent.email"
             [value]="agent.email"
@@ -67,7 +70,7 @@
           <mat-label>{{ "HOME.PHONE" | translate }}</mat-label>
           <input
             matInput
-            name="LastName"
+            name="phone"
             [(ngModel)]="agent.phone"
             [value]="agent.phone"
             required
@@ -146,9 +149,9 @@
       <button mat-flat-button (click)="OnCancel()">
         {{ "HOME.CANCEL" | translate }}
       </button>
-      <button mat-raised-button color="primary" (click)="create()">
+      <button mat-raised-button color="primary" (click)="create(addAgentForm)">
         {{ "HOME.CREATE" | translate }}
       </button>
     </div>
-  </div>
+  </form>
 </div>

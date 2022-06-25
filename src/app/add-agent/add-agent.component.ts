@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BackOfficeService } from '../services/back-office.service';
 import { ValueService } from '../services/value.service';
@@ -36,26 +37,27 @@ export class AddAgentComponent implements OnInit {
     this.dialogAdd.close();
     console.log(this.valueService._agents);
   }
-  create() {
-    console.log(this.agent);
-    this.backOfficeService.createAgent(this.agent).subscribe(
-      (res: any) => {
-        this.valueService._agents.push(this.agent);
+  create(addAgentForm: NgForm) {
+    if (addAgentForm.valid) {
+      console.log(this.agent);
+      this.backOfficeService.createAgent(this.agent).subscribe(
+        (res: any) => {
+          this.valueService._agents.push(this.agent);
 
-        this.backOfficeService.createAgentImage(
-          res.idCardNumber,
-          this.selectedFile
-        );
+          this.backOfficeService.createAgentImage(
+            res.idCardNumber,
+            this.selectedFile
+          );
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
 
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+      console.log('done');
 
-    console.log('done');
-
-    this.dialogAdd.close();
+      this.dialogAdd.close();
+    }
   }
   onFileSelected(event: any) {
     if (event.target && event.target.files) {
