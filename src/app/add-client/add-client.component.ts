@@ -35,9 +35,6 @@ export class AddClientComponent implements OnInit {
       address: new FormControl('', [
         Validators.required,
       ]),
-      birth: new FormControl('2001-01-12', [
-        Validators.required,
-      ]),
       solde: new FormControl(0, [
       ]),
     });
