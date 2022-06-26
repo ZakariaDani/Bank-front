@@ -10,7 +10,7 @@ import { ClientRegisterComponent } from '../client-register/client-register.comp
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = 'http://localhost:8080/api/v1/agent';
+  private AGENT_URL = 'http://localhost:8081/api/v1/agent';
   public currentmail: any = '';
   constructor(
     private http: HttpClient,
@@ -35,20 +35,11 @@ export class AgentService {
       responseType: 'text',
     });
   }
-  getAllClients(): Observable<any> {
+  getAllClients():Observable<any> {
     return this.http
       .get(`${this.AGENT_URL}/clients`, {
         headers: { Authorization: `Bearer ${this.token}` },
-      })
-      .pipe(
-        tap((res) => {
-          if (res) {
-            console.log(res);
-          } else {
-            console.log('not getted');
-          }
-        })
-      );
+      });
   }
   getClientsWithoutAgent(): Observable<any> {
     return this.http.get(`${this.AGENT_URL}/clientswithoutagent`, {
@@ -92,17 +83,33 @@ export class AgentService {
 
   addClient(client: any) {
     return this.http
-      .post(`${this.AGENT_URL}/addclient/`, client, {
+      .post(`${this.AGENT_URL}/addclient`, client, {
         headers: { Authorization: `Bearer ${this.token}` },
       })
-      .subscribe({
-        next: (resp) => {
-          console.log(resp);
+      .subscribe(
+        (response:any)=>{
+          this.toast.success(
+            "The client has been added successfully",
+            "",
+            {
+              timeOut:1500
+            }
+          ).onHidden.subscribe(
+            ()=>{
+              window.location.reload();
+            }
+          )
         },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+        (error)=>{
+            this.toast.error(
+              error.error.message.toString(),
+              "",
+              {
+                timeOut:1500
+              }
+        )},
+        
+      );
   }
 
   getClientById(id: any) {
@@ -111,18 +118,19 @@ export class AgentService {
     });
   }
   updateClient(client: any, clientid: number) {
+
     return this.http
       .put(`${this.AGENT_URL}/updateclient/${clientid}`, client, {
         headers: { Authorization: `Bearer ${this.token}` },
-      })
-      .subscribe({
+      }).subscribe({
         next: (resp) => {
           console.log('updated' + resp);
-        },
+        },  
         error: (err) => {
-          console.log('error updating');
-        },
-      });
+          console.log(err);
+        }     
+      }
+      );
   }
   updateProfile(agent: any) {
     return this.http
@@ -131,11 +139,32 @@ export class AgentService {
       })
       .subscribe({
         next: (resp) => {
-          console.log('updated' + resp);
+          this.toast.success(
+            "Success",
+            "",
+            {timeOut:1000}
+          ).onHidden.subscribe(
+          ()=>{
+            this.router.navigate(["agent"]);
+          }
+          )
         },
         error: (err) => {
-          console.log('error updating');
         },
       });
+  }
+
+  getAllClientTransactions(id:number){
+    
+    return this.http.get
+    (`${this.AGENT_URL}/getTClientTransactions/${id}`,
+      {headers:{"Authorization":`Bearer ${this.token}`}}
+    );
+  }
+
+  getMyInfo(){
+    return this.http.get(`${this.AGENT_URL}/getcurrentinfo`,
+      {headers:{"Authorization":`Bearer ${this.token}`}}
+    );
   }
 }

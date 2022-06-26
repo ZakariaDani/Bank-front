@@ -28,15 +28,15 @@ export class SignInComponent implements OnInit {
 
   onSubmit(signinForm: NgForm) {
     
-    console.log(signinForm.value);
     if (signinForm.invalid) {
       return;
     }
+    
     const { identifiant, password } = signinForm.value;
   
     this.signinService.login(identifiant, password);
 
-    //return signinForm.reset();
+    return signinForm.reset();
 
   }
 }

@@ -24,6 +24,8 @@ import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-cl
 import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
 
 import { LoginGuard } from './guards/login.guard';
+import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
+import { FirstTimeGuardGuard } from './guards/first-time-guard.guard';
 
 
 const routes: Routes = [
@@ -125,6 +127,14 @@ const routes: Routes = [
       role: 'ROLE_AGENT',
     },
   },
+  {
+    path: 'newPassword',
+    component: ClientNewPasswordComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CLIENT',
+    },
+  },  
   {
     path: '**',
     pathMatch: 'full',

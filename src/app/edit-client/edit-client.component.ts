@@ -33,8 +33,8 @@ export class EditClientComponent implements OnInit {
           Validators.email,
         ]),
         address: new FormControl(this.client.address, [
-          Validators.required,
         ]),
+
         solde: new FormControl(this.client.solde, [
         ]),
       });
@@ -44,7 +44,6 @@ export class EditClientComponent implements OnInit {
   }
   update() {
     if(this.options.valid){
-      console.log(this.options.value);
       this.agentService.updateClient(this.options.value,this.client.id)
       this.client.firstName = this.options.value.firstName;
       this.client.lastName = this.options.value.lastName;

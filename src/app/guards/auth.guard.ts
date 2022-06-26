@@ -27,9 +27,8 @@ export class AuthGuard implements CanActivate {
       map((result) => !!result),
       tap((result) => {
 
-        console.log(result);
         const userRole = this.signinService.getRole();
-
+        
         if (!result || (route.data['role'] && route.data['role'].indexOf(userRole) === -1)) {
           this.router.navigateByUrl('/').then();
           return result;

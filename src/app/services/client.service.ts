@@ -10,11 +10,11 @@ import {Client} from "../models/client";
   providedIn: 'root',
 })
 export class ClientService {
-  private token = '';
+  private token:any = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-
+  private MAX_ATTEMPTS_NUMBER = 3;
+  private attempts_number = 0;
   private CLIENT_URL = 'http://localhost:8080/api/v1/client';
-  private client:any ={};
   private transactionId = 0;
 
   constructor(
@@ -22,11 +22,13 @@ export class ClientService {
     private router: Router,
     private toast: ToastrService
   ) {
+
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
       this.token = fetchedToken;
       this.jwtToken$.next(this.token);
     }
+
   }
 
   get jwtUserToken(): Observable<string> {
@@ -48,8 +50,9 @@ export class ClientService {
             });
         }
         ,
-        () => {
-          this.toast.error('Client already exists !', '', { timeOut: 1000 });
+        (error) => {
+          console.log(error);
+          this.toast.error(error.error.message.toString(), '', { timeOut: 1000 });
         }
       );
   }
@@ -67,6 +70,7 @@ export class ClientService {
   }
 
   getClientInfo():Observable<Client>{
+
     return this.http.get<Client>(`${this.CLIENT_URL}/getInfo`,
                 {
                   headers:{"Authorization":`Bearer ${this.token}`}
@@ -85,7 +89,7 @@ export class ClientService {
   }
 
   validateTransactionForm(phone:any,amount:any){
-    console.log("phone:"+phone);
+
     if(new RegExp("^0[5-7][0-9]+$").test(phone)  == false){
       this.toast
       .error('Invalid phone number', '', { timeOut: 2000 })
@@ -96,6 +100,7 @@ export class ClientService {
       .error('The amount must be a type number', '', { timeOut: 2000 })
       return false;
     }
+    
     return true;
   }
 
@@ -107,6 +112,9 @@ export class ClientService {
     const validTransaction:boolean = this.validateTransactionForm(receiverPhone,amount);
 
     if(validTransaction){
+
+      this.attempts_number = 0;
+
       this.http.post(`${this.CLIENT_URL}/make_transaction`,
       {receiverPhone,amount},{
           headers:{"Authorization":`Bearer ${this.token}`}
@@ -123,15 +131,17 @@ export class ClientService {
   }
 
   makeRechargeTelecom(rechargeForm:NgForm, telecomEntreprise:string){
+
     if(rechargeForm.invalid){
       return
     }
     const {receiverPhone ,amount } = rechargeForm.value;
-    console.log({receiverPhone,amount});
 
     const validatTransaction:boolean = this.validateTransactionForm(receiverPhone,amount);
 
     if(validatTransaction){
+      this.attempts_number = 0;
+
       this.http.post(`${this.CLIENT_URL}/make_telecom_recharge`,
       {telecomEntreprise,receiverPhone,amount},{
           headers:{"Authorization":`Bearer ${this.token}`}
@@ -148,7 +158,16 @@ export class ClientService {
   }
 
   sendVerificationCode(code:any){
-    if(new RegExp("^[0-9]+").test(code) == false){
+    this.attempts_number += 1
+    if(this.attempts_number >3){
+      this.toast.error(
+        "You have acheived the maximum number of attemps",
+        "",
+        {timeOut:2000}
+      );
+      return 
+    }
+    else if(new RegExp("^[0-9]+").test(code) == false){
       this.toast.error(
         "Invalid verification code",
         "",
@@ -171,16 +190,19 @@ export class ClientService {
       }
     ).subscribe(
       (response)=>{
+          setTimeout(()=>{
+            this.hideVerificationContainer()        
+          },100);
           this.toast.success(
             "The transaction has been successfully",
             "",
             {timeOut:2000}
           ).onHidden.subscribe(
             ()=>{
-              this.hideVerificationContainer();
               this.router.navigate(["client-home/history"])
-            }
+            },
           )
+        
       },
       (error)=>{
         this.toast.error(
@@ -192,10 +214,50 @@ export class ClientService {
     );
   }
 
-  getAllTransactions(){
+  getAllTransactions(item_per_page:number, pageIndex:number){
 
-    return this.http.get(`${this.CLIENT_URL}/getTransactions`,
+    return this.http.get
+    (`${this.CLIENT_URL}/getTransactions?page=${pageIndex}&pageSize=${item_per_page}`,
       {headers:{"Authorization":`Bearer ${this.token}`}}
-      );
+    );
+  }
+
+  getAttemptsNumber(){
+    return this.attempts_number;
+  }
+  
+  setAttemptsNumber(n : number){
+    this.attempts_number = n;
+  }
+
+  checkIfTheClientIsConnectedForTheFirstTime(clientToken:any){
+    return this.http.get(
+      `${this.CLIENT_URL}/getStatusOfTheClient`,
+      {
+        headers:{
+        "Authorization":`Bearer ${clientToken}`,
+      }}
+    );
+  }
+
+  setNewPasswordForTheClient(data:any){
+
+    this.token = localStorage.getItem("act");
+    return this.http.post(
+      `${this.CLIENT_URL}/clientNewPassword`,data,
+      {headers:{
+        "Authorization":`Bearer ${this.token}`,
+      }}
+    );
+  }
+
+  getMyInfo(){
+    return this.http.get(
+      `${this.CLIENT_URL}/clientInfo`,
+      {
+        headers:{
+        "Authorization":`Bearer ${this.token}`,
+      }}
+    );
   }
 }

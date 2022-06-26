@@ -13,7 +13,7 @@ import { ClientService } from '../services/client.service';
 export class ClientRegisterComponent implements OnInit {
   hide = true;
 
-  types = [200, 5000, 10000];
+  plafons = [200, 5000, 10000];
 
   constructor(private clientService: ClientService) {}
 
@@ -26,8 +26,7 @@ export class ClientRegisterComponent implements OnInit {
     if (registerForm.invalid) {
       return;
     }
-    const { account_type, fname, lname, email, phone } = registerForm.value;
-    this.clientService.register(registerForm.value);
-    registerForm.reset();
+    const { plafon, firstName, lastName, email, phone } = registerForm.value;
+    this.clientService.register({ plafon, firstName, lastName, email, phone });
   }
 }

@@ -53,7 +53,21 @@
     "CANCEL": "Cancel", 
     "SAVE": "Save",
     "THEME": "Theme",
-    "SOLD":"Balance"
+    "RECHARGE":"Telecom recharge",
+    "TRANSACTION":"Transaction",
+    "PHONE_NUMBER":"Phone number",
+    "PHONE_NUMBER_PLACE_HOLDER":"Enter the phone number",
+    "AMOUNT":"Amount",
+    "AMOUNT_PLACE_HOLDER":"Enter the amount to send in DH",
+    "RECEIVER":"Receiver",
+    "RECEIVER_PLACE_HOLDER":"Enter the phone number of the receiver",
+    "VALIDATE":"Validate",
+    "SEND":"Send",
+    "SAFE_TRANSACTION":"Make safe transactions",
+    "SOLD":"Balance",
+    "EMITTER":"Emitter",
+    "NEW_PASSWORD_PLACEHOLDER":"Enter a new password",
+    "NEW_PASSWORD_TITLE":"A new password for your account"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",
@@ -64,7 +78,7 @@
   "CLIENT_PROFILE": {
     "JOIN_DATE": "Join date",
     "CLIENTS_AGENT": "Account Agent",
-    "BIRTH_DATE":"Birthday",
+    "CREATION_DATE":"Creation date",
     "SOLD": "Balance",
     "TIMELINE": "Transactions"
   },

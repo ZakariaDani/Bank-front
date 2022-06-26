@@ -53,7 +53,22 @@
     "CANCEL": "Annuler",
     "SAVE": "Enregister",
     "THEME": "Thème",
-    "SOLD": "Sold"
+    "RECHARGE":"Recharge télécom",
+    "TRANSACTION":"Transaction",
+    "PHONE_NUMBER":"Numéro de téléphone",
+    "PHONE_NUMBER_PLACE_HOLDER":"Veuillez entrer le numéro téléphone",
+    "AMOUNT":"Montant",
+    "AMOUNT_PLACE_HOLDER":"Veuillez entrer le montant à verser en DH",
+    "RECEIVER":"Récepteur",
+    "RECEIVER_PLACE_HOLDER":"Veuillez entrer le numéro de téléphone du récepteur",
+    "VALIDATE":"Valider",
+    "SEND":"Envoyer",
+    "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité",
+    "SOLD":"Sold",
+    "EMITTER":"Émitteur",
+    "NEW_PASSWORD_PLACEHOLDER":"Veuillez entrer un nouveau mot de passe",
+    "NEW_PASSWORD_TITLE":"Un nouveau mot de pass pour votre compte"
+
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",
@@ -65,7 +80,7 @@
     "JOIN_DATE": "Date d’adhésion",
     "CLIENTS_AGENT": "l'agent Du compte",
     "SOLD": "Sold",
-    "BIRTH_DATE": "Date de naissance",
+    "CREATION_DATE": "Date de creation",
     "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {

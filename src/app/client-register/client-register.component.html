@@ -9,9 +9,11 @@
                 <mat-label>{{
                     "REGISTER_CLIENT.SELECT_TITLE" | translate
                 }}</mat-label>
-                <mat-select name="account_type" required ngModel>
-                    <mat-option *ngFor="let account_type of types ; let i=index" [value]="account_type">
-                    Hssab {{i+1}} - {{"REGISTER_CLIENT.MAXIMUM" | translate }} : {{account_type}} DH
+                <mat-select name="plafon" required ngModel>
+                    <mat-option *ngFor="let plafon of plafons ; let i=index" 
+                    [value]="plafon">
+                    Hssab {{i+1}} - 
+                    {{"REGISTER_CLIENT.MAXIMUM" | translate }} : {{plafon}} DH
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -24,13 +26,13 @@
                     <mat-label>{{
                       "REGISTER_CLIENT.FIRSTNAME_HOLDER" | translate
                     }}</mat-label>
-                    <input matInput id="fist_name" name="fname" required ngModel />
+                    <input matInput id="fist_name" name="firstName" required ngModel />
                   </mat-form-field>
                 <mat-form-field appearance="fill" class="col-6">
                     <mat-label>{{
                         "REGISTER_CLIENT.LASTNAME_HOLDER" | translate
                     }}</mat-label>
-                <input matInput id="last_name" name="lname" required ngModel />
+                <input matInput id="last_name" name="lastName" required ngModel />
                 </mat-form-field>
             </div>
 

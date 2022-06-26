@@ -1,6 +1,6 @@
 <div class="d-flex" class="my_container">
-    <mat-tab-group class="mt-5 ps-3 vw-100">
-        <mat-tab label="Recharge Télécom">
+    <mat-tab-group class="mt-5 ps-3">
+        <mat-tab label='{{"HOME.RECHARGE" | translate}}'>
             <div class="recharge_container px-4 d-flex justify-content-center">
                 <div id="return_icon" class="d-none" (click)="return($event.currentTarget)">
                     <mat-icon>arrow_back</mat-icon>
@@ -18,44 +18,45 @@
                 <form id="next_page_recharge" class="to_the_right smooth_transition pt-5" #recharge_form = "ngForm" (submit)="makeRechargeTelecom(recharge_form)">
                     <img src="../../assets/img/{{selected_entreprise}}.png" class="mb-5" />
                     <mat-form-field class="example-full-width col-10 col-md-8 col-lg-6" appearance="fill">
-                        <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="Entre the phone number" name="receiverPhone" required ngModel>
+                        <mat-label>{{ "HOME.PHONE_NUMBER" | translate }}</mat-label>
+                        <input matInput placeholder='{{"HOME.PHONE_NUMBER_PLACE_HOLDER" | translate }}' name="receiverPhone" required ngModel>
                     </mat-form-field>           
                     <mat-form-field appearance="fill" class="example-full-width mt-2 col-10 col-md-8 col-lg-6" name="amount">
-                        <mat-label>Amount</mat-label>
+                        <mat-label>{{"HOME.AMOUNT" | translate }}</mat-label>
                         <mat-select name="amount" required ngModel >
                           <mat-option *ngFor="let recharge of recharge_amounts" [value]="recharge">{{recharge}}</mat-option>
                         </mat-select>
                     </mat-form-field>   
-                    <input type="submit" class="btn btn-primary px-4 mt-3" value="Validate"
+                    <input type="submit" class="btn btn-primary px-4 mt-3" 
+                    value='{{"HOME.VALIDATE" | translate}}'
                     [disabled]="recharge_form.invalid">
                 </form>    
             </div> 
         </mat-tab>
-        <mat-tab label="Transaction">
+        <mat-tab label='{{"HOME.TRANSACTION" | translate}}'>
             <div class="recharge_container px-4 d-flex justify-content-center">
                 <form id="next_page_recharge" class="pt-4" #transaction_form ="ngForm"
                 (submit)="makeTransaction(transaction_form)">
-                    <h1 class="mb-4" style="font-weight: bold;">Make safe transactions</h1>
+                    <h1 class="mb-4" style="font-weight: bold;">
+                        {{"HOME.SAFE_TRANSACTION" | translate}}</h1>
                     <img src="../../assets/img/money_image.svg"  class="mb-3"/>
                     <mat-form-field class="example-full-width col-10 col-md-8 col-lg-6" appearance="fill">
-                        <mat-label>Receiver</mat-label>
-                        <input matInput placeholder="Entre the phone number of the receiver" name="receiverPhone"
+                        <mat-label>{{"HOME.RECEIVER" | translate}}</mat-label>
+                        <input matInput placeholder='{{"HOME.RECEIVER_PLACE_HOLDER" | translate}}' name="receiverPhone"
                         required ngModel>
                     </mat-form-field>
                     <mat-form-field class="example-full-width col-10 col-md-8 col-lg-6" appearance="fill">
-                        <mat-label>Amount</mat-label>
-                        <input matInput placeholder="Entre the amount to send in DH" name="amount" required ngModel>
+                        <mat-label>{{"HOME.AMOUNT" | translate}}</mat-label>
+                        <input matInput placeholder='{{"HOME.AMOUNT_PLACE_HOLDER" | translate}}' name="amount" required ngModel
+                        >
                     </mat-form-field>           
                                 
-                    <input type="submit" class="btn btn-primary px-4 mt-3" value="Send"
+                    <input type="submit" class="btn btn-primary px-4 mt-3" value='{{"HOME.SEND" | translate}}'
                     [disabled]="transaction_form.invalid">
                 </form> 
             </div>
         </mat-tab>
     </mat-tab-group>   
-
-
 
     <div id="verificationContainer" class="col-6 px-3 pt-5 pb-3 rounded opacity-translate">
         <div class="close_icon" (click)="hideVerificationContainer()">
@@ -70,8 +71,15 @@
         <input id="verficationCode" type="text" name="verficationCode" class="my_input" 
         [(ngModel)]="verificationCode"/>
 
-        <div class=" btn btn-success mt-2 p-0 px-4 py-1" (click)="sendVerificationCode()">
-            Validate
+        <div class=" btn btn-success mt-2 p-0 px-4 py-1"
+         style="cursor:pointer"
+         [ngClass]="{'disabled':nbr_of_attempts>3}"
+         (click)="sendVerificationCode()">
+            {{"HOME.VALIDATE" | translate}}
+        </div>
+        <div *ngIf="nbr_of_attempts>3" class="mt-2 text-danger"
+            style="font-size:15px">
+            You need to wait {{nbr_seconds_for_attempts}} seconds
         </div>
         <div style="font-size:16px" class="mt-3">
             Still didn't receive anything? 

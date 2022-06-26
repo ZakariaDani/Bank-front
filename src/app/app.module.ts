@@ -29,6 +29,7 @@ import { AddAgentComponent } from './add-agent/add-agent.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
@@ -61,6 +62,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AssigneClientComponent } from './assigne-client/assigne-client.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
 import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
+import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
 import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-clients.component';
 import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
 
@@ -105,6 +107,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AssigneClientComponent,
     BookmarkedAgentsComponent,
     AgentClientProfileComponent,
+    ClientNewPasswordComponent,
     AgentsMostClientsComponent,
     AgentsLeastClientsComponent,
   ],
@@ -129,6 +132,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatMenuModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
     HttpClientModule,
     FormsModule,
     BrowserModule,
