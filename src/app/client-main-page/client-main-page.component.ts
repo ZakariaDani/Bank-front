@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ASTWithSource } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientService } from '../services/client.service';
 
@@ -15,15 +16,25 @@ export class ClientMainPageComponent implements OnInit {
   public telecom_entreprises = ["maroc_telecom","orange","inwi"]
   public selected_entreprise = "maroc_telecom";
   public recharge_amounts = [5,10,20,50,100,200];
+  public the_client_tries_to_connect_for_the_first_time = false;
   public verificationCode = "";
   public nbr_of_attempts:number = 0;
   public nbr_seconds_for_attempts:number = 30;
 
-  constructor(private clientService:ClientService) { }
+  constructor(private clientService:ClientService,
+              private router:Router) { }
 
 
   ngOnInit(): void {
     this.nbr_of_attempts = this.clientService.getAttemptsNumber();
+    this.clientService.checkIfTheClientIsConnectedForTheFirstTime().subscribe(
+      (response:any)=>{
+        this.the_client_tries_to_connect_for_the_first_time = response;
+        if(this.the_client_tries_to_connect_for_the_first_time){
+          this.router.navigate(["client-home/"]);
+        }
+      }
+    )
   }
 
   next(entreprise:string){

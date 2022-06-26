@@ -231,4 +231,13 @@ export class ClientService {
   setAttemptsNumber(n : number){
     this.attempts_number = n;
   }
+
+  checkIfTheClientIsConnectedForTheFirstTime(){
+    return this.http.get(
+      `${this.CLIENT_URL}/firstTime`,
+      {headers:{
+        "Authorization":`Bearer ${this.token}`,
+      }}
+    );
+  }
 }
