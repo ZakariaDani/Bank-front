@@ -14,7 +14,7 @@ export class ClientService {
   private jwtToken$ = new BehaviorSubject<string>(this.token);
   private MAX_ATTEMPTS_NUMBER = 3;
   private attempts_number = 0;
-  private CLIENT_URL = 'http://localhost:8081/api/v1/client';
+  private CLIENT_URL = 'http://localhost:8080/api/v1/client';
   private transactionId = 0;
 
   constructor(
