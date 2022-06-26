@@ -10,14 +10,12 @@ import {Client} from "../models/client";
   providedIn: 'root',
 })
 export class ClientService {
-  private token = '';
+  private token:any = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
   private MAX_ATTEMPTS_NUMBER = 3;
   private attempts_number = 0;
   private CLIENT_URL = 'http://localhost:8081/api/v1/client';
-  private client:any ={};
   private transactionId = 0;
-  private timeout_for_attempts = 30;
 
   constructor(
     private http: HttpClient,
@@ -232,10 +230,32 @@ export class ClientService {
     this.attempts_number = n;
   }
 
-  checkIfTheClientIsConnectedForTheFirstTime(){
+  checkIfTheClientIsConnectedForTheFirstTime(clientToken:any){
     return this.http.get(
       `${this.CLIENT_URL}/getStatusOfTheClient`,
+      {
+        headers:{
+        "Authorization":`Bearer ${clientToken}`,
+      }}
+    );
+  }
+
+  setNewPasswordForTheClient(data:any){
+
+    this.token = localStorage.getItem("act");
+    return this.http.post(
+      `${this.CLIENT_URL}/clientNewPassword`,data,
       {headers:{
+        "Authorization":`Bearer ${this.token}`,
+      }}
+    );
+  }
+
+  getMyInfo(){
+    return this.http.get(
+      `${this.CLIENT_URL}/clientInfo`,
+      {
+        headers:{
         "Authorization":`Bearer ${this.token}`,
       }}
     );

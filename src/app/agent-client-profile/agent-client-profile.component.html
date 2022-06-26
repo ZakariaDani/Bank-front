@@ -17,7 +17,6 @@
           <div class="boxes">
             <div class="box">
               <span>
-<<<<<<< HEAD
                 <mat-icon color="warn">calendar_month</mat-icon>
                 {{ "CLIENT_PROFILE.CREATION_DATE" | translate }}</span
               >
@@ -26,8 +25,6 @@
       
             <div class="box">
               <span>
-=======
->>>>>>> 1a6903dd67cb01c6fdcb877f912da0c2d013cc20
                 <mat-icon color="warn">numbers</mat-icon>
                 {{ "CLIENT_PROFILE.SOLD" | translate }}</span
               >
@@ -56,7 +53,40 @@
                   ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-timeline [timeline]="clientTransactions"></app-timeline>
+              <table mat-table [dataSource]="clientTransactions" class="col-11 col-md-10 col-lg-8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="emitter">
+                  <th mat-header-cell *matHeaderCellDef> {{"HOME.EMITTER" | translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.emitter}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="receiver">
+                  <th mat-header-cell *matHeaderCellDef> {{"HOME.RECEIVER" | translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.receiver}} </td>
+                </ng-container>
+        
+                <!-- Weight Column -->
+                <ng-container matColumnDef="amount">
+                  <th mat-header-cell *matHeaderCellDef> {{"HOME.AMOUNT" | translate}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element.amount}} DH </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef> Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+            </table> 
+        
             </mat-expansion-panel>
           </mat-accordion>
         </mat-card-footer>

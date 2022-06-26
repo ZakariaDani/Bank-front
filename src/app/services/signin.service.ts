@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { ClientService } from './client.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class SigninService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private clientService:ClientService
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
@@ -48,7 +50,9 @@ export class SigninService {
                 const decryptedResponse: any = jwt_decode(res['access-token']);
                 localStorage.setItem('act', this.token);
                 localStorage.setItem('ROLE', decryptedResponse.roles[0]);
+                
                 localStorage.setItem('STATE', 'true');
+
                 if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
                   this.router.navigateByUrl('/agent').then();
                   localStorage.setItem('agentEmail', decryptedResponse.sub);
@@ -58,7 +62,25 @@ export class SigninService {
                   localStorage.setItem('backofficeEmail', decryptedResponse.sub);
                 }
                 if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
-                  this.router.navigateByUrl('/client-home').then();
+                  this.clientService.checkIfTheClientIsConnectedForTheFirstTime(this.token)
+                  .subscribe(
+                    (response:any)=>{
+                      let the_client_tried_to_connect_for_the_first_time = response;
+                      console.log(response);
+                      localStorage.setItem("firstTime",
+                      the_client_tried_to_connect_for_the_first_time)
+
+                      if(the_client_tried_to_connect_for_the_first_time){
+                        this.router.navigateByUrl("/newPassword").then();
+                      }
+                      else{
+                        this.router.navigateByUrl('/client-home').then();
+                      }
+                    },
+                    (error)=>{
+                      console.log(error);
+                    }
+                  )
                 }
               });
           }
@@ -78,6 +100,7 @@ export class SigninService {
         localStorage.removeItem('act');
         localStorage.removeItem('ROLE');
         localStorage.removeItem('backofficeEmail');
+        localStorage.removeItem('firstTime');
         localStorage.setItem('STATE', 'false');
         this.router.navigateByUrl('/').then();
       });

@@ -122,15 +122,15 @@ export class AgentService {
     return this.http
       .put(`${this.AGENT_URL}/updateclient/${clientid}`, client, {
         headers: { Authorization: `Bearer ${this.token}` },
-      })
-      .subscribe({
+      }).subscribe({
         next: (resp) => {
           console.log('updated' + resp);
-        },
+        },  
         error: (err) => {
-          console.log('error updating');
-        },
-      });
+          console.log(err);
+        }     
+      }
+      );
   }
   updateProfile(agent: any) {
     return this.http
@@ -139,11 +139,32 @@ export class AgentService {
       })
       .subscribe({
         next: (resp) => {
-          console.log('updated' + resp);
+          this.toast.success(
+            "Success",
+            "",
+            {timeOut:1000}
+          ).onHidden.subscribe(
+          ()=>{
+            this.router.navigate(["agent"]);
+          }
+          )
         },
         error: (err) => {
-          console.log('error updating');
         },
       });
+  }
+
+  getAllClientTransactions(id:number){
+    
+    return this.http.get
+    (`${this.AGENT_URL}/getTClientTransactions/${id}`,
+      {headers:{"Authorization":`Bearer ${this.token}`}}
+    );
+  }
+
+  getMyInfo(){
+    return this.http.get(`${this.AGENT_URL}/getcurrentinfo`,
+      {headers:{"Authorization":`Bearer ${this.token}`}}
+    );
   }
 }

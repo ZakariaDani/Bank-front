@@ -5,17 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class FirstTimeGuardGuard implements CanActivate {
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    let user_state = localStorage.getItem("STATE");
-    
-    if(user_state == "false" || user_state == null){
-      return true
-    }
-    return false
+    return true;
   }
   
 }

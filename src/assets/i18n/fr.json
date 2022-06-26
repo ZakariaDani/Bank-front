@@ -65,7 +65,10 @@
     "SEND":"Envoyer",
     "SAFE_TRANSACTION":"Effectuez des transactions en toute sécurité",
     "SOLD":"Sold",
-    "EMITTER":"Émitteur"
+    "EMITTER":"Émitteur",
+    "NEW_PASSWORD_PLACEHOLDER":"Veuillez entrer un nouveau mot de passe",
+    "NEW_PASSWORD_TITLE":"Un nouveau mot de pass pour votre compte"
+
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Date d’adhésion",

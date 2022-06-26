@@ -23,6 +23,7 @@ export class ClientHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchTransactions(5 , 1);
+
   }
 
   changePage(event:any){
@@ -35,7 +36,7 @@ export class ClientHistoryComponent implements OnInit {
     this.clientService.getAllTransactions(item_per_page,pageIndex).subscribe(
       (response:any)=>{
         this.length = response.totalElements;
-        this.transactions = response.content;
+        this.transactions = response;
       },
       (error)=>{
         this.toast.error(

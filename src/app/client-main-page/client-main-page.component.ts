@@ -16,10 +16,10 @@ export class ClientMainPageComponent implements OnInit {
   public telecom_entreprises = ["maroc_telecom","orange","inwi"]
   public selected_entreprise = "maroc_telecom";
   public recharge_amounts = [5,10,20,50,100,200];
-  public the_client_tries_to_connect_for_the_first_time = false;
   public verificationCode = "";
   public nbr_of_attempts:number = 0;
   public nbr_seconds_for_attempts:number = 30;
+  public client:any;
 
   constructor(private clientService:ClientService,
               private router:Router) { }
@@ -68,7 +68,6 @@ export class ClientMainPageComponent implements OnInit {
       this.clientService.sendVerificationCode(this.verificationCode);
       this.verificationCode = "";
       this.nbr_of_attempts = this.clientService.getAttemptsNumber();
-
       if(this.nbr_of_attempts == 4){
         var interval = setInterval(()=>{ 
           if (this.nbr_seconds_for_attempts >=1) { 
@@ -82,9 +81,11 @@ export class ClientMainPageComponent implements OnInit {
           }
        }, 1000);
       }
-
     }
   }
+
+  
+  
 
   
 

@@ -31,6 +31,7 @@ export class SignInComponent implements OnInit {
     if (signinForm.invalid) {
       return;
     }
+    
     const { identifiant, password } = signinForm.value;
   
     this.signinService.login(identifiant, password);

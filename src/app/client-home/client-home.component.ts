@@ -13,6 +13,7 @@ export class ClientHomeComponent implements OnInit {
 
   public the_client_tries_to_connect_for_the_first_time = true;
 
+  public client:any;
 
   constructor(
     private router: Router,
@@ -24,15 +25,7 @@ export class ClientHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.checkIfTheClientIsConnectedForTheFirstTime().subscribe(
-      (response:any)=>{
-
-        this.the_client_tries_to_connect_for_the_first_time = response;
-        if(this.the_client_tries_to_connect_for_the_first_time){
-          this.router.navigate(["client-home/newPassword"]);
-        }
-      }
-    )
+    this.getMyInfo();    
   }
 
   goToHome() {
@@ -46,5 +39,17 @@ export class ClientHomeComponent implements OnInit {
   }
   logout() {
     this.signInService.logout();
+  }
+
+  getMyInfo(){
+    this.clientService.getMyInfo().subscribe(
+      (response:any)=>{
+        this.client = response;
+      }
+      ,
+      (error:any)=>{
+        console.log(error);
+      }
+    );
   }
 }

@@ -17,6 +17,8 @@ import { SigninService } from '../services/signin.service';
 export class NavBarAgentComponent implements OnInit {
 
   showFiller = false;
+
+  public agent :any;
   constructor(
     private dialog: MatDialog,
     private agentService: AgentService,
@@ -33,7 +35,13 @@ export class NavBarAgentComponent implements OnInit {
   @ViewChild(ClientsComponent)
   clienstComponent!: ClientsComponent;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.agentService.getMyInfo().subscribe(
+      (response:any)=>{
+        this.agent = response;
+      }
+    );
+  }
 
   goToSettingsPage() {
     this.router.navigate(['agent', 'settings']);

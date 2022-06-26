@@ -65,7 +65,9 @@
     "SEND":"Send",
     "SAFE_TRANSACTION":"Make safe transactions",
     "SOLD":"Balance",
-    "EMITTER":"Emitter"
+    "EMITTER":"Emitter",
+    "NEW_PASSWORD_PLACEHOLDER":"Enter a new password",
+    "NEW_PASSWORD_TITLE":"A new password for your account"
   },
   "AGENT_PROFILE": {
     "JOIN_DATE": "Join date",
