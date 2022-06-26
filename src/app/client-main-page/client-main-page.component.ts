@@ -31,7 +31,7 @@ export class ClientMainPageComponent implements OnInit {
       (response:any)=>{
         this.the_client_tries_to_connect_for_the_first_time = response;
         if(this.the_client_tries_to_connect_for_the_first_time){
-          this.router.navigate(["client-home/"]);
+          this.router.navigate(["client-home/newPassword"]);
         }
       }
     )
