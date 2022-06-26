@@ -116,5 +116,5 @@ button{
 }
 
 .disabled{
-    filter:brightness(0.9);
+    visibility: hidden;
 }

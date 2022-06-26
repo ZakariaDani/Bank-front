@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Agent } from '../models/agent.model';
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Agent } from '../models/agent.model';
 export class BackOfficeService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = 'http://localhost:8080/api/v1/backoffice';
+  private BACK_OFFICE_URL = environment.API_URL+'/backoffice';
   constructor(private http: HttpClient, private toast: ToastrService) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
