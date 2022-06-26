@@ -1,9 +1,13 @@
 <div class="bigContainer d-flex  align-items-center justify-content-md-start justify-content-center">
+  
     <mat-card class="home-card col-11 col-md-6 col-sm-9 col-lg-5 col-xl-4 ml-md-5 p-md-4">
       <mat-card-title class="pt-3 pb-4 font-weight-bold">{{
         "SIGNIN.TITLE" | translate
       }}</mat-card-title>
       <mat-card-content>
+
+        <app-loading *ngIf=""></app-loading>
+
         <form #signinForm="ngForm" (submit)="onSubmit(signinForm)">
           <div>
             <p>

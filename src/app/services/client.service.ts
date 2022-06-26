@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import {Client} from "../models/client";
 import {Client} from "../models/client.model";
 
 @Injectable({
@@ -14,7 +16,7 @@ export class ClientService {
   private jwtToken$ = new BehaviorSubject<string>(this.token);
   private MAX_ATTEMPTS_NUMBER = 3;
   private attempts_number = 0;
-  private CLIENT_URL = 'http://localhost:8080/api/v1/client';
+  private CLIENT_URL = environment.API_URL+"/client";
   private transactionId = 0;
 
   constructor(

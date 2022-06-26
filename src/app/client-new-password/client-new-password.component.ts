@@ -44,7 +44,7 @@ export class ClientNewPasswordComponent implements OnInit {
       },
       (error)=>{
         this.toast.error(
-          error.error.toString,
+          error.error.message.toString(),
           "",
           {timeOut:2000}
         );

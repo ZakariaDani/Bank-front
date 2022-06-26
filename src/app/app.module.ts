@@ -65,6 +65,7 @@ import { AgentClientProfileComponent } from './agent-client-profile/agent-client
 import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
 import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-clients.component';
 import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
+import { LoadingComponent } from './loading/loading.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -110,6 +111,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ClientNewPasswordComponent,
     AgentsMostClientsComponent,
     AgentsLeastClientsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import { ClientService } from './client.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class SigninService {
   isLogin = false;
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AUTH_URL = 'http://localhost:8080/login';
+  private AUTH_URL = environment.AUTH_URL;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -63,6 +65,10 @@ export class SigninService {
                 this.clientService
                   .checkIfTheClientIsConnectedForTheFirstTime(this.token)
                   .subscribe(
+                    (response:any)=>{
+                      let the_client_tried_to_connect_for_the_first_time = response;
+                      localStorage.setItem("firstTime",
+                      the_client_tried_to_connect_for_the_first_time)
                     (response: any) => {
                       let the_client_tried_to_connect_for_the_first_time =
                         response;
@@ -80,6 +86,14 @@ export class SigninService {
                     (error) => {
                       console.error(error);
                     }
+                  )
+                }
+
+              });
+          }
+        },
+        (error) => {
+          this.toast.error('Authentification failed!', '', { timeOut: 2000 });
                   );
               }
             });
@@ -111,4 +125,5 @@ export class SigninService {
     this.roleAs = localStorage.getItem('ROLE');
     return this.roleAs;
   }
+
 }

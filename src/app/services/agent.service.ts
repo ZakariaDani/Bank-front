@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ClientRegisterComponent } from '../client-register/client-register.component';
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { ClientRegisterComponent } from '../client-register/client-register.comp
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = 'http://localhost:8081/api/v1/agent';
+  private AGENT_URL = environment.API_URL+'/agent';
   public currentmail: any = '';
   constructor(
     private http: HttpClient,
