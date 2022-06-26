@@ -11,7 +11,9 @@ import { AgentService } from '../services/agent.service';
 export class AddClientComponent implements OnInit {
 
   options!: FormGroup;
-  constructor(private fb: FormBuilder,private agentService:AgentService,public dialogAdd: MatDialogRef<AddClientComponent>) { }
+  constructor(private fb: FormBuilder,
+    private agentService:AgentService,
+    public dialogAdd: MatDialogRef<AddClientComponent>) { }
 
   ngOnInit(): void {
     this.options = new FormGroup({
@@ -35,9 +37,6 @@ export class AddClientComponent implements OnInit {
       address: new FormControl('', [
         Validators.required,
       ]),
-      birth: new FormControl('2001-01-12', [
-        Validators.required,
-      ]),
       solde: new FormControl(0, [
       ]),
     });
@@ -48,10 +47,7 @@ export class AddClientComponent implements OnInit {
   }
   create() {
     if(this.options.valid){
-      console.log(this.options.value);
       this.agentService.addClient(this.options.value)
-      this.dialogAdd.close();
-      window.location.reload();
     }
   }
 }

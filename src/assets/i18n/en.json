@@ -76,7 +76,7 @@
   "CLIENT_PROFILE": {
     "JOIN_DATE": "Join date",
     "CLIENTS_AGENT": "Account Agent",
-    "BIRTH_DATE":"Birthday",
+    "CREATION_DATE":"Creation date",
     "SOLD": "Balance",
     "TIMELINE": "Transactions"
   },

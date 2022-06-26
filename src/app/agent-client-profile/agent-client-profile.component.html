@@ -18,9 +18,9 @@
             <div class="box">
               <span>
                 <mat-icon color="warn">calendar_month</mat-icon>
-                {{ "CLIENT_PROFILE.BIRTH_DATE" | translate }}</span
+                {{ "CLIENT_PROFILE.CREATION_DATE" | translate }}</span
               >
-              <strong>{{ (clientDetails==null)?"":clientDetails.birth }}</strong>
+              <strong>{{ (clientDetails==null)?"":clientDetails.creation_date }}</strong>
             </div>
       
             <div class="box">
@@ -34,7 +34,7 @@
             <div class="box">
               <span>
                 <mat-icon color="warn">badge</mat-icon>
-                {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
+                {{ "HOME.PHONE_NUMBER" | translate }}</span
               >
               <strong>{{ (clientDetails==null)?"":clientDetails.phone }}</strong>
             </div>
@@ -53,7 +53,7 @@
                   ><strong>{{ "CLIENT_PROFILE.TIMELINE" | translate }}</strong>
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <app-timeline [timeline]="timeline"></app-timeline>
+              <app-timeline [timeline]="clientTransactions"></app-timeline>
             </mat-expansion-panel>
           </mat-accordion>
         </mat-card-footer>

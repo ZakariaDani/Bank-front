@@ -16,7 +16,6 @@
       flex-direction: column;
     }
     mat-card-header{
-        border: solid red 1px;
         display: flex;
         flex-direction: column;
         justify-content: center;

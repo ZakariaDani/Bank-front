@@ -26,8 +26,7 @@ export class ClientRegisterComponent implements OnInit {
     if (registerForm.invalid) {
       return;
     }
-    const { plafon, fname, lname, email, phone } = registerForm.value;
-    this.clientService.register(registerForm.value);
-    registerForm.reset();
+    const { plafon, firstName, lastName, email, phone } = registerForm.value;
+    this.clientService.register({ plafon, firstName, lastName, email, phone });
   }
 }

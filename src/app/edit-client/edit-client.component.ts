@@ -33,9 +33,8 @@ export class EditClientComponent implements OnInit {
           Validators.email,
         ]),
         address: new FormControl(this.client.address, [
-          Validators.required,
         ]),
-        birth: new FormControl(this.client.birth, [
+        creation_date: new FormControl(this.client.creation_date, [
           Validators.required,
         ]),
         solde: new FormControl(this.client.solde, [
@@ -47,13 +46,11 @@ export class EditClientComponent implements OnInit {
   }
   update() {
     if(this.options.valid){
-      console.log(this.options.value);
       this.agentService.updateClient(this.options.value,this.client.id)
       this.client.firstName = this.options.value.firstName;
       this.client.lastName = this.options.value.lastName;
       this.client.email = this.options.value.email;
       this.client.phone = this.options.value.phone;
-      this.client.birth = this.options.value.birth;
       this.client.address = this.options.value.address;
       this.client.solde = this.options.value.solde;
       this.OnCancel();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentService } from '../services/agent.service';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-agent-client-profile',
@@ -13,13 +14,17 @@ export class AgentClientProfileComponent implements OnInit {
   clientDetails:any;
   id:any;  
   private sub: any;
-  constructor(private agentService:AgentService,private router:Router, private activate:ActivatedRoute) { }
+  public clientTransactions :any;
+
+  constructor(private agentService:AgentService,
+    private router:Router, 
+    private activate:ActivatedRoute,
+    private clientService:ClientService) { }
 
   ngOnInit(): void {
     this.sub = this.activate.params.subscribe(params => {
       this.id = +params['id']; 
    });
-   console.log(this.id);
     this.agentService.getClientById(this.id).subscribe({
       next:(res:any)=>{
         this.clientDetails = res;
@@ -42,24 +47,7 @@ export class AgentClientProfileComponent implements OnInit {
   }
 
   panelOpenState = false;
-  
-  timeline= [
-      {
-        title: 'Transfert',
-        description: 'Transfert of 10 $ to souhail',
-        date: '2019-12-12',
-      },
-      {
-        title: 'Transfert',
-        description: 'Transfert of 50 $',
-        date: '2020-12-12',
-      },
-      {
-        title: 'Deposite',
-        description: 'You Have Deposite 100 $',
-        date: '2020-05-04',
-      },
-    ]
+
 
 
 

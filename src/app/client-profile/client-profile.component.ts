@@ -12,7 +12,6 @@ import { ClientService } from '../services/client.service';
 })
 export class ClientProfileComponent implements OnInit {
 
-
   public client:any;
   
   constructor(
@@ -23,6 +22,7 @@ export class ClientProfileComponent implements OnInit {
     this.clientService.getClientInfo().subscribe(
       (response)=>{
         this.client=response;
+        console.log(response);
       }
     )
   }

@@ -6,7 +6,7 @@
       <div>
         <mat-card-title>
           {{
-            client?.fname + " " + client?.lname
+            client?.firstName + " " + client?.lastName
           }}
           </mat-card-title>
         <mat-card-subtitle>{{ client?.email }}</mat-card-subtitle>
@@ -18,9 +18,9 @@
         <div class="box">
           <span>
             <mat-icon color="warn">calendar_month</mat-icon>
-            {{ "CLIENT_PROFILE.BIRTH_DATE" | translate }}</span
+            {{ "CLIENT_PROFILE.CREATION_DATE" | translate }}</span
           >
-          <strong>{{ client?.birth }}</strong>
+          <strong>{{ client?.creation_date }}</strong>
         </div>
   
         <div class="box">
@@ -36,7 +36,7 @@
             <mat-icon color="warn">badge</mat-icon>
             {{ "CLIENT_PROFILE.CLIENTS_AGENT" | translate }}</span
           >
-          <strong>{{ client?.clientAgent }}</strong>
+          <strong>{{ client?.agent.email }}</strong>
       </div>
       </div>
     </mat-card-content>

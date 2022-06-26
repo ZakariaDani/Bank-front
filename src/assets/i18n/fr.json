@@ -77,7 +77,7 @@
     "JOIN_DATE": "Date d’adhésion",
     "CLIENTS_AGENT": "l'agent Du compte",
     "SOLD": "Sold",
-    "BIRTH_DATE": "Date de naissance",
+    "CREATION_DATE": "Date de creation",
     "TIMELINE": "Transactions"
   },
   "BACKOFFICE_SETTINGS": {

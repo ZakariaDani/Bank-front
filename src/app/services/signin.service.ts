@@ -31,10 +31,8 @@ export class SigninService {
   }
 
   login(identifiant: string, password: string) {
-    console.log({identifiant,password});
     this.http
       .post(`${this.AUTH_URL}`, { identifiant, password })
-
       .subscribe(
         //@ts-ignore
         (res: { 'refresh-token': string,'access-token': string }) => {
@@ -45,7 +43,7 @@ export class SigninService {
                 timeOut: 700,
                 positionClass: 'toast-top-center',
               })
-              .onHidden.subscribe(() => {
+              .onHidden.subscribe(() => { 
                 this.jwtToken$.next(this.token);
                 const decryptedResponse: any = jwt_decode(res['access-token']);
                 localStorage.setItem('act', this.token);
@@ -66,8 +64,7 @@ export class SigninService {
           }
         },
         (error) => {
-          console.log(error.error.toString());
-          this.toast.error('Authentification failed!', '', { timeOut: 1000 });
+          this.toast.error('Authentification failed!', '', { timeOut: 2000 });
         }
       );
   }
