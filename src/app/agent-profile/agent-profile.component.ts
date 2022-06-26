@@ -19,7 +19,7 @@ export class AgentProfileComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.backOfficeService
       .getAgent(this.route.snapshot.paramMap.get('id'))
       .subscribe((agent) => {
@@ -36,7 +36,7 @@ export class AgentProfileComponent implements OnInit {
         this.image = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
       },
       error: (response: any) => {
-        console.log(response, 'error getting image');
+        console.error(response, 'error getting image');
       },
     });
   }

@@ -51,7 +51,7 @@ export class ClientService {
         }
         ,
         (error) => {
-          console.log(error);
+          console.error(error);
           this.toast.error(error.error.message.toString(), '', { timeOut: 1000 });
         }
       );

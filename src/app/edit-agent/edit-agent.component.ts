@@ -8,23 +8,21 @@ import { BackOfficeService } from '../services/back-office.service';
   styleUrls: ['./edit-agent.component.css'],
 })
 export class EditAgentComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public agent: any,
+    public dialogAdd: MatDialogRef<EditAgentComponent>,
+    private backOfficeService: BackOfficeService
+  ) {}
 
-  constructor(@Inject(MAT_DIALOG_DATA) public agent: any, public dialogAdd: MatDialogRef<EditAgentComponent>, private backOfficeService: BackOfficeService) {}
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   OnCancel() {
     this.dialogAdd.close();
   }
-  save() {  
-    console.log(this.agent);
-    
+  save() {
     this.backOfficeService
-        .updateAgent(this.agent)
-        .subscribe((result: any) => {
-          console.log(result);
-        });
+      .updateAgent(this.agent)
+      .subscribe((result: any) => {});
     this.dialogAdd.close();
   }
 }

@@ -10,22 +10,21 @@ import { SigninService } from '../services/signin.service';
   styleUrls: ['./client-home.component.css'],
 })
 export class ClientHomeComponent implements OnInit {
-
   public the_client_tries_to_connect_for_the_first_time = true;
 
-  public client:any;
+  public client: any;
 
   constructor(
     private router: Router,
     private signInService: SigninService,
     private titleService: Title,
-    private clientService:ClientService
+    private clientService: ClientService
   ) {
     this.titleService.setTitle('Client');
   }
 
   ngOnInit(): void {
-    this.getMyInfo();    
+    this.getMyInfo();
   }
 
   goToHome() {
@@ -41,14 +40,13 @@ export class ClientHomeComponent implements OnInit {
     this.signInService.logout();
   }
 
-  getMyInfo(){
+  getMyInfo() {
     this.clientService.getMyInfo().subscribe(
-      (response:any)=>{
+      (response: any) => {
         this.client = response;
-      }
-      ,
-      (error:any)=>{
-        console.log(error);
+      },
+      (error: any) => {
+        console.error(error);
       }
     );
   }

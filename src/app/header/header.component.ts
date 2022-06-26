@@ -9,28 +9,27 @@ import { ThemeService } from '../services/theme.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit{
-
-
+export class HeaderComponent implements OnInit {
   options$: Observable<Array<Option>> = this.themeService.getThemeOptions();
 
   langs = ['en', 'fr'];
   selected = 'en';
-  constructor(public translate: TranslateService, private readonly themeService: ThemeService) {
+  constructor(
+    public translate: TranslateService,
+    private readonly themeService: ThemeService
+  ) {
     translate.addLangs(this.langs);
     translate.setDefaultLang('en');
     const browserLang = this.translate.getBrowserLang();
     this.translate.use(browserLang?.match(/en|fr/) ? browserLang : 'en');
   }
   ngOnInit() {
-    this.themeService.setTheme("deeppurple-amber");
+    this.themeService.setTheme('deeppurple-amber');
   }
   themeChangeHandler(themeToSet: string) {
     this.themeService.setTheme(themeToSet);
   }
   OnSelect(langSelect: MatSelectChange) {
-    console.log(langSelect.value);
-
     this.translate.use(langSelect.value);
   }
 }

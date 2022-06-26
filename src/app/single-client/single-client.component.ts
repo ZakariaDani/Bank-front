@@ -10,10 +10,9 @@ import { ClientService } from '../services/client.service';
 @Component({
   selector: 'app-single-client',
   templateUrl: './single-client.component.html',
-  styleUrls: ['./single-client.component.css']
+  styleUrls: ['./single-client.component.css'],
 })
 export class SingleClientComponent implements OnInit {
-
   @Input() client: any;
 
   constructor(
@@ -34,14 +33,13 @@ export class SingleClientComponent implements OnInit {
 
   toggleFavorite(client: any) {
     client.isFavorite = !client.isFavorite;
-    console.log(client.id)
-    this.agentService.toggleFav(client.id)
+    this.agentService.toggleFav(client.id);
   }
   openDialog() {
     const dialogAdd = this.dialog.open(EditClientComponent, {
       data: this.client,
       width: '50vw',
-      minWidth:'300px',
+      minWidth: '300px',
       hasBackdrop: true,
       role: 'dialog',
     });

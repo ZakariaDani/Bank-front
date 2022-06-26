@@ -35,15 +35,13 @@ export class AddAgentComponent implements OnInit {
 
   OnCancel() {
     this.dialogAdd.close();
-    console.log(this.valueService.agents);
   }
 
   create(addAgentForm: NgForm) {
     if (addAgentForm.valid) {
-      console.log(this.agent);
       this.backOfficeService.createAgent(this.agent).subscribe(
         (res: any) => {
-          this.valueService.agents.push(this.agent);
+          this.valueService.agents.push(res);
 
           this.backOfficeService.createAgentImage(
             res.idCardNumber,
@@ -51,11 +49,9 @@ export class AddAgentComponent implements OnInit {
           );
         },
         (err) => {
-          console.log(err);
+          console.error(err);
         }
       );
-
-      console.log('done');
 
       this.dialogAdd.close();
     }
@@ -65,7 +61,6 @@ export class AddAgentComponent implements OnInit {
       const file: File = event.target.files[0];
       this.agent.fileName = file.name;
       this.formData.append('fileID', file);
-      console.log('db', file);
       this.selectedFile = file;
     }
   }
