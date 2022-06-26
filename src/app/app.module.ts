@@ -62,7 +62,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AssigneClientComponent } from './assigne-client/assigne-client.component';
 import { BookmarkedAgentsComponent } from './bookmarked-agents/bookmarked-agents.component';
 import { AgentClientProfileComponent } from './agent-client-profile/agent-client-profile.component';
+<<<<<<< HEAD
 import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
+=======
+import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-clients.component';
+import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
+>>>>>>> 1a6903dd67cb01c6fdcb877f912da0c2d013cc20
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -105,7 +110,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AssigneClientComponent,
     BookmarkedAgentsComponent,
     AgentClientProfileComponent,
+<<<<<<< HEAD
     ClientNewPasswordComponent,
+=======
+    AgentsMostClientsComponent,
+    AgentsLeastClientsComponent,
+>>>>>>> 1a6903dd67cb01c6fdcb877f912da0c2d013cc20
   ],
   imports: [
     BrowserModule,

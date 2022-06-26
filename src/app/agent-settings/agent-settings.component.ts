@@ -12,7 +12,7 @@ export class AgentSettingsComponent implements OnInit {
   settings = null;
   sub:any;
   id:any;
-  backOfficeDetails:any;
+  agentDetails:any;
   image:any;
   
   constructor(private router: Router,private agentService:AgentService,private activate:ActivatedRoute) {}
@@ -24,9 +24,8 @@ export class AgentSettingsComponent implements OnInit {
    console.log(this.id);
     this.agentService.getCurrentAgent().subscribe({
       next:(res:any)=>{
-        this.backOfficeDetails = res;
+        this.agentDetails = res;
         this.image="https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg"
-        console.log(this.backOfficeDetails)
       },
       error:(error)=>{
         console.log(error)
@@ -34,8 +33,8 @@ export class AgentSettingsComponent implements OnInit {
     });
   }
   saveSettings(settings: any) {
-    this.settings = settings;
-    this.router.navigate(['agent']);
+    console.log(this.agentDetails);
+    this.agentService.updateProfile(this.agentDetails);
   }
   goBackToHome() {
     this.router.navigate(['agent']);

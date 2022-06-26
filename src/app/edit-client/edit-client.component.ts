@@ -34,9 +34,7 @@ export class EditClientComponent implements OnInit {
         ]),
         address: new FormControl(this.client.address, [
         ]),
-        creation_date: new FormControl(this.client.creation_date, [
-          Validators.required,
-        ]),
+
         solde: new FormControl(this.client.solde, [
         ]),
       });

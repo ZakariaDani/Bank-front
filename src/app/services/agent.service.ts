@@ -132,4 +132,18 @@ export class AgentService {
         },
       });
   }
+  updateProfile(agent: any) {
+    return this.http
+      .put(`${this.AGENT_URL}/update`, agent, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .subscribe({
+        next: (resp) => {
+          console.log('updated' + resp);
+        },
+        error: (err) => {
+          console.log('error updating');
+        },
+      });
+  }
 }

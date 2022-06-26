@@ -1,0 +1,5 @@
+<mat-grid-list cols="4" gutterSize="1.25rem" rowHeight="19rem">
+  <mat-grid-tile *ngFor="let agent of agentsWithLeastClients">
+    <app-single-agent [agent]="agent"></app-single-agent>
+  </mat-grid-tile>
+</mat-grid-list>
