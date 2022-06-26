@@ -8,11 +8,11 @@ import { SigninService } from '../services/signin.service';
 import { ValueService } from '../services/value.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-backoffice-home',
+  templateUrl: './backoffice-home.component.html',
+  styleUrls: ['./backoffice-home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class BackofficeHomeComponent implements OnInit {
   showFiller = false;
   isFavoriteAgentsShown = false;
 

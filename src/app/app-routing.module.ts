@@ -7,7 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
 
-import { HomeComponent } from './home/home.component';
+import { BackofficeHomeComponent } from './backoffice-home/backoffice-home.component';
 
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'backoffice',
-    component: HomeComponent,
+    component: BackofficeHomeComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'ROLE_BACKOFFICE',
