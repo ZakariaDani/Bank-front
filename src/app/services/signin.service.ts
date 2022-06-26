@@ -65,10 +65,6 @@ export class SigninService {
                 this.clientService
                   .checkIfTheClientIsConnectedForTheFirstTime(this.token)
                   .subscribe(
-                    (response:any)=>{
-                      let the_client_tried_to_connect_for_the_first_time = response;
-                      localStorage.setItem("firstTime",
-                      the_client_tried_to_connect_for_the_first_time)
                     (response: any) => {
                       let the_client_tried_to_connect_for_the_first_time =
                         response;
@@ -86,14 +82,6 @@ export class SigninService {
                     (error) => {
                       console.error(error);
                     }
-                  )
-                }
-
-              });
-          }
-        },
-        (error) => {
-          this.toast.error('Authentification failed!', '', { timeOut: 2000 });
                   );
               }
             });
@@ -102,7 +90,10 @@ export class SigninService {
       (error) => {
         this.toast.error('Authentification failed!', '', { timeOut: 2000 });
       }
-    );
+    ),
+      (error: any) => {
+        this.toast.error('Authentification failed!', '', { timeOut: 2000 });
+      };
   }
 
   logout() {
@@ -125,5 +116,4 @@ export class SigninService {
     this.roleAs = localStorage.getItem('ROLE');
     return this.roleAs;
   }
-
 }
