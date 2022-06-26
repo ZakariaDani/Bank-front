@@ -27,14 +27,6 @@ export class ClientMainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.nbr_of_attempts = this.clientService.getAttemptsNumber();
-    this.clientService.checkIfTheClientIsConnectedForTheFirstTime().subscribe(
-      (response:any)=>{
-        this.the_client_tries_to_connect_for_the_first_time = response;
-        if(this.the_client_tries_to_connect_for_the_first_time){
-          this.router.navigate(["client-home/newPassword"]);
-        }
-      }
-    )
   }
 
   next(entreprise:string){

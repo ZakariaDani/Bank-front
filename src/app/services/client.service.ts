@@ -234,7 +234,7 @@ export class ClientService {
 
   checkIfTheClientIsConnectedForTheFirstTime(){
     return this.http.get(
-      `${this.CLIENT_URL}/firstTime`,
+      `${this.CLIENT_URL}/getStatusOfTheClient`,
       {headers:{
         "Authorization":`Bearer ${this.token}`,
       }}

@@ -24,6 +24,7 @@ import { AgentsMostClientsComponent } from './agents-most-clients/agents-most-cl
 import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least-clients.component';
 
 import { LoginGuard } from './guards/login.guard';
+import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
 
 
 const routes: Routes = [
