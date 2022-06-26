@@ -111,7 +111,9 @@ export class ClientService {
 
     if (validTransaction) {
       this.attempts_number = 0;
-
+      const loadingToast = this.toast.warning('Loading...', '', {
+        timeOut: 10000,
+      });
       this.http
         .post(
           `${this.CLIENT_URL}/make_transaction`,
@@ -122,10 +124,12 @@ export class ClientService {
         )
         .subscribe(
           (response: any) => {
+            this.toast.clear(loadingToast.toastId);
             this.transactionId = response;
             this.showVerficationContainer();
           },
           (error: any) => {
+            this.toast.clear(loadingToast.toastId);
             this.toast.error(error.error.message.toString(), '', {
               timeOut: 2000,
             });
@@ -147,7 +151,9 @@ export class ClientService {
 
     if (validatTransaction) {
       this.attempts_number = 0;
-
+      const loadingToast = this.toast.warning('Loading...', '', {
+        timeOut: 10000,
+      });
       this.http
         .post(
           `${this.CLIENT_URL}/make_telecom_recharge`,
@@ -158,10 +164,12 @@ export class ClientService {
         )
         .subscribe(
           (response: any) => {
+            this.toast.clear(loadingToast.toastId);
             this.transactionId = response;
             this.showVerficationContainer();
           },
           (error) => {
+            this.toast.clear(loadingToast.toastId);
             this.toast.error(error.error.message.toString(), '', {
               timeOut: 2000,
             });

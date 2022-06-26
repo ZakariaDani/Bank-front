@@ -11,7 +11,7 @@ import { ClientRegisterComponent } from '../client-register/client-register.comp
 export class AgentService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private AGENT_URL = environment.API_URL+'/agent';
+  private AGENT_URL = environment.API_URL + '/agent';
   public currentmail: any = '';
   constructor(
     private http: HttpClient,
@@ -76,12 +76,16 @@ export class AgentService {
   }
 
   addClient(client: any) {
+    const loadingToast = this.toast.warning('Loading...', '', {
+      timeOut: 10000,
+    });
     return this.http
       .post(`${this.AGENT_URL}/addclient`, client, {
         headers: { Authorization: `Bearer ${this.token}` },
       })
       .subscribe(
         (response: any) => {
+          this.toast.clear(loadingToast.toastId);
           this.toast
             .success('The client has been added successfully', '', {
               timeOut: 1500,
@@ -91,6 +95,7 @@ export class AgentService {
             });
         },
         (error) => {
+          this.toast.clear(loadingToast.toastId);
           this.toast.error(error.error.message.toString(), '', {
             timeOut: 1500,
           });
