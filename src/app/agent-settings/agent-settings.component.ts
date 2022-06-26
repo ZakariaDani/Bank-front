@@ -5,39 +5,40 @@ import { AgentService } from '../services/agent.service';
 @Component({
   selector: 'app-agent-settings',
   templateUrl: './agent-settings.component.html',
-  styleUrls: ['./agent-settings.component.css']
+  styleUrls: ['./agent-settings.component.css'],
 })
 export class AgentSettingsComponent implements OnInit {
-
   settings = null;
-  sub:any;
-  id:any;
-  agentDetails:any;
-  image:any;
-  
-  constructor(private router: Router,private agentService:AgentService,private activate:ActivatedRoute) {}
+  sub: any;
+  id: any;
+  agentDetails: any;
+  image: any;
+
+  constructor(
+    private router: Router,
+    private agentService: AgentService,
+    private activate: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.sub = this.activate.params.subscribe(params => {
-      this.id = +params['id']; 
-   });
-   console.log(this.id);
+    this.sub = this.activate.params.subscribe((params) => {
+      this.id = +params['id'];
+    });
     this.agentService.getCurrentAgent().subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         this.agentDetails = res;
-        this.image="https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg"
+        this.image =
+          'https://avatars.dicebear.com/api/adventurer/AymaneDaif.svg';
       },
-      error:(error)=>{
-        console.log(error)
-      }
+      error: (error) => {
+        console.error(error);
+      },
     });
   }
   saveSettings(settings: any) {
-    console.log(this.agentDetails);
     this.agentService.updateProfile(this.agentDetails);
   }
   goBackToHome() {
     this.router.navigate(['agent']);
   }
-
 }

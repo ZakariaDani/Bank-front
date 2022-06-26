@@ -35,11 +35,10 @@ export class AgentService {
       responseType: 'text',
     });
   }
-  getAllClients():Observable<any> {
-    return this.http
-      .get(`${this.AGENT_URL}/clients`, {
-        headers: { Authorization: `Bearer ${this.token}` },
-      });
+  getAllClients(): Observable<any> {
+    return this.http.get(`${this.AGENT_URL}/clients`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
   getClientsWithoutAgent(): Observable<any> {
     return this.http.get(`${this.AGENT_URL}/clientswithoutagent`, {
@@ -58,10 +57,6 @@ export class AgentService {
     });
   }
   toggleFav(id: any) {
-    console.log(this.token);
-    console.log('****************************');
-
-    console.log(`${this.AGENT_URL}/toggleFav/${id}`);
     return this.http
       .post(
         `${this.AGENT_URL}/toggleFav/${id}`,
@@ -72,11 +67,9 @@ export class AgentService {
         }
       )
       .subscribe({
-        next: (resp) => {
-          console.log(resp);
-        },
+        next: (resp) => {},
         error: (err) => {
-          console.log(err);
+          console.error(err);
         },
       });
   }
@@ -87,28 +80,20 @@ export class AgentService {
         headers: { Authorization: `Bearer ${this.token}` },
       })
       .subscribe(
-        (response:any)=>{
-          this.toast.success(
-            "The client has been added successfully",
-            "",
-            {
-              timeOut:1500
-            }
-          ).onHidden.subscribe(
-            ()=>{
+        (response: any) => {
+          this.toast
+            .success('The client has been added successfully', '', {
+              timeOut: 1500,
+            })
+            .onHidden.subscribe(() => {
               window.location.reload();
-            }
-          )
+            });
         },
-        (error)=>{
-            this.toast.error(
-              error.error.message.toString(),
-              "",
-              {
-                timeOut:1500
-              }
-        )},
-        
+        (error) => {
+          this.toast.error(error.error.message.toString(), '', {
+            timeOut: 1500,
+          });
+        }
       );
   }
 
@@ -118,19 +103,16 @@ export class AgentService {
     });
   }
   updateClient(client: any, clientid: number) {
-
     return this.http
       .put(`${this.AGENT_URL}/updateclient/${clientid}`, client, {
         headers: { Authorization: `Bearer ${this.token}` },
-      }).subscribe({
-        next: (resp) => {
-          console.log('updated' + resp);
-        },  
+      })
+      .subscribe({
+        next: (resp) => {},
         error: (err) => {
-          console.log(err);
-        }     
-      }
-      );
+          console.error(err);
+        },
+      });
   }
   updateProfile(agent: any) {
     return this.http
@@ -139,32 +121,25 @@ export class AgentService {
       })
       .subscribe({
         next: (resp) => {
-          this.toast.success(
-            "Success",
-            "",
-            {timeOut:1000}
-          ).onHidden.subscribe(
-          ()=>{
-            this.router.navigate(["agent"]);
-          }
-          )
+          this.toast
+            .success('Success', '', { timeOut: 1000 })
+            .onHidden.subscribe(() => {
+              this.router.navigate(['agent']);
+            });
         },
-        error: (err) => {
-        },
+        error: (err) => {},
       });
   }
 
-  getAllClientTransactions(id:number){
-    
-    return this.http.get
-    (`${this.AGENT_URL}/getTClientTransactions/${id}`,
-      {headers:{"Authorization":`Bearer ${this.token}`}}
-    );
+  getAllClientTransactions(id: number) {
+    return this.http.get(`${this.AGENT_URL}/getTClientTransactions/${id}`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
 
-  getMyInfo(){
-    return this.http.get(`${this.AGENT_URL}/getcurrentinfo`,
-      {headers:{"Authorization":`Bearer ${this.token}`}}
-    );
+  getMyInfo() {
+    return this.http.get(`${this.AGENT_URL}/getcurrentinfo`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
   }
 }
