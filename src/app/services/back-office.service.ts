@@ -11,7 +11,7 @@ import { Agent } from '../models/agent.model';
 export class BackOfficeService {
   private token = '';
   private jwtToken$ = new BehaviorSubject<string>(this.token);
-  private BACK_OFFICE_URL = environment.API_URL+'/backoffice';
+  private BACK_OFFICE_URL = environment.API_URL + '/backoffice';
   constructor(private http: HttpClient, private toast: ToastrService) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
@@ -67,8 +67,7 @@ export class BackOfficeService {
         observe: 'response',
       })
       .subscribe({
-        next: (response: any) => {
-        },
+        next: (response: any) => {},
         error: (response: any) => {
           console.error(response);
         },
@@ -87,7 +86,9 @@ export class BackOfficeService {
       description,
       file,
     } = agent;
-
+    const loadingToast = this.toast.warning('Loading...', '', {
+      timeOut: 10000,
+    });
     return this.http
       .post(
         `${this.BACK_OFFICE_URL}/agents`,
@@ -111,6 +112,7 @@ export class BackOfficeService {
       )
       .pipe(
         tap((res) => {
+          this.toast.clear(loadingToast.toastId);
           if (res) {
             this.toast.success('Agent created...', '', {
               timeOut: 1000,
@@ -121,7 +123,6 @@ export class BackOfficeService {
   }
 
   deleteAgent(agentEmail: string) {
-
     return this.http
       .delete(`${this.BACK_OFFICE_URL}/agents/${agentEmail}`, {
         headers: { Authorization: `Bearer ${this.token}` },
@@ -138,7 +139,6 @@ export class BackOfficeService {
   }
   //You can add parameters that you want to update
   updateAgent(agent: Agent) {
-
     return this.http
 
       .patch(`${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}`, agent, {
@@ -172,7 +172,6 @@ export class BackOfficeService {
   }
 
   addToFavourite(agent: any) {
-
     return this.http
       .patch(
         `${this.BACK_OFFICE_URL}/agents/${agent.idCardNumber}/favorite`,
@@ -183,7 +182,6 @@ export class BackOfficeService {
       )
       .pipe(
         tap((res) => {
-
           if (res) {
             this.toast.success('agent updated successfully', '', {
               timeOut: 1000,

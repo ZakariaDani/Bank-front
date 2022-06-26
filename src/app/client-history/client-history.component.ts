@@ -34,7 +34,7 @@ export class ClientHistoryComponent implements OnInit {
     this.clientService.getAllTransactions(item_per_page, pageIndex).subscribe(
       (response: any) => {
         this.length = response.totalElements;
-        this.transactions = response;
+        this.transactions = response.reverse();
       },
       (error) => {
         this.toast
