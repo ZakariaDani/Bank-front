@@ -22,7 +22,6 @@ export class ClientRegisterComponent implements OnInit {
     this.hide = !this.hide;
   }
   onSubmit(registerForm: NgForm) {
-    console.log(registerForm.value);
     if (registerForm.invalid) {
       return;
     }

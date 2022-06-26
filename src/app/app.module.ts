@@ -18,7 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
+import { BackofficeHomeComponent } from './backoffice-home/backoffice-home.component';
 import { HeaderComponent } from './header/header.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -74,7 +74,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    BackofficeHomeComponent,
     HeaderComponent,
     AgentsComponent,
     SingleAgentComponent,

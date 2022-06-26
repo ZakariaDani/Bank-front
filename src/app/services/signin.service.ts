@@ -21,7 +21,7 @@ export class SigninService {
     private http: HttpClient,
     private router: Router,
     private toast: ToastrService,
-    private clientService:ClientService
+    private clientService: ClientService
   ) {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
@@ -34,53 +34,57 @@ export class SigninService {
     return this.jwtToken$.asObservable();
   }
 
-  login(identifiant: string, password: string,loading_state:any) {
-  
-    this.http
-      .post(`${this.AUTH_URL}`, { identifiant, password })
-      .subscribe(
-        //@ts-ignore
-        (res: { 'refresh-token': string,'access-token': string }) => {
-          this.token = res['access-token'];
-          if (this.token) {
-            this.toast
-              .success('Login successful, Working on it...', '', {
-                timeOut: 700,
-                positionClass: 'toast-top-center',
-              })
-              .onHidden.subscribe(() => { 
-                this.jwtToken$.next(this.token);
-                const decryptedResponse: any = jwt_decode(res['access-token']);
-                localStorage.setItem('act', this.token);
-                localStorage.setItem('ROLE', decryptedResponse.roles[0]);
-                
-                localStorage.setItem('STATE', 'true');
+  login(identifiant: string, password: string) {
+    this.http.post(`${this.AUTH_URL}`, { identifiant, password }).subscribe(
+      //@ts-ignore
+      (res: { 'refresh-token': string; 'access-token': string }) => {
+        this.token = res['access-token'];
+        if (this.token) {
+          this.toast
+            .success('Login successful, Working on it...', '', {
+              timeOut: 700,
+              positionClass: 'toast-top-center',
+            })
+            .onHidden.subscribe(() => {
+              this.jwtToken$.next(this.token);
+              const decryptedResponse: any = jwt_decode(res['access-token']);
+              localStorage.setItem('act', this.token);
+              localStorage.setItem('ROLE', decryptedResponse.roles[0]);
 
-                if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
-                  this.router.navigateByUrl('/agent').then();
-                  localStorage.setItem('agentEmail', decryptedResponse.sub);
-                }
-                if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
-                  this.router.navigateByUrl('/backoffice').then();
-                  localStorage.setItem('backofficeEmail', decryptedResponse.sub);
-                }
-                if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
-                  this.clientService.checkIfTheClientIsConnectedForTheFirstTime(this.token)
+              localStorage.setItem('STATE', 'true');
+
+              if (decryptedResponse.roles[0] === 'ROLE_AGENT') {
+                this.router.navigateByUrl('/agent').then();
+                localStorage.setItem('agentEmail', decryptedResponse.sub);
+              }
+              if (decryptedResponse.roles[0] === 'ROLE_BACKOFFICE') {
+                this.router.navigateByUrl('/backoffice').then();
+                localStorage.setItem('backofficeEmail', decryptedResponse.sub);
+              }
+              if (decryptedResponse.roles[0] === 'ROLE_CLIENT') {
+                this.clientService
+                  .checkIfTheClientIsConnectedForTheFirstTime(this.token)
                   .subscribe(
                     (response:any)=>{
                       let the_client_tried_to_connect_for_the_first_time = response;
                       localStorage.setItem("firstTime",
                       the_client_tried_to_connect_for_the_first_time)
+                    (response: any) => {
+                      let the_client_tried_to_connect_for_the_first_time =
+                        response;
+                      localStorage.setItem(
+                        'firstTime',
+                        the_client_tried_to_connect_for_the_first_time
+                      );
 
-                      if(the_client_tried_to_connect_for_the_first_time){
-                        this.router.navigateByUrl("/newPassword").then();
-                      }
-                      else{
+                      if (the_client_tried_to_connect_for_the_first_time) {
+                        this.router.navigateByUrl('/newPassword').then();
+                      } else {
                         this.router.navigateByUrl('/client-home').then();
                       }
                     },
-                    (error)=>{
-                      console.log(error);
+                    (error) => {
+                      console.error(error);
                     }
                   )
                 }
@@ -90,8 +94,15 @@ export class SigninService {
         },
         (error) => {
           this.toast.error('Authentification failed!', '', { timeOut: 2000 });
+                  );
+              }
+            });
         }
-      );
+      },
+      (error) => {
+        this.toast.error('Authentification failed!', '', { timeOut: 2000 });
+      }
+    );
   }
 
   logout() {

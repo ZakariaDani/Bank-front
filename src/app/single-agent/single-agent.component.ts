@@ -30,8 +30,6 @@ export class SingleAgentComponent implements OnInit {
   goToProfilePage() {
     this.valueService.agents.forEach((a: Agent) => {
       if (a.email === this.agent?.email) {
-        console.log('hohooooooooooooooooo', a.idCardNumber);
-
         this.router.navigate(['backoffice', 'agents', a.idCardNumber]);
       }
     });

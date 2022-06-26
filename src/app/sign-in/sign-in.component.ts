@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
   
     this.signinService.login(identifiant, password,this.loading_state);
 
-    return signinForm.reset();
+    //return signinForm.reset();
 
   }
 

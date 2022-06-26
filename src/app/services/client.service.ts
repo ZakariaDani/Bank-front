@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {Client} from "../models/client";
+import {Client} from "../models/client.model";
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +53,7 @@ export class ClientService {
         }
         ,
         (error) => {
-          console.log(error);
+          console.error(error);
           this.toast.error(error.error.message.toString(), '', { timeOut: 1000 });
         }
       );

@@ -7,7 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { BackofficeSettingsComponent } from './backoffice-settings/backoffice-settings.component';
 
-import { HomeComponent } from './home/home.component';
+import { BackofficeHomeComponent } from './backoffice-home/backoffice-home.component';
 
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 import { ClientHomeComponent } from './client-home/client-home.component';
@@ -25,8 +25,6 @@ import { AgentsLeastClientsComponent } from './agents-least-clients/agents-least
 
 import { LoginGuard } from './guards/login.guard';
 import { ClientNewPasswordComponent } from './client-new-password/client-new-password.component';
-import { FirstTimeGuardGuard } from './guards/first-time-guard.guard';
-
 
 const routes: Routes = [
   {
@@ -47,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'backoffice',
-    component: HomeComponent,
+    component: BackofficeHomeComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'ROLE_BACKOFFICE',

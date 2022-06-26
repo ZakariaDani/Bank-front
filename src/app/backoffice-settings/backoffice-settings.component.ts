@@ -22,7 +22,7 @@ export class BackofficeSettingsComponent implements OnInit {
         this.backOfficeDetails = response;
       },
       error: (response: any) => {
-        console.log(response);
+        console.error(response);
       },
     });
   }
@@ -34,15 +34,13 @@ export class BackofficeSettingsComponent implements OnInit {
   saveSettings(settings: any) {
     this.backOfficeService.updateBackOffice(settings).subscribe({
       next: (response: any) => {
-        console.log('****************');
-        console.log(response);
+        this.backOfficeDetails = response;
       },
       error: (response: any) => {
-        console.log('##############');
-        console.log(response);
+        console.error(response);
       },
     });
-    // this.router.navigate(['backoffice']);
+    this.router.navigate(['backoffice']);
   }
   goBackToHome() {
     this.router.navigate(['backoffice']);

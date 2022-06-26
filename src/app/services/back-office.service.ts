@@ -16,7 +16,6 @@ export class BackOfficeService {
     const fetchedToken = localStorage.getItem('act');
     if (fetchedToken) {
       this.token = fetchedToken;
-      console.log(this.token);
       this.jwtToken$.next(this.token);
     }
   }
@@ -69,10 +68,9 @@ export class BackOfficeService {
       })
       .subscribe({
         next: (response: any) => {
-          console.log(response);
         },
         error: (response: any) => {
-          console.log(response);
+          console.error(response);
         },
       });
   }
@@ -123,7 +121,6 @@ export class BackOfficeService {
   }
 
   deleteAgent(agentEmail: string) {
-    console.log(agentEmail, 'agentId');
 
     return this.http
       .delete(`${this.BACK_OFFICE_URL}/agents/${agentEmail}`, {
@@ -131,7 +128,6 @@ export class BackOfficeService {
       })
       .pipe(
         tap((res) => {
-          console.log(res);
           if (res) {
             this.toast.success('Agent deleted...', '', {
               timeOut: 1000,
@@ -142,7 +138,6 @@ export class BackOfficeService {
   }
   //You can add parameters that you want to update
   updateAgent(agent: Agent) {
-    console.log(agent, agent.idCardNumber, '*******');
 
     return this.http
 
@@ -169,16 +164,14 @@ export class BackOfficeService {
       .pipe(
         tap((res) => {
           if (res) {
-            console.log(res);
           } else {
-            console.log('not getted');
+            console.error('not getted');
           }
         })
       );
   }
 
   addToFavourite(agent: any) {
-    console.log(agent, agent.idCardNumber, '*******hnaaaaaa');
 
     return this.http
       .patch(
@@ -190,7 +183,6 @@ export class BackOfficeService {
       )
       .pipe(
         tap((res) => {
-          console.log(res, 'hohohoho');
 
           if (res) {
             this.toast.success('agent updated successfully', '', {
@@ -209,9 +201,8 @@ export class BackOfficeService {
       .pipe(
         tap((res) => {
           if (res) {
-            console.log(res);
           } else {
-            console.log('not getted');
+            console.error('not getted');
           }
         })
       );
@@ -225,9 +216,8 @@ export class BackOfficeService {
       .pipe(
         tap((res) => {
           if (res) {
-            console.log(res);
           } else {
-            console.log('not getted');
+            console.error('not getted');
           }
         })
       );
