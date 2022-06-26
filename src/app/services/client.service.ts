@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import {Client} from "../models/client";
+import {Client} from "../models/client.model";
 
 @Injectable({
   providedIn: 'root',
