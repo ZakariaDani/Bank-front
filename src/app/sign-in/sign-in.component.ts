@@ -11,8 +11,8 @@ import { SigninService } from '../services/signin.service';
 })
 export class SignInComponent implements OnInit {
   hide = true;
-  private loading_state:{isLoading:boolean} = {isLoading:false};
-  public IS_A_NUMBER = new RegExp("^[0-9]+");
+  private loading_state: { isLoading: boolean } = { isLoading: false };
+  public IS_A_NUMBER = new RegExp('^[0-9]+');
 
   constructor(
     private signinService: SigninService,
@@ -22,24 +22,20 @@ export class SignInComponent implements OnInit {
     this.titleService.setTitle('Welcome');
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   toggleHide() {
     this.hide = !this.hide;
   }
 
   onSubmit(signinForm: NgForm) {
-    
     if (signinForm.invalid) {
       return;
     }
-    
+
     const { identifiant, password } = signinForm.value;
-  
-    this.signinService.login(identifiant, password,this.loading_state);
+
+    this.signinService.login(identifiant, password);
 
     //return signinForm.reset();
-
   }
-
 }
