@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   showFiller = false;
   isFavoriteAgentsShown = false;
 
+  @ViewChild(AgentsComponent)
+  agentsComponent!: AgentsComponent;
+
   constructor(
     private dialog: MatDialog,
     private signinService: SigninService,
@@ -43,11 +46,13 @@ export class HomeComponent implements OnInit {
   showAgentsWithMostClients() {
     this.isFavoriteAgentsShown = false;
     this.router.navigate(['backoffice/mostClients']);
+    this.agentsComponent.showAgentsWithMostClients();
   }
 
   showAgentsWithLeastClients() {
     this.isFavoriteAgentsShown = false;
     this.router.navigate(['backoffice/leastClients']);
+    this.agentsComponent.showAgentsWithLeastClients();
   }
   openDialog() {
     const dialogAdd = this.dialog.open(AddAgentComponent, {

@@ -34,4 +34,14 @@ export class AgentsComponent implements OnInit {
       this.valueService.bookmarked = this.valueService.agents;
     }
   }
+  showAgentsWithMostClients() {
+    this.valueService.agents = this.valueService.agents
+      .sort((a: any, z: any) => z.agentsCount - a.agentsCount)
+      .slice(0, 3);
+  }
+  showAgentsWithLeastClients() {
+    this.valueService.agents = this.valueService.agents
+      .sort((a: any, z: any) => a.agentsCount - z.agentsCount)
+      .slice(0, 3);
+  }
 }
